@@ -8,4 +8,4 @@ GS1 Switzerland is a non‑profit, industry‑driven standardization organizatio
 
 GS1 Switzerland operates several solutions and platforms that support businesses in applying standards and improving data quality, collaboration and operational excellence. These include services in education, data management, product transparency, sector initiatives and digital solutions.
 
-To learn more, visit www.gs1.ch
+To learn more, visit [www.gs1.ch](https://www.gs1.ch)

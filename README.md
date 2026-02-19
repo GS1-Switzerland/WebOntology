@@ -1,6 +1,7 @@
 # WebOntology
 
 Repository for ontologies and vocabularies managed by GS1 Switzerland to maintain them and make them available to our community.
+It provides free, ready-to-use "vocabularies" and "ontologies" that make data interoperable. 
 
 # About us
 

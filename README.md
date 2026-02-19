@@ -1,0 +1,2 @@
+# WebOntology
+Repository for GS1 WebOntologies to maintain and provide it to our community.

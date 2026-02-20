@@ -1,1 +1,58 @@
-{}
+{
+    "@context": {
+        "prof": "http://www.w3.org/ns/dx/prof/",
+        "dct": "http://purl.org/dc/terms/"
+    },
+    "@id": "https://gs1-epcis-reg.org/rail/profile",
+    "@type": "prof:Profile",
+    "dct:title": {
+        "@value": "GS1 Rail Vocabulary Profile",
+        "@language": "en"
+    },
+    "dct:identifier": "gs1-rail-profile",
+    "dct:description": {
+        "@value": "A PROF profile describing the GS1 Rail Vocabulary and its JSON-LD context.",
+        "@language": "en"
+    },
+    "prof:isProfileOf": {
+        "@id": "https://ref.gs1.org/standards/epcis/"
+    },
+    "prof:hasResource": [
+        {
+            "@id": "https://gs1-epcis-reg.org/rail/profile#vocabulary"
+        },
+        {
+            "@id": "https://gs1-epcis-reg.org/rail/profile#jsonld-context"
+        }
+    ],
+    "@graph": [
+        {
+            "@id": "https://gs1-epcis-reg.org/rail/profile#vocabulary",
+            "@type": "prof:ResourceDescriptor",
+            "dct:title": {
+                "@value": "GS1 Rail Vocabulary (Ontology)",
+                "@language": "en"
+            },
+            "prof:role": {
+                "@id": "prof:Schema"
+            },
+            "prof:hasArtifact": {
+                "@id": "https://gs1-epcis-reg.org/rail/voc/data/gs1RailVoc.jsonld"
+            }
+        },
+        {
+            "@id": "https://gs1-epcis-reg.org/rail/profile#jsonld-context",
+            "@type": "prof:ResourceDescriptor",
+            "dct:title": {
+                "@value": "GS1 Rail JSON-LD Context",
+                "@language": "en"
+            },
+            "prof:role": {
+                "@id": "prof:Context"
+            },
+            "prof:hasArtifact": {
+                "@id": "https://gs1-epcis-reg.org/rail/rail-context.jsonld"
+            }
+        }
+    ]
+}

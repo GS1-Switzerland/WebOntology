@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^([A-Za-z0-9_-]+)$ index.html?term=$1  

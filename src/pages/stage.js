@@ -1,2 +1,2 @@
-const ontologyJSONLD = "https://raw.githubusercontent.com/gs1-germany/gs1GermanyWebVoc/refs/heads/main/currentVersion/gs1DEWebVoc.jsonld"
+const ontologyJSONLD = "https://gs1-switzerland.github.io/WebOntology/src/rail/voc/data/gs1RailVoc.jsonld"
 const prefLang = "en"

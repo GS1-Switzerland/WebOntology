@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script>
+    // Aktuelle URL extrahieren
+    const path = window.location.pathname.replace(/^\/+/, "");
+
+    // Weiterleiten auf index.html mit Query-Parameter
+    window.location.href = "/index.html?term=" + encodeURIComponent(path);
+  </script>
+</head>
+<body>
+  Redirecting…
+</body>
+</html>

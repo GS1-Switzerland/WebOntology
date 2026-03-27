@@ -1,0 +1,32 @@
+	body {font-family: Verdana, Geneva, Arial, Helvetica}
+	th {text-align: left}
+	tr:nth-child(even) {background-color: #f2f2f2;}
+	tr:hover {background-color: #FFFF00;}
+	.codeListSelection {font-size: 0.8em;}
+	.weburi {font-size: 0.7em; color: #666666;}
+	tr.termList td {padding-left: 9px; padding-right: 9px;}
+	tr.termList th {padding-left: 9px; padding-right: 9px; color: #FFFFFF; background-color: #000099}
+	summary {font-weight: 700; font-size: 1.2em; }
+    details {padding-bottom: 1em; }
+    h3 {font-weight: 700; font-size: 1.2em; }
+    summary {cursor: pointer; padding-left: 0.5em;}
+    summary:hover {color: #FFFFFF; background-color: #000000;}
+    .deprecatedTermView { background-color: #000000; color: #FFFFFF; padding-left: 1em; padding-right: 1em;}
+    .deprecatedTermView:nth-child(even) { background-color: #000000; color: #FFFFFF; padding-left: 1em; padding-right: 1em;}
+    .deprecatedTermView:hover { background-color: #330000; color: #FFFFFF; padding-left: 1em; padding-right: 1em;}
+    .deprecatedTermView:nth-child(even):hover { background-color: #330000; color: #FFFFFF; padding-left: 1em; padding-right: 1em;}
+    .deprecatedTermView a { color: #00FF00; }
+
+    .unstableTermView { background-color: #FF9966; color: #000000; padding-left: 1em; padding-right: 1em;}
+    .unstableTermView:nth-child(even) { background-color: #FF7F33; color: #000000; padding-left: 1em; padding-right: 1em;}
+    .unstableTermView:hover { background-color: #FFAA77; color: #000000; padding-left: 1em; padding-right: 1em;}
+    .unstableTermView:nth-child(even):hover { background-color: #FFAA77; color: #000000; padding-left: 1em; padding-right: 1em;}
+    .unstableTermView a { color: #0000FF; }
+    
+    .testingTermView { background-color: #CCFFFF; color: #000000; padding-left: 1em; padding-right: 1em;}
+    .testingTermView:nth-child(even) { background-color: #CCFFFF; color: #000000; padding-left: 1em; padding-right: 1em;}
+    .testingTermView:hover { background-color: #CCFFD7; color: #000000; padding-left: 1em; padding-right: 1em;}
+    .testingTermView:nth-child(even):hover { background-color: #CCFFD7; color: #000000; padding-left: 1em; padding-right: 1em;}
+    .testingTermView a { color: #0000FF; }
+    
+    

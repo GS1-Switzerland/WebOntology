@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="stage.js"></script>
+    <link type="text/css" href="base.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script src="gs1-fixup.js"></script>
+    <script src="vue.global.min.js"></script>
+    <script src="marked.min.js"></script>
+    <script src="dompurify.min.js"></script>
+    <script language="javascript"></script>
+    <title>GS1 Rail Vocabulary</title>
+
+    <link rel="shortcut icon" href="https://www.gs1-germany.de/build/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.gs1-germany.de/build/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.gs1-germany.de/build/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="https://www.gs1-germany.de/build/favicons/favicon-48x48.png">
+    <link rel="apple-touch-icon" sizes="57x57"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="1024x1024"
+        href="https://www.gs1-germany.de/build/favicons/apple-touch-icon-1024x1024.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="@mehrwert/gs1-germany-website">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="https://www.gs1-germany.de/build/favicons/mstile-144x144.png">
+    <meta name="msapplication-config" content="https://www.gs1-germany.de/build/favicons/browserconfig.xml">
+
+    <meta name="application-name" content="GS1 Rail Vocabulary" />
+
+    </link>
+
+</head>
+
+<body>
+    <header>
+        <a href="/"><img src="GS1-Germany-Logo.svg" alt="GS1 Germany" id="logo" /></a>
+        <h1 class="center">GS1 Rail Vocabulary</h1>
+    </header>
+    <main style="padding-top: 0px; margin-top: 0px; margin-left: 0px; margin-right: 0px; padding-bottom: 3px;">
+        <div id="app1">
+            <div class="headerContainer" style="background-color: var(--gs1-color-orange); ">
+                <span class="leftAligned" style="display: block-inline;">&nbsp;</span>
+                <span class="rightAligned" style="display: block-inline;">
+                    <input type="search" v-model="searchKeyword" placeholder="&#128269; Search by keyword"
+                        @keyUp="changedKeyword()"
+                        style="border-radius: 0.8em; padding-left: 0.6em; padding-right: 0.6em;">
+                    &nbsp;
+                    <select v-model="browseCollection" @change="changedCollection()">
+                        <option value="">Home Page</option>
+                        <option value="classes">All classes</option>
+                        <option value="properties">All properties</option>
+                        <option value="codelists">All code lists (type codes)</option>
+                        <option v-if="term !== ''" value="term">{{ontologyCURIEprefix}}:{{term}}</option>
+                    </select>
+                    &nbsp;
+                    <select v-model="displayMode" @change="rememberMode()">
+                        <option value="current">Show all current terms</option>
+                        <option value="all">Show all terms (current or deprecated)</option>
+                    </select>
+                    &nbsp;
+                </span>
+            </div>
+
+            <div style="padding: .5em 1em; ">
+                <div v-if="(term == '') && (searchKeyword == '') && (browseCollection == '')">
+                    <details>
+                        <summary title="Click to expand and show details">About the GS1 Germany Web Vocabulary</summary>
+                        <div v-if="aboutContent" v-html="aboutContent"></div>
+                        <div v-else>
+                            <p>Loading content...</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary title="Click to expand and show details">Licence information</summary>
+                        <p v-html="licenceHTML"></p>
+                    </details>
+                    <details>
+                        <summary title="Click to expand and show details">Machine-interpretable ontology datasets (
+                            JSON-LD )</summary>
+                        <ul>
+                            <li><a :href="ontologyJSONLD" class="external" title="Opens in a new tab"
+                                    target="_blank">GS1 Rail Vocabulary
+                                    v{{ontologyRootElement?.['owl:versionInfo']}} in JSON-LD</a></li>
+                        </ul>
+                    </details>
+                    <p>Current version: {{ontologyRootElement?.['owl:versionInfo']}}</p>
+                    <p>Last updated: {{ontologyRootElement?.['dc:lastModified']?.['@value']}}</p>
+
+                </div>
+
+                <div v-if="term !== ''">
+                    <term-component v-if="termData !== {}" :term="termData" :prefLang="prefLang" :ontology="ontology"
+                        :type="termType" @set-term="setTerm" :owlunionmap="owlUnionMap"
+                        :propertieswithdomainmap="propertiesWithDomainMap"
+                        :propertieswithrangemap="propertiesWithRangeMap" :subclassmap="subClassMap"
+                        :superclassmap="superClassMap" :ascendingsuperclassmap="ascendingSuperClassMap"
+                        :displaymode="displayMode"></term-component>
+                </div>
+
+
+                <details class="detailsBlock" v-if="((displaySearchResults || displayAll) && (searchKeyword !== ''))"
+                    v-bind:open="(searchKeyword !== '') && (searchKeyword !== ' ') && (searchKeyword.length > 1)">
+                    <summary>Keyword search results for : {{searchKeyword}}</summary>
+                    <p v-if="(!((searchKeyword !== '') && (searchKeyword !== ' ') && (searchKeyword.length > 1)))">
+                        Please enter a search keyword</p>
+                    <div v-if="(searchKeyword !== '') && (searchKeyword !== ' ') && (searchKeyword.length > 1)">
+                        <p>Search Results</p>
+
+                        <search-results-component :title="'Classes'" :col1="'Class (Name and CURIE)'"
+                            :collection="filteredClasses(ontology,searchKeyword)" :prefLang="prefLang"
+                            :ontology="ontology" :owlunionmap="owlUnionMap"
+                            :displaymode="displayMode"></search-results-component>
+                        <search-results-component :title="'Properties'" :col1="'Property (Name and CURIE)'"
+                            :collection="filteredProperties(ontology,searchKeyword)" :prefLang="prefLang"
+                            :ontology="ontology" :owlunionmap="owlUnionMap" :showrange="false"
+                            :displaymode="displayMode"></search-results-component>
+                        <search-results-component :title="'Code Lists'" :col1="'Code List (Name and CURIE)'"
+                            :collection="filteredCodeLists(ontology,searchKeyword)" :prefLang="prefLang"
+                            :ontology="ontology" :owlunionmap="owlUnionMap"
+                            :displaymode="displayMode"></search-results-component>
+                        <search-results-component :title="'Code Values'" :col1="'Code Value (Name and CURIE)'"
+                            :collection="filteredCodeValues(ontology,searchKeyword)" :prefLang="prefLang"
+                            :ontology="ontology" :owlunionmap="owlUnionMap"
+                            :displaymode="displayMode"></search-results-component>
+                        <hr />
+                </details>
+
+                <div v-if="browseCollection=='classes'">
+                    <h3>All Classes</h3>
+                    <table-component :rows="classes(ontology)" :prefLang="prefLang" :ontology="ontology"
+                        :col1="'Class (Name and CURIE)'" @set-term="setTerm"
+                        :displaymode="displayMode"></table-component>
+                </div>
+
+                <div v-if="browseCollection=='properties'">
+                    <h3>All Properties</h3>
+                    <table-component :rows="properties(ontology)" :prefLang="prefLang" :ontology="ontology"
+                        :owlunionmap="owlUnionMap" :col1="'Property (Name and CURIE)'" @set-term="setTerm"
+                        :displaymode="displayMode" :showrange="false"></table-component>
+                </div>
+
+                <div v-if="browseCollection=='codelists'">
+                    <h3>All Code Lists</h3>
+                    <table-component :rows="codeLists(ontology)" :prefLang="prefLang" :ontology="ontology"
+                        :col1="'Code List (Name and CURIE)'" :displaymode="displayMode"
+                        @set-term="setTerm"></table-component>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <script type="module" src="createApp.js"></script>
+</body>
+
+</html>

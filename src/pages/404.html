@@ -6,7 +6,7 @@
     const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
     if (path && /^[A-Za-z0-9_-]+$/.test(path)) {
       // Zur index.html weiterleiten mit dem term als Query-Parameter
-      window.location.replace('/?term=' + path);
+      window.location.replace('/?search=' + path);
     }
   </script>
 </head>

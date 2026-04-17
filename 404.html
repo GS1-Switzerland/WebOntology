@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script>
+    (function() {
+      // Basispfad des Repos ermitteln (z.B. "/WebOntology")
+      // Alles danach ist der eigentliche Pfad
+      var basePath = '/WebOntology';
+      var fullPath = window.location.pathname;
+
+      // Den Teil nach dem Basispfad extrahieren
+      var relativePath = fullPath.slice(basePath.length).replace(/^\//, '').replace(/\/$/, '');
+
+      // Regex-Prüfung analog zu deiner .htaccess
+      if (relativePath && /^[A-Za-z0-9_-]+(\/[A-Za-z0-9_-]+)*$/.test(relativePath)) {
+        // Letztes Segment als term verwenden
+        var term = relativePath.split('/').pop();
+        window.location.replace(basePath + '/?term=' + encodeURIComponent(term));
+      }
+    })();
+  </script>
+</head>
+<body></body>
+</html>

@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <script>
-    // Pfad extrahieren: z.B. /mein-term → term=mein-term
-    const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
-    if (path && /^[A-Za-z0-9_-]+$/.test(path)) {
-      // Zur index.html weiterleiten mit dem term als Query-Parameter
-      window.location.replace('/?search=' + path);
-    }
+    (function() {
+      // Basispfad des Repos ermitteln (z.B. "/WebOntology")
+      // Alles danach ist der eigentliche Pfad
+      var basePath = '/WebOntology';
+      var fullPath = window.location.pathname;
+
+      // Den Teil nach dem Basispfad extrahieren
+      var relativePath = fullPath.slice(basePath.length).replace(/^\//, '').replace(/\/$/, '');
+
+      // Regex-Prüfung analog zu deiner .htaccess
+      if (relativePath && /^[A-Za-z0-9_-]+(\/[A-Za-z0-9_-]+)*$/.test(relativePath)) {
+        // Letztes Segment als term verwenden
+        var term = relativePath.split('/').pop();
+        window.location.replace(basePath + '/?term=' + encodeURIComponent(term));
+      }
+    })();
   </script>
 </head>
 <body></body>

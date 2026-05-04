@@ -11,7 +11,6 @@
     <script src="vue.global.min.js"></script>
     <script src="marked.min.js"></script>
     <script src="dompurify.min.js"></script>
-    <script language="javascript"></script>
     <title>GS1 Rail Vocabulary</title>
 
     <link rel="shortcut icon" href="https://www.gs1-germany.de/build/favicons/favicon.ico">
@@ -49,8 +48,6 @@
 
     <meta name="application-name" content="GS1 Rail Vocabulary" />
 
-    </link>
-
 </head>
 
 <body>
@@ -61,10 +58,10 @@
     <main style="padding-top: 0px; margin-top: 0px; margin-left: 0px; margin-right: 0px; padding-bottom: 3px;">
         <div id="app1">
             <div class="headerContainer" style="background-color: var(--gs1-color-orange); ">
-                <span class="leftAligned" style="display: block-inline;">&nbsp;</span>
+                <span class="leftAligned" style="display: inline-block;">&nbsp;</span>
                 <span class="rightAligned" style="display: block-inline;">
                     <input type="search" v-model="searchKeyword" placeholder="&#128269; Search by keyword"
-                        @keyUp="changedKeyword()"
+                        @keyup="changedKeyword()"
                         style="border-radius: 0.8em; padding-left: 0.6em; padding-right: 0.6em;">
                     &nbsp;
                     <select v-model="browseCollection" @change="changedCollection()">
@@ -145,6 +142,7 @@
                             :ontology="ontology" :owlunionmap="owlUnionMap"
                             :displaymode="displayMode"></search-results-component>
                         <hr />
+                    </div>
                 </details>
 
                 <div v-if="browseCollection=='classes'">

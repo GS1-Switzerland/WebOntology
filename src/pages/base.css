@@ -615,7 +615,6 @@ a.external {
 
 .blueButton {
   background-color: var(--gs1-color-blue);
-  ;
   color: #FFFFFF;
   font-weight: 700;
   border-radius: 8px;
@@ -666,7 +665,7 @@ table.detailsTable tr td {
 
 details {
   margin-left: 0.5em;
-  margin-right: 0.5 em;
+  margin-right: 0.5em;
 }
 
 .detailsTable {

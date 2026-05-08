@@ -34,8 +34,6 @@ We distinguish between sectors and domains.
 For the sectors, we use the 4-letter abbreviations defined in [Sectors - Base classification for Ontologies](https://gs1-ch.atlassian.net/wiki/x/N4AVag), based on the ISIC Revision 4 (2008) broad structure. 
 For the domains, we use specific terms such as "rail" or "bearing".
 
-
-
 WebOntology/
 ├─ src
 │  ├─ sectors/ 
@@ -44,28 +42,30 @@ WebOntology/
 │  │  │  │  ├─ docs/
 │  │  │  │  ├─ examples/
 │  │  │  │  ├─ ontologies/ 
-│  │  │  │  │  ├─ rail-core.owl 
-│  │  │  │  │  ├─ rail-infrastructure.owl 
+│  │  │  │  │  ├─ rail-context.jsonld 
+│  │  │  │  │  ├─ rail-context.owl 
 │  │  │  │  │  └─ imports/ 
 │  │  │  │  ├─ shacl/
+│  │  │  │  │  ├─ Rail-EPCIS-SHACL-Generic.json 
+│  │  │  │  │  └─ Rail-SHACL.json 
 │  │  │  │  ├─ ttl/
-│  │  │  │  │  ├─ rail-operations.ttl 
-│  │  │  │  │  └─ rail-assets.ttl 
+│  │  │  │  │  └─ gs1RailVoc.ttl  
 │  │  │  │  └─ vocabularies/ 
+│  │  │  │  │  └─ gs1RailVoc.jsonld  
 │  │  │  └─ sea/...
 │  │  ├─ manu/ 
 │  │  │  ├─ bearing/ 
 │  │  │  │  ├─ docs/
 │  │  │  │  ├─ examples/
 │  │  │  │  ├─ ontologies/ 
-│  │  │  │  │  ├─ rail-core.owl 
-│  │  │  │  │  ├─ rail-infrastructure.owl 
-│  │  │  │  │  └─ imports/ 
+│  │  │  │  │  ├─ bearingOntology.jsonld 
+│  │  │  │  │  └─ bearingOntology.owl 
 │  │  │  │  ├─ shacl/
 │  │  │  │  ├─ ttl/
 │  │  │  │  │  ├─ rail-operations.ttl 
 │  │  │  │  │  └─ rail-assets.ttl 
 │  │  │  │  └─ vocabularies/ 
+│  │  │  │     └─gs1BearingVoc.jsonld
 │  │  │  └─ axel/...
 │  │  └─ cons/ 
 │  │  

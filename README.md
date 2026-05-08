@@ -28,68 +28,60 @@ This repository uses a source/build structure to separate development files from
 *   `scripts/`: Contains the build and clean scripts.
 
 
-ontologies-repo/ 
-├─ sectors/ 
-│  ├─ rail/ 
-│  │  ├─ ontologies/ 
-│  │  │  ├─ rail-core.owl 
-│  │  │  ├─ rail-infrastructure.owl 
-│  │  │  └─ imports/ 
-│  │  ├─ vocabularies/ 
-│  │  │  ├─ rail-operations.ttl 
-│  │  │  └─ rail-assets.ttl 
-│  │  ├─ shacl/ 
-│  │  ├─ examples/ 
-│  │  └─ docs/ 
-│  │   
-│  ├─ industry/ 
-│  │  ├─ ontologies/ 
-│  │  │  ├─ industry-core.owl 
-│  │  │  ├─ manufacturing.owl 
-│  │  │  └─ imports/ 
-│  │  ├─ vocabularies/ 
-│  │  ├─ shacl/ 
-│  │  ├─ examples/ 
-│  │  └─ docs/ 
-│  │  
-│  ├─ healthcare/ 
-│  │  ├─ ontologies/ 
-│  │  │  ├─ healthcare-core.owl 
-│  │  │  ├─ patient-data.owl 
-│  │  │  └─ imports/ 
-│  │  ├─ vocabularies/ 
-│  │  ├─ shacl/ 
-│  │  ├─ examples/ 
-│  │  └─ docs/ 
-│  │  
-│  └─ <future-sector>/ 
-│     ├─ ontologies/ 
-│     ├─ vocabularies/ 
-│     ├─ shacl/ 
-│     ├─ examples/ 
-│     └─ docs/ 
-│  
-├─ shared/ 
-│  ├─ upper-ontology/ # Cross-sector foundational ontology 
-│  │  ├─ upper.owl 
-│  │  └─ imports/ 
-│  ├─ common-vocab/ # Shared vocabularies (e.g., units, geo, org) 
-│  ├─ shacl/ 
-│  └─ docs/    # Human-readable docs, HTML, diagrams 
-│  
-├─ tools/      # Scripts, ROBOT configs, Dockerfiles 
-│  ├─ robot/ 
-│  ├─ scripts/ 
-│  └─ config/ 
-│  
-├─ .github/ 
-│  └─ workflows/   # CI/CD pipelines 
-│ 
-├─ CONTRIBUTING.md 
-├─ CODEOWNERS 
-├─ CHANGELOG.md 
-└─ README.md
+## Sectors and Domains
 
-├─ .devcontainer/ # Optional: VS Code dev container 
-├─ package.json / pom.xml / pyproject.toml (if you want tooling) 
-└─ README.md
+We distinguish between sectors and domains.
+For the sectors, we use the 4-letter abbreviations defined in [Sectors - Base classification for Ontologies](https://gs1-ch.atlassian.net/wiki/x/N4AVag), based on the ISIC Revision 4 (2008) broad structure. 
+For the domains, we use specific terms such as "rail" or "bearing".
+
+
+
+WebOntology/
+├─ src
+│  ├─ sectors/ 
+│  │  ├─tran/
+│  │  │  ├─ rail/ 
+│  │  │  │  ├─ docs/
+│  │  │  │  ├─ examples/
+│  │  │  │  ├─ ontologies/ 
+│  │  │  │  │  ├─ rail-core.owl 
+│  │  │  │  │  ├─ rail-infrastructure.owl 
+│  │  │  │  │  └─ imports/ 
+│  │  │  │  ├─ shacl/
+│  │  │  │  ├─ ttl/
+│  │  │  │  │  ├─ rail-operations.ttl 
+│  │  │  │  │  └─ rail-assets.ttl 
+│  │  │  │  └─ vocabularies/ 
+│  │  │  └─ sea/...
+│  │  ├─ manu/ 
+│  │  │  ├─ bearing/ 
+│  │  │  │  ├─ docs/
+│  │  │  │  ├─ examples/
+│  │  │  │  ├─ ontologies/ 
+│  │  │  │  │  ├─ rail-core.owl 
+│  │  │  │  │  ├─ rail-infrastructure.owl 
+│  │  │  │  │  └─ imports/ 
+│  │  │  │  ├─ shacl/
+│  │  │  │  ├─ ttl/
+│  │  │  │  │  ├─ rail-operations.ttl 
+│  │  │  │  │  └─ rail-assets.ttl 
+│  │  │  │  └─ vocabularies/ 
+│  │  │  └─ axel/...
+│  │  └─ cons/ 
+│  │  
+│  ├─ shared/ 
+│  │  ├─ disco/
+│  │  │   ├─ docs/
+│  │  │   ├─ examples/
+│  │  │   ├─ ontologies/ 
+│  │  │   │  ├─ rail-core.owl 
+│  │  │   │  ├─ rail-infrastructure.owl 
+│  │  │   │  └─ imports/ 
+│  │  │   ├─ shacl/
+│  │  │   ├─ ttl/
+│  │  │   │  ├─ rail-operations.ttl 
+│  │  │   │  └─ rail-assets.ttl 
+│  │  │   └─ vocabularies/
+│  │  └─ .../ 
+│  └─ .../
+└─ .../

@@ -1,4 +1,6 @@
-[
+{
+  "$schema": "sectors.schema.json",
+  [
   {
     "codeList": "Gs1Sector",
     "codeValue": "AGRI",
@@ -126,3 +128,4 @@
     "order": 20
   }
 ]
+}  

@@ -12,7 +12,7 @@ GS1 Switzerland operates several solutions and platforms that support businesses
 To learn more, visit [www.gs1.ch](https://www.gs1.ch)
 
 
-## Difference between ontology and vacabulary
+## Difference between ontology and vocabulary
 
 The primary difference is that a vocabulary is a restricted list of terms and definitions for a domain, whereas an ontology adds formal, machine-readable structure, rules, and complex relationships (axioms) between those concepts. Think of a vocabulary as a dictionary of words and an ontology as a structured map explaining how those words behave and relate.
 

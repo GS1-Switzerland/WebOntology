@@ -16,7 +16,8 @@
           "label": "JSON-LD @context",
           "version": "1.3.0",
           "status": "current",
-          "publishedAt": "2026-05-12T00:00:00Z"
+          "publishedAt": "2026-05-12T00:00:00Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/rail/rail-context.jsonld"
         },
         {
           "url": "https://gs1-epcis-reg.org/rail/voc/data/gs1RailVoc.jsonld",
@@ -25,7 +26,8 @@
           "label": "Rail vocabulary (JSON-LD)",
           "version": "1.3.0",
           "status": "current",
-          "publishedAt": "2026-05-12T00:00:00Z"
+          "publishedAt": "2026-05-12T00:00:00Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/rail/voc/data/gs1RailVoc.jsonld"
         },
         {
           "url": "https://gs1-epcis-reg.org/rail/voc/data/gs1RailVoc.ttl",
@@ -34,7 +36,8 @@
           "label": "Rail vocabulary (Turtle)",
           "version": "1.3.0",
           "status": "current",
-          "publishedAt": "2026-05-12T00:00:00Z"
+          "publishedAt": "2026-05-12T00:00:00Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/rail/voc/data/gs1RailVoc.ttl"
         },
         {
           "url": "https://gs1-epcis-reg.org/rail/voc/data/Rail-EPCIS-SHACL-Generic.json",
@@ -43,7 +46,8 @@
           "label": "SHACL shapes — generic EPCIS profile",
           "version": "1.3.0",
           "status": "current",
-          "publishedAt": "2026-05-12T00:00:00Z"
+          "publishedAt": "2026-05-12T00:00:00Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/rail/voc/data/Rail-EPCIS-SHACL-Generic.json"
         },
         {
           "url": "https://gs1-epcis-reg.org/rail/voc/data/Rail-SHACL.json",
@@ -52,7 +56,8 @@
           "label": "SHACL shapes — rail profile",
           "version": "1.3.0",
           "status": "current",
-          "publishedAt": "2026-05-12T00:00:00Z"
+          "publishedAt": "2026-05-12T00:00:00Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/rail/voc/data/Rail-SHACL.json"
         },
         {
           "url": "https://gs1-epcis-reg.org/rail/staging/voc/data/gs1RailVoc.jsonld",
@@ -60,7 +65,8 @@
           "kind": "vocabulary",
           "label": "Rail vocabulary (JSON-LD, staging)",
           "version": "1.4.0-rc1",
-          "status": "staging"
+          "status": "staging",
+          "source": "https://gs1-switzerland.github.io/WebOntology/rail/staging/voc/data/gs1RailVoc.jsonld"
         }
       ]
     },
@@ -78,7 +84,8 @@
           "label": "Bearing ontology",
           "version": "1.0.0",
           "status": "current",
-          "publishedAt": "2026-03-01T00:00:00Z"
+          "publishedAt": "2026-03-01T00:00:00Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/ind/bearingOntology.jsonld"
         },
         {
           "url": "https://gs1-epcis-reg.org/ind/voc/data/gs1BearingVoc.jsonld",
@@ -87,7 +94,8 @@
           "label": "Bearing vocabulary (JSON-LD)",
           "version": "1.0.0",
           "status": "current",
-          "publishedAt": "2026-03-01T00:00:00Z"
+          "publishedAt": "2026-03-01T00:00:00Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/ind/voc/data/gs1BearingVoc.jsonld"
         }
       ]
     }

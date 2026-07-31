@@ -1,1 +1,94 @@
-{}
+{
+  "generatedAt": "2026-07-01T00:00:00Z",
+  "domains": [
+    {
+      "slug": "rail",
+      "labelKey": "domain.rail",
+      "label": "Rail",
+      "description": "Vocabulary and SHACL shapes for rail logistics EPCIS events.",
+      "sectorCode": "TRAN",
+      "artifacts": [
+        {
+          "url": "https://gs1-epcis-reg.org/rail/rail-context.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "context",
+          "label": "JSON-LD @context",
+          "version": "1.3.0",
+          "status": "current",
+          "publishedAt": "2026-05-12T00:00:00Z"
+        },
+        {
+          "url": "https://gs1-epcis-reg.org/rail/voc/data/gs1RailVoc.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "vocabulary",
+          "label": "Rail vocabulary (JSON-LD)",
+          "version": "1.3.0",
+          "status": "current",
+          "publishedAt": "2026-05-12T00:00:00Z"
+        },
+        {
+          "url": "https://gs1-epcis-reg.org/rail/voc/data/gs1RailVoc.ttl",
+          "mediaType": "text/turtle",
+          "kind": "vocabulary",
+          "label": "Rail vocabulary (Turtle)",
+          "version": "1.3.0",
+          "status": "current",
+          "publishedAt": "2026-05-12T00:00:00Z"
+        },
+        {
+          "url": "https://gs1-epcis-reg.org/rail/voc/data/Rail-EPCIS-SHACL-Generic.json",
+          "mediaType": "application/schema+json",
+          "kind": "shacl",
+          "label": "SHACL shapes — generic EPCIS profile",
+          "version": "1.3.0",
+          "status": "current",
+          "publishedAt": "2026-05-12T00:00:00Z"
+        },
+        {
+          "url": "https://gs1-epcis-reg.org/rail/voc/data/Rail-SHACL.json",
+          "mediaType": "application/schema+json",
+          "kind": "shacl",
+          "label": "SHACL shapes — rail profile",
+          "version": "1.3.0",
+          "status": "current",
+          "publishedAt": "2026-05-12T00:00:00Z"
+        },
+        {
+          "url": "https://gs1-epcis-reg.org/rail/staging/voc/data/gs1RailVoc.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "vocabulary",
+          "label": "Rail vocabulary (JSON-LD, staging)",
+          "version": "1.4.0-rc1",
+          "status": "staging"
+        }
+      ]
+    },
+    {
+      "slug": "ind",
+      "labelKey": "domain.bearing",
+      "label": "Bearing",
+      "description": "Vocabulary for industrial bearing manufacturing and traceability.",
+      "sectorCode": "MANU",
+      "artifacts": [
+        {
+          "url": "https://gs1-epcis-reg.org/ind/bearingOntology.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "ontology",
+          "label": "Bearing ontology",
+          "version": "1.0.0",
+          "status": "current",
+          "publishedAt": "2026-03-01T00:00:00Z"
+        },
+        {
+          "url": "https://gs1-epcis-reg.org/ind/voc/data/gs1BearingVoc.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "vocabulary",
+          "label": "Bearing vocabulary (JSON-LD)",
+          "version": "1.0.0",
+          "status": "current",
+          "publishedAt": "2026-03-01T00:00:00Z"
+        }
+      ]
+    }
+  ]
+}

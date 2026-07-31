@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gs1-switzerland.github.io/WebOntology/registry/manifest.schema.json",
+  "title": "GS1 WebOntology Registry Manifest",
+  "description": "Catalog of every sector/domain/artifact combination published in this repository. GitHub Pages cannot be directory-listed, so this file is the single discoverable index the SPA (and any other consumer) relies on to find JSON-LD/TTL/SHACL files, their versions and their lifecycle status. Publish it at registry/manifest.jsonld and regenerate it as part of your release CI job, alongside a registry/manifest.schema.json copy of this file.",
+  "type": "object",
+  "required": ["generatedAt", "domains"],
+  "properties": {
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "label", "sectorCode", "artifacts"],
+        "properties": {
+          "slug": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "URL path segment, e.g. 'rail' -> https://gs1-epcis-reg.org/rail/{term}" },
+          "labelKey": { "type": "string" },
+          "label": { "type": "string" },
+          "description": { "type": "string" },
+          "sectorCode": { "type": "string", "description": "One of the Gs1Sector codeValue values, e.g. TRAN, MANU." },
+          "artifacts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["url", "source", "mediaType", "kind", "label", "version", "status"],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Stable public identifier under the resolver host (e.g. https://gs1-epcis-reg.org/...). This is what other JSON-LD files' @context/@id point at, what the UI links to, and what RDF content negotiation redirects to. It does not need to correspond to any real file path on any host."
+                },
+                "source": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Actual physical location the bytes are fetched from today, typically a GitHub Pages URL (e.g. https://gs1-switzerland.github.io/WebOntology/rail/voc/data/gs1RailVoc.jsonld). The SPA fetches this directly; the resolver Function 303-redirects requests for 'url' here."
+                },
+                "mediaType": {
+                  "type": "string",
+                  "enum": [
+                    "application/ld+json",
+                    "text/turtle",
+                    "application/rdf+xml",
+                    "application/schema+json",
+                    "application/json"
+                  ]
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": ["context", "ontology", "vocabulary", "shacl", "schema", "other"]
+                },
+                "label": { "type": "string" },
+                "version": { "type": "string" },
+                "status": { "type": "string", "enum": ["current", "staging", "deprecated"] },
+                "publishedAt": { "type": "string", "format": "date-time" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

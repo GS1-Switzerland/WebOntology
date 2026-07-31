@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gs1-switzerland.github.io/WebOntology/registry/sectors.schema.json",
+  "title": "GS1 Sector Codelist",
+  "description": "The GS1 Sector code list (NACE-style Section A–U), published as its own resource because it changes far less often than the domain manifest and may be reused by other GS1 tooling. Publish at registry/sectors.jsonld. The SPA fetches this at runtime as the source of truth for sector navigation; adding, renaming or reordering a sector requires no SPA code change or redeploy, only an update here.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["codeList", "codeValue", "codeName", "order"],
+    "properties": {
+      "codeList": { "type": "string", "const": "Gs1Sector" },
+      "codeValue": { "type": "string", "pattern": "^[A-Z]{4}$", "description": "4-letter sector code, e.g. TRAN, MANU." },
+      "codeName": { "type": "string", "description": "Human-readable section label, e.g. 'Section H – Transportation and storage'." },
+      "order": { "type": "integer", "minimum": 0, "description": "Display order (0-based)." }
+    }
+  }
+}

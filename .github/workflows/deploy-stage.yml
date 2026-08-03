@@ -1,0 +1,55 @@
+name: Deploy Staging Site
+
+on:
+  push:
+    branches: [ "staging" ]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy-stage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build site
+        run: |
+          # replace with your actual build commands (npm ci && npm run build,...)
+          # produce static site into ./public
+          echo "Building site for STAGE WebOntology..."
+          mkdir -p public
+          echo "<html><body><h1>Stage - $GITHUB_SHA</h1></body></html>" > public/index.html
+
+      - name: Deploy to gh-pages (stage)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # clone gh-pages branch (create an empty gh-pages branch if it doesn't exist)
+          git clone --branch gh-pages "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages || \
+            (git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages && cd gh-pages && git checkout --orphan gh-pages && git rm -rf . && git commit --allow-empty -m "Initialize gh-pages" && git push origin gh-pages && cd .. && git clone --branch gh-pages "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages)
+
+          # preserve root files like CNAME if present
+          cp -n CNAME gh-pages/ 2>/dev/null || true
+
+          # replace /stage/ with new build
+          rm -rf gh-pages/stage
+          mkdir -p gh-pages/stage
+          cp -a public/. gh-pages/stage/
+
+          cd gh-pages
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to deploy"
+          else
+            git commit -m "Deploy staging: ${SHA}"
+            git push origin gh-pages
+          fi

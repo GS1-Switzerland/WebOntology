@@ -66,7 +66,7 @@
           "label": "Rail vocabulary (JSON-LD, staging)",
           "version": "1.4.0-rc1",
           "status": "staging",
-          "source": "https://gs1-switzerland.github.io/WebOntology/rail/staging/voc/data/gs1RailVoc.jsonld"
+          "source": "https://gs1-switzerland.github.io/WebOntology/rail/staging/voc/data/gs1RailVocTST.jsonld"
         }
       ]
     },

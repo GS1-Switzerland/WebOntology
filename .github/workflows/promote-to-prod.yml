@@ -1,0 +1,73 @@
+name: Promote to Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish (e.g. v1.2.0)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build site
+        run: |
+          # replace with build commands
+          mkdir -p public
+          echo "<html><body><h1>Prod ${{ github.event.inputs.version }}</h1></body></html>" > public/index.html
+
+      - name: Create tag (optional)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          # create annotated tag and push (skip if tag already exists)
+          if git ls-remote --tags origin | grep "refs/tags/${VERSION}" >/dev/null; then
+            echo "Tag ${VERSION} already exists, skipping tag creation."
+          else
+            git tag -a "${VERSION}" -m "Release ${VERSION}"
+            git push origin "${VERSION}"
+          fi
+
+      - name: Deploy to gh-pages (versions + current)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git clone --branch gh-pages "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages || \
+            (git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages && cd gh-pages && git checkout --orphan gh-pages && git rm -rf . && git commit --allow-empty -m "Initialize gh-pages" && git push origin gh-pages && cd .. && git clone --branch gh-pages "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages)
+
+          # preserve CNAME if exists
+          cp -n CNAME gh-pages/ 2>/dev/null || true
+
+          # write versioned folder
+          rm -rf "gh-pages/versions/${VERSION}"
+          mkdir -p "gh-pages/versions/${VERSION}"
+          cp -a public/. "gh-pages/versions/${VERSION}/"
+
+          # update current folder
+          rm -rf "gh-pages/current"
+          mkdir -p "gh-pages/current"
+          cp -a public/. "gh-pages/current/"
+
+          cd gh-pages
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to deploy"
+          else
+            git commit -m "Promote ${VERSION} to production"
+            git push origin gh-pages
+          fi

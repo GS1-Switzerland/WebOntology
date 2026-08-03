@@ -33,3 +33,5 @@ This repository uses a source/build structure to separate development files from
 We distinguish between sectors and domains.
 For the sectors, we use the 4-letter abbreviations defined in [Sectors - Base classification for Ontologies](https://gs1-ch.atlassian.net/wiki/x/N4AVag), based on the ISIC Revision 4 (2008) broad structure. 
 For the domains, we use specific terms such as "rail" or "bearing".
+
+Die Sektorenliste wird jetzt zur Laufzeit vom gs1-ontology-explorer aus registry/sectors.jsonld aus diesem Repo hier geladen.

@@ -6,7 +6,7 @@
       "slug": "rail",
       "labelKey": "domain.rail",
       "label": "Rail",
-      "description": "Vocabulary and SHACL shapes for rail logistics EPCIS events.",
+      "description": "Vocabulary and SHACL shapes for rail logistics EPCIS events.TST",
       "sectorCode": "TRAN",
       "artifacts": [
         {

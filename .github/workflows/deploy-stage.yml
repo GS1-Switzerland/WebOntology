@@ -1,4 +1,4 @@
-name: Deploy Staging Site
+name: Deploy Stage to gh-pages/stage
 
 on:
   push:
@@ -8,39 +8,51 @@ permissions:
   contents: write
 
 jobs:
-  build-and-deploy-stage:
+  deploy-stage:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Build site
+      - name: Prepare public (copy src)
         run: |
-          # replace with your actual build commands (npm ci && npm run build,...)
-          # produce static site into ./public
-          echo "Building site for STAGE WebOntology..."
+          rm -rf public
           mkdir -p public
-          echo "<html><body><h1>Stage - $GITHUB_SHA</h1></body></html>" > public/index.html
+          # Copy all files from src into public (no build step)
+          cp -a src/. public/ || true
 
-      - name: Deploy to gh-pages (stage)
+      - name: Deploy to gh-pages/stage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           SHA: ${{ github.sha }}
         run: |
+          set -e
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # clone gh-pages branch (create an empty gh-pages branch if it doesn't exist)
-          git clone --branch gh-pages "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages || \
-            (git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages && cd gh-pages && git checkout --orphan gh-pages && git rm -rf . && git commit --allow-empty -m "Initialize gh-pages" && git push origin gh-pages && cd .. && git clone --branch gh-pages "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages)
+          # Try to clone the gh-pages branch. If it doesn't exist, initialize it.
+          if git ls-remote --exit-code --heads "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages; then
+            git clone --branch gh-pages "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages
+          else
+            # Clone default branch then create an orphan gh-pages branch
+            git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages
+            cd gh-pages
+            git checkout --orphan gh-pages
+            git rm -rf . || true
+            git commit --allow-empty -m "Initialize gh-pages"
+            git push origin gh-pages
+            cd ..
+            git clone --branch gh-pages "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" gh-pages
+          fi
 
-          # preserve root files like CNAME if present
+          # Preserve CNAME if exists in repository root
           cp -n CNAME gh-pages/ 2>/dev/null || true
 
-          # replace /stage/ with new build
+          # Replace the /stage/ folder with the new build
           rm -rf gh-pages/stage
           mkdir -p gh-pages/stage
           cp -a public/. gh-pages/stage/
@@ -48,7 +60,7 @@ jobs:
           cd gh-pages
           git add -A
           if git diff --cached --quiet; then
-            echo "No changes to deploy"
+            echo "No changes to deploy to gh-pages/stage"
           else
             git commit -m "Deploy staging: ${SHA}"
             git push origin gh-pages

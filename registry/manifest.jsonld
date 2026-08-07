@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-08-07T06:46:13.134Z",
+  "generatedAt": "2026-08-07T06:46:39.422Z",
   "domains": [
     {
       "slug": "bearing",
@@ -93,7 +93,7 @@
           "label": "JSON-LD @context",
           "version": "2.2",
           "status": "staging",
-          "publishedAt": "2026-08-05T11:44:20Z",
+          "publishedAt": "2026-08-07T06:46:13Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/ontologies/rail-context.jsonld"
         },
         {
@@ -103,7 +103,7 @@
           "label": "Rail vocabulary (JSON-LD, staging)",
           "version": "2.2",
           "status": "staging",
-          "publishedAt": "2026-08-05T11:44:20Z",
+          "publishedAt": "2026-08-07T06:46:13Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/vocabularies/gs1RailVoc.jsonld"
         },
         {
@@ -113,7 +113,7 @@
           "label": "Rail vocabulary (Turtle, staging)",
           "version": "2.2",
           "status": "staging",
-          "publishedAt": "2026-08-05T11:44:20Z",
+          "publishedAt": "2026-08-07T06:46:13Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/ttl/gs1RailVoc.ttl"
         },
         {
@@ -123,7 +123,7 @@
           "label": "SHACL shapes (Rail EPCIS SHACL Generic)",
           "version": "2.2",
           "status": "staging",
-          "publishedAt": "2026-08-05T11:44:20Z",
+          "publishedAt": "2026-08-07T06:46:13Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-EPCIS-SHACL-Generic.json"
         },
         {
@@ -133,7 +133,7 @@
           "label": "SHACL shapes (Rail SHACL)",
           "version": "2.2",
           "status": "staging",
-          "publishedAt": "2026-08-05T11:44:20Z",
+          "publishedAt": "2026-08-07T06:46:13Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-SHACL.json"
         }
       ]

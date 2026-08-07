@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-08-07T12:13:40.108Z",
+  "generatedAt": "2026-08-07T12:14:20.258Z",
   "domains": [
     {
       "slug": "bearing",
@@ -16,7 +16,7 @@
           "label": "Bearing ontology",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-08-05T10:10:42Z",
+          "publishedAt": "2026-08-07T12:13:40Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/manu/bearing/ontologies/bearingOntology.jsonld"
         },
         {
@@ -26,7 +26,7 @@
           "label": "Bearing vocabulary (JSON-LD, staging)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-08-05T10:10:42Z",
+          "publishedAt": "2026-08-07T12:13:40Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/manu/bearing/vocabularies/gs1BearingVoc.jsonld"
         },
         {
@@ -36,7 +36,7 @@
           "label": "SHACL shapes (empty Page)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-08-05T10:10:42Z",
+          "publishedAt": "2026-08-07T12:13:40Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/manu/bearing/shacl/emptyPage.txt"
         }
       ]

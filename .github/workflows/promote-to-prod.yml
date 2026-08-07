@@ -19,7 +19,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
+      - name: Configure git identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Prepare public (copy src)
         run: |
           rm -rf public
@@ -40,7 +43,10 @@ jobs:
             git tag -a "${VERSION}" -m "Release ${VERSION}"
             git push origin "${VERSION}"
           fi
-
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
       - name: Deploy to gh-pages (versions + current)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -76,7 +82,13 @@ jobs:
           rm -rf "gh-pages/current"
           mkdir -p "gh-pages/current"
           cp -a public/. "gh-pages/current/"
-
+          # Regenerate the registry manifest from the final gh-pages content
+          # (current/ + every versions/<tag>/ snapshot) before committing.
+          GH_PAGES_ROOT="$(pwd)/gh-pages" \
+          RELEASE_VERSION="${VERSION}" \
+          PUBLIC_BASE_URL="https://gs1-epcis-reg.org" \
+          GH_PAGES_BASE="https://gs1-switzerland.github.io/WebOntology" \
+          node "$(pwd)/scripts/generate-manifest.mjs"
           cd gh-pages
           git add -A
           if git diff --cached --quiet; then

@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-08-07T12:12:40.503Z",
+  "generatedAt": "2026-08-07T12:13:40.108Z",
   "domains": [
     {
       "slug": "bearing",
@@ -54,7 +54,7 @@
           "label": "JSON-LD @context",
           "version": "1.21",
           "status": "staging",
-          "publishedAt": "2026-08-07T12:12:04Z",
+          "publishedAt": "2026-08-07T12:12:40Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/disco/ontologies/disco-context.jsonld"
         },
         {
@@ -64,7 +64,7 @@
           "label": "Disco vocabulary (JSON-LD, staging)",
           "version": "1.21",
           "status": "staging",
-          "publishedAt": "2026-08-07T12:12:04Z",
+          "publishedAt": "2026-08-07T12:12:40Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/disco/vocabularies/gs1DiscoVoc.jsonld"
         },
         {
@@ -74,7 +74,7 @@
           "label": "SHACL shapes (empty Page)",
           "version": "1.21",
           "status": "staging",
-          "publishedAt": "2026-08-07T12:12:04Z",
+          "publishedAt": "2026-08-07T12:12:40Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/disco/shacl/emptyPage.txt"
         }
       ]

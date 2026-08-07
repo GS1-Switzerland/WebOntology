@@ -1,6 +1,6 @@
 {
   "$schema": "sectors.schema.json",
-  [
+  "sectors": [
   {
     "codeList": "Gs1Sector",
     "codeValue": "AGRI",

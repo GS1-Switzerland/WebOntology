@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://gs1-switzerland.github.io/WebOntology/registry/domains.schema.json",
+    "title": "GS1 Domain Codelist",
+    "description": "The GS1 Domain code list, published as its own resource because it changes seldom and may be reused by other GS1 tooling. Publish at registry/domains.jsonld. The SPA fetches this at runtime as the source of truth for domains navigation; adding, renaming or reordering a donain requires no SPA code change or redeploy, only an update here.",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "required": [
+            "codeList",
+            "codeValue",
+            "codeName",
+            "order"
+        ],
+        "properties": {
+            "codeList": {
+                "type": "string",
+                "const": "Gs1Domain"
+            },
+            "codeValue": {
+                "type": "string",
+                "pattern": "^[A-Z]{0}$",
+                "description": "max 10-letter domain code, e.g. rail, bearing."
+            },
+            "codeName": {
+                "type": "string",
+                "description": "Human-readable domain label, e.g. 'Domain Rail – Railway'."
+            },
+            "order": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Display order (0-based)."
+            }
+        }
+    }
+}

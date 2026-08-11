@@ -1,6 +1,6 @@
 {
     "$schema": "domains.schema.json",
-    "sectors": [
+    "domains": [
         {
             "codeList": "Gs1Domain",
             "codeValue": "disco",

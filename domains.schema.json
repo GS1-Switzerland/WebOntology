@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gs1-switzerland.github.io/WebOntology/registry/domains.schema.json",
+  "title": "GS1 Domain Codelist",
+  "description": "Human-readable names for each domain slug (e.g. 'rail', 'bearing', 'disco'), published as its own resource, analogous to sectors.jsonld and for the same reason: it changes far less often than the manifest and may be reused by other GS1 tooling. Publish at registry/domains.jsonld. The SPA fetches this at runtime and prefers its codeName over the manifest's own auto-generated DomainEntry.label wherever a domain name is shown; adding, renaming or reordering a domain's display name requires no SPA code change or redeploy, only an update here. Two shapes are accepted: a bare top-level array (preferred, matches sectors.jsonld's convention), or an object with the array under a 'domains' or 'sectors' key (the shape in use today).",
+  "oneOf": [
+    { "$ref": "#/definitions/entryArray" },
+    {
+      "type": "object",
+      "required": ["domains"],
+      "properties": {
+        "$schema": { "type": "string" },
+        "domains": { "$ref": "#/definitions/entryArray" }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["sectors"],
+      "description": "Accepted for backward compatibility with the current hand-authored file, which uses 'sectors' as the array key even though entries are Gs1Domain, not Gs1Sector. Prefer the 'domains' key (or a bare array) in new files.",
+      "properties": {
+        "$schema": { "type": "string" },
+        "sectors": { "$ref": "#/definitions/entryArray" }
+      }
+    }
+  ],
+  "definitions": {
+    "entryArray": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["codeList", "codeValue", "codeName", "order"],
+        "properties": {
+          "codeList": { "type": "string", "const": "Gs1Domain" },
+          "codeValue": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Domain slug, matching a DomainEntry.slug in the manifest, e.g. 'rail', 'bearing', 'disco'."
+          },
+          "codeName": {
+            "type": "string",
+            "description": "Human-readable display name, e.g. 'Domain Rail – Railway'."
+          },
+          "order": { "type": "integer", "minimum": 0, "description": "Display order (0-based)." }
+        }
+      }
+    }
+  }
+}

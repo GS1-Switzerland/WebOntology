@@ -1,0 +1,12 @@
+{
+  "name": "gs1-registry-resolver-api",
+  "private": true,
+  "version": "0.1.0",
+  "main": "src/functions/resolve.js",
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.5.0"
+  }
+}

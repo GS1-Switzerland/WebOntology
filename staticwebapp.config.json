@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "routes": [
+    { "route": "/assets/*", "headers": { "cache-control": "public, max-age=31536000, immutable" } },
+    { "route": "/locales/*", "headers": { "cache-control": "public, max-age=3600" } },
+    { "route": "/favicon.svg" },
+    { "route": "/sample-manifest.json" },
+    { "route": "/sample-sectors.json" },
+    { "route": "/sample-domains.json" },
+
+    { "route": "/api/*", "allowedRoles": ["anonymous"] },
+
+    { "route": "/search", "rewrite": "/index.html" },
+    { "route": "/sector/*", "rewrite": "/index.html" },
+    { "route": "/" },
+
+    { "route": "/*", "rewrite": "/api/resolve" }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/api/*", "/assets/*", "/locales/*", "/*.{svg,png,ico,json,js,css,map,txt,jsonld,ttl}"]
+  },
+  "mimeTypes": {
+    ".jsonld": "application/ld+json",
+    ".ttl": "text/turtle",
+    ".json": "application/json"
+  },
+  "globalHeaders": {
+    "Content-Security-Policy": "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://gs1-switzerland.github.io https://*.github.io; base-uri 'none'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+    "Cross-Origin-Opener-Policy": "same-origin",
+    "Cross-Origin-Resource-Policy": "same-site"
+  },
+  "responseOverrides": {
+    "404": { "rewrite": "/index.html", "statusCode": 200 }
+  }
+}

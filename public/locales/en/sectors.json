@@ -1,0 +1,23 @@
+{
+  "sector.AGRI": "Section A – Agriculture, forestry and fishing",
+  "sector.MINE": "Section B – Mining and quarrying",
+  "sector.MANU": "Section C – Manufacturing",
+  "sector.ELEC": "Section D – Electricity, gas, steam and air conditioning supply",
+  "sector.WATR": "Section E – Water supply; sewerage, waste management and remediation activities",
+  "sector.CONS": "Section F – Construction",
+  "sector.TRAD": "Section G – Wholesale and retail trade; repair and selling of motor vehicles and motorcycles",
+  "sector.TRAN": "Section H – Transportation and storage",
+  "sector.ACCO": "Section I – Accommodation and food service activities",
+  "sector.INFO": "Section J – Information and communication",
+  "sector.FINA": "Section K – Financial and insurance activities",
+  "sector.REAL": "Section L – Real estate activities",
+  "sector.PROF": "Section M – Professional, scientific and technical activities",
+  "sector.ADMI": "Section N – Administrative and support service activities",
+  "sector.PUBL": "Section O – Public administration and defence; compulsory social security",
+  "sector.EDUC": "Section P – Education",
+  "sector.HEAL": "Section Q – Human health and social work activities",
+  "sector.ARTS": "Section R – Arts, entertainment and recreation",
+  "sector.SERV": "Section S – Other service activities",
+  "sector.HOUS": "Section T – Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",
+  "sector.EXTR": "Section U – Activities of extraterritorial organizations and bodies"
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "domains.schema.json",
+    "sectors": [
+        {
+            "codeList": "Gs1Domain",
+            "codeValue": "disco",
+            "codeName": "Domain Disco – GS1 Discovery Service",
+            "order": 0
+        },
+        {
+            "codeList": "Gs1Domain",
+            "codeValue": "rail",
+            "codeName": "Domain Rail – Railway",
+            "order": 1
+        },
+        {
+            "codeList": "Gs1Domain",
+            "codeValue": "bearing",
+            "codeName": "Domain Bearing – Bearing",
+            "order": 2
+        }
+    ]
+}

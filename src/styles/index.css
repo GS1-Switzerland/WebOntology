@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-ink-50 text-ink-900;
+    color-scheme: light;
+  }
+  body {
+    @apply font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+  code, .term-id {
+    @apply font-mono;
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.signal.DEFAULT");
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: theme("colors.signal.light");
+    color: theme("colors.ink.950");
+  }
+}
+
+@layer components {
+  .status-dot {
+    @apply inline-block h-1.5 w-1.5 rounded-full;
+  }
+  .rail-tick {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      theme("colors.ink.700") 0,
+      theme("colors.ink.700") 1px,
+      transparent 1px,
+      transparent 8px
+    );
+  }
+}

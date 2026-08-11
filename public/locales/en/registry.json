@@ -1,0 +1,10 @@
+{
+  "domain.rail": "Rail",
+  "domain.bearing": "Bearing",
+  "artifact.kind.context": "JSON-LD context",
+  "artifact.kind.ontology": "Ontology",
+  "artifact.kind.vocabulary": "Vocabulary",
+  "artifact.kind.shacl": "SHACL shapes",
+  "artifact.kind.schema": "Schema",
+  "artifact.kind.other": "Other"
+}

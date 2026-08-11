@@ -1,0 +1,7 @@
+{
+  "manifestLoadFailed": "Couldn't load the registry manifest.",
+  "domainLoadFailed": "Couldn't load this domain's definitions.",
+  "domainNotFound": "Unknown domain \"{{slug}}\".",
+  "termNotFound": "No term \"{{term}}\" was found in domain \"{{domain}}\".",
+  "retryHint": "Try reloading the page. If the problem persists, the upstream GitHub Pages source may be unreachable."
+}

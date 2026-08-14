@@ -177,9 +177,9 @@ function publicUrlFor(domainSlug, kind, filename, urlPrefixSegment) {
   if (kind === "context" || kind === "ontology") {
     return `${PUBLIC_BASE_URL}/${domainSlug}/${prefix}${filename}`;
   }
-  // vocabulary + shacl + schema all live under voc/data/, matching the
+  // vocabulary + shacl + schema all live under voc/data/, (deaktiviert BEH) matching the
   // existing manifest.jsonld (SHACL files sit alongside the vocab files).
-  return `${PUBLIC_BASE_URL}/${domainSlug}/${prefix}voc/data/${filename}`;
+  return `${PUBLIC_BASE_URL}/${domainSlug}/${prefix}/${filename}`;
 }
 
 function kindFor(subfolder, filename) {

@@ -24,6 +24,7 @@ This repository uses a source/build structure to separate development files from
 * `src/`: This directory contains all the **source files** for the ontology, contexts, validation shapes, and examples. **All edits and contributions should be made here.** These files may contain comments for clarity.
 * `src/sectors`:  This directory contains all the Sector and Domain related data.
 * `src/shared`:  This directory contains all the ontologies shared over multiple Sectors and Domains, like the Discovery Service related terms.
+* `testing/`: Contains the validation and integration test suite.
 * `scripts/`: Contains the build and clean scripts.
 
 

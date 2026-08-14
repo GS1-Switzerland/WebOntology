@@ -179,7 +179,7 @@ function publicUrlFor(domainSlug, kind, filename, urlPrefixSegment) {
   }
   // vocabulary + shacl + schema all live under voc/data/, (deaktiviert BEH) matching the
   // existing manifest.jsonld (SHACL files sit alongside the vocab files).
-  return `${PUBLIC_BASE_URL}/${domainSlug}/${prefix}/${filename}`;
+  return `${PUBLIC_BASE_URL}/${domainSlug}/${prefix}${filename}`;
 }
 
 function kindFor(subfolder, filename) {

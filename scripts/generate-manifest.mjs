@@ -65,7 +65,7 @@ import { fileURLToPath } from "node:url";
 // ── Configuration ─────────────────────────────────────────────────────────
 // Root of the gh-pages checkout (the directory containing current/, versions/).
 const GH_PAGES_ROOT = process.env.GH_PAGES_ROOT ? path.resolve(process.env.GH_PAGES_ROOT) : process.cwd();
-const PUBLIC_BASE_URL = (process.env.PUBLIC_BASE_URL || "https://ref.gs1.ch/").replace(/\/$/, "");
+const PUBLIC_BASE_URL = (process.env.PUBLIC_BASE_URL || "https://ref.gs1.ch/voc").replace(/\/$/, "");
 // Must match the SPA's DEFINITIONS_BASE_URL (src/config/env.ts) — where
 // GitHub Pages actually serves this checkout's files from.
 const GH_PAGES_BASE = (process.env.GH_PAGES_BASE || "https://gs1-switzerland.github.io/WebOntology").replace(/\/$/, "");

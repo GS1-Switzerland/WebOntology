@@ -86,7 +86,7 @@ jobs:
           # (current/ + every versions/<tag>/ snapshot) before committing.
           GH_PAGES_ROOT="$(pwd)/gh-pages" \
           RELEASE_VERSION="${VERSION}" \
-          PUBLIC_BASE_URL="https://ref.gs1.ch" \
+          PUBLIC_BASE_URL="https://ref.gs1.ch/voc" \
           GH_PAGES_BASE="https://gs1-switzerland.github.io/WebOntology" \
           node "$(pwd)/scripts/generate-manifest.mjs"
           cd gh-pages

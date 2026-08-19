@@ -27,9 +27,9 @@
     dc:description "The GS1 Rail vocabulary, described using W3C RDF Schema and the Web Ontology Language. The vocabulary builds on and refers to schema.org where appropriate."@en;
     dc:identifier "GS1 Rail Vocabulary";
     dc:issued "2025-10-23"^^xsd:date;
-    dc:lastModified "2026-05-20"^^xsd:date;
+    dc:lastModified "2026-08-18"^^xsd:date;
     a owl:Ontology, voaf:Vocabulary;
-    owl:versionInfo "1.6";
+    owl:versionInfo "2.3";
     voaf:extends <https://ref.gs1.org/epcis/>;
     schema:license "data:text/html;charset=UTF-8,<p>GS1&reg;, under its IP Policy, seeks to avoid uncertainty regarding intellectual property claims by requiring the participants in the Work Groups that developed this vocabulary to agree to grant to GS1 members a royalty-free licence or a RAND licence to Necessary Claims, as that term is defined in the GS1 IP Policy. Furthermore, attention is drawn to the possibility that an implementation of one or more features of this vocabulary may be the subject of a patent or other intellectual property     right that does not involve a Necessary Claim. Any such patent or other intellectual property right is not subject to the licencing obligations of GS1. Moreover, the agreement to grant licences provided under the GS1 IP Policy does not include IP rights and any claims of third parties who were not participants in the Work Groups. Accordingly, GS1 recommends that any organisation developing an implementation designed to be in conformance with this vocabulary should determine whether there are any     patents that may encompass a specific implementation that the organisation is developing in compliance with the vocabulary and whether a licence under a patent or other intellectual property right is needed. Such a determination of a need for licencing should be made in view of the details of the specific system designed by the organisation in consultation with their own patent counsel. THIS DOCUMENT IS PROVIDED &quot;AS IS&quot; WITH NO WARRANTIES WHATSOEVER, INCLUDING ANY WARRANTY OF MERCHANTABILITY, NONINFRINGMENT, FITNESS FOR PARTICULAR PURPOSE, OR ANY WARRANTY OTHER WISE ARISING OUT OF THIS SPECIFICATION. GS1 disclaims all liability for any damages arising from use or misuse of this vocabulary, whether special, indirect, consequential, or compensatory damages, and including liability for infringement of any intellectual property     rights, relating to use of information in or reliance upon this document. GS1 retains the right to make changes to this vocabulary at any time, without notice. GS1 makes no warranty for the use of this vocabulary and assumes no responsibility for any errors which may appear in the vocabulary, nor does it make a commitment to update the     information contained herein. GS1 and the GS1 logo are registered trademarks of GS1 AISBL.</p><p>Copyright 2015-2019 GS1 AISBL</p><p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <a href=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot; target=&quot;blank&quot;>http://www.apache.org/licenses/LICENSE-2.0</a>.<p><p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>";
     vann:preferredNamespacePrefix "rail";
@@ -238,6 +238,26 @@ rail:graffitiRecognition a disco:DataProcessingMethod;
     rdfs:comment "Measures the presence of graffiti on a vehicle"@en;
     rdfs:isDefinedBy "rail:";
     rdfs:label "Graffiti on a vehicle";
+    sw:term_status "stable".
+rail:wheelQualityFactor a disco:DataProcessingMethod;
+    rdfs:comment "Expresses the quality of a wheel as per Voestalpine definitions for WILD systems."@en;
+    rdfs:isDefinedBy "rail:";
+    rdfs:label "Quality of a wheel";
+    sw:term_status "stable".
+rail:wheelFlatMeasurement a disco:DataProcessingMethod;
+    rdfs:comment "Expresses whether a wheel has flats as per Voestalpine definitions for WILD systems."@en;
+    rdfs:isDefinedBy "rail:";
+    rdfs:label "Flat spots on a wheel";
+    sw:term_status "stable".
+rail:wheelOutOfRoundMeasurment a disco:DataProcessingMethod;
+    rdfs:comment "Expresses whether a wheel is out of round as per Voestalpine definitions for WILD systems."@en;
+    rdfs:isDefinedBy "rail:";
+    rdfs:label "Out of roundness of a wheel";
+    sw:term_status "stable".
+rail:wheelRepetitiveDefectMeasurement a disco:DataProcessingMethod;
+    rdfs:comment "Expresses whether a wheel has repetitive defects as per Voestalpine definitions for WILD systems."@en;
+    rdfs:isDefinedBy "rail:";
+    rdfs:label "Wheel with repetitive defects";
     sw:term_status "stable".
 rail:graffitiSize a owl:DatatypeProperty, rdf:Property;
     rdfs:comment "The estimated diagonal of a graffiti measured in mm"@en;
@@ -473,6 +493,13 @@ rail:sideIndicator a owl:DatatypeProperty, rdf:Property;
     rdfs:label "Side indicator of the rail vehicle";
     sw:term_status "stable";
     rdfs:range xsd:integer.
+rail:travelDirection a owl:DatatypeProperty, rdf:Property;
+    rdfs:comment "The travel direction describes the direction in which the observed vehicle is running. The definition of the travel direction depends on the data provider and may differ from country to country. Very often value 1 is used to describe the main running direction of a track and value 2 to indicate a train running against the normal direction of a track."@en;
+    rdfs:domain epcis:SensorMetadata;
+    rdfs:isDefinedBy "rail:";
+    rdfs:label "Travel direction of a rail vehicle";
+    sw:term_status "stable";
+    rdfs:range xsd:string.
 rail:softwareCheck a disco:DataProcessingMethod;
     rdfs:comment "Indicates that the sensor data was processed using a software version verification or validation method. This value is used with epcis:sensorMetadata and may be accompanied by schema:softwareVersion in the EPCIS SensorReport."@en;
     rdfs:isDefinedBy "rail:";

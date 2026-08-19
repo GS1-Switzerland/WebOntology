@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-08-19T10:08:08.991Z",
+  "generatedAt": "2026-08-19T10:10:39.495Z",
   "domains": [
     {
       "slug": "bearing",
@@ -204,7 +204,7 @@
           "label": "JSON-LD @context",
           "version": "1.21",
           "status": "staging",
-          "publishedAt": "2026-08-07T12:12:40Z",
+          "publishedAt": "2026-08-19T10:08:09Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/disco/ontologies/disco-context.jsonld"
         },
         {
@@ -214,7 +214,7 @@
           "label": "Disco vocabulary (JSON-LD, staging)",
           "version": "1.21",
           "status": "staging",
-          "publishedAt": "2026-08-07T12:12:40Z",
+          "publishedAt": "2026-08-19T10:08:09Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/disco/vocabularies/gs1DiscoVoc.jsonld"
         },
         {
@@ -224,7 +224,7 @@
           "label": "SHACL shapes (empty Page)",
           "version": "1.21",
           "status": "staging",
-          "publishedAt": "2026-08-07T12:12:40Z",
+          "publishedAt": "2026-08-19T10:08:09Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/disco/shacl/emptyPage.txt"
         },
         {
@@ -323,7 +323,7 @@
       "slug": "rail",
       "labelKey": "domain.rail",
       "label": "Rail",
-      "description": "",
+      "description": "The GS1 Rail vocabulary, described using W3C RDF Schema and the Web Ontology Language. The vocabulary builds on and refers to schema.org where appropriate.",
       "sectorCode": "TRAN",
       "artifacts": [
         {
@@ -381,7 +381,7 @@
           "mediaType": "application/ld+json",
           "kind": "context",
           "label": "JSON-LD @context",
-          "version": "0.0.0",
+          "version": "2.3",
           "status": "staging",
           "publishedAt": "2026-08-07T12:07:16Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/ontologies/rail-context.jsonld"
@@ -391,7 +391,7 @@
           "mediaType": "application/ld+json",
           "kind": "vocabulary",
           "label": "Rail vocabulary (JSON-LD, staging)",
-          "version": "0.0.0",
+          "version": "2.3",
           "status": "staging",
           "publishedAt": "2026-08-07T12:07:16Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/vocabularies/gs1RailVoc.jsonld"
@@ -401,7 +401,7 @@
           "mediaType": "text/turtle",
           "kind": "vocabulary",
           "label": "Rail vocabulary (Turtle, staging)",
-          "version": "0.0.0",
+          "version": "2.3",
           "status": "staging",
           "publishedAt": "2026-08-07T12:07:16Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/ttl/gs1RailVoc.ttl"
@@ -411,7 +411,7 @@
           "mediaType": "application/schema+json",
           "kind": "shacl",
           "label": "SHACL shapes (Rail EPCIS SHACL Generic)",
-          "version": "0.0.0",
+          "version": "2.3",
           "status": "staging",
           "publishedAt": "2026-08-07T12:07:16Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-EPCIS-SHACL-Generic.json"
@@ -421,7 +421,7 @@
           "mediaType": "application/schema+json",
           "kind": "shacl",
           "label": "SHACL shapes (Rail SHACL)",
-          "version": "0.0.0",
+          "version": "2.3",
           "status": "staging",
           "publishedAt": "2026-08-07T12:07:16Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-SHACL.json"

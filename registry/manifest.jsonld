@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-09-21T12:05:57.665Z",
+  "generatedAt": "2026-09-22T06:36:37.840Z",
   "domains": [
     {
       "slug": "bearing",
@@ -46,7 +46,7 @@
           "label": "Bearing ontology",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-08-16T12:34:32Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/manu/bearing/ontologies/bearingOntology.jsonld"
         },
         {
@@ -56,7 +56,7 @@
           "label": "Bearing vocabulary (JSON-LD, staging)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-08-16T12:34:32Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/manu/bearing/vocabularies/gs1BearingVoc.jsonld"
         },
         {
@@ -66,7 +66,7 @@
           "label": "SHACL shapes (empty Page)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-08-16T12:34:32Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/manu/bearing/shacl/emptyPage.txt"
         },
         {
@@ -204,7 +204,7 @@
           "label": "JSON-LD @context",
           "version": "2.5",
           "status": "staging",
-          "publishedAt": "2026-08-19T10:08:09Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/disco/ontologies/disco-context.jsonld"
         },
         {
@@ -214,7 +214,7 @@
           "label": "Disco vocabulary (JSON-LD, staging)",
           "version": "2.5",
           "status": "staging",
-          "publishedAt": "2026-08-19T10:08:09Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/disco/vocabularies/gs1DiscoVoc.jsonld"
         },
         {
@@ -224,7 +224,7 @@
           "label": "SHACL shapes (empty Page)",
           "version": "2.5",
           "status": "staging",
-          "publishedAt": "2026-08-19T10:08:09Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/disco/shacl/emptyPage.txt"
         },
         {
@@ -383,7 +383,7 @@
           "label": "JSON-LD @context",
           "version": "2.5",
           "status": "staging",
-          "publishedAt": "2026-08-19T10:27:23Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/ontologies/rail-context.jsonld"
         },
         {
@@ -393,7 +393,7 @@
           "label": "Rail vocabulary (JSON-LD, staging)",
           "version": "2.5",
           "status": "staging",
-          "publishedAt": "2026-08-19T10:27:23Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/vocabularies/gs1RailVoc.jsonld"
         },
         {
@@ -403,7 +403,7 @@
           "label": "Rail vocabulary (Turtle, staging)",
           "version": "2.5",
           "status": "staging",
-          "publishedAt": "2026-08-19T10:27:23Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/ttl/gs1RailVoc.ttl"
         },
         {
@@ -413,7 +413,7 @@
           "label": "SHACL shapes (Rail EPCIS SHACL Generic)",
           "version": "2.5",
           "status": "staging",
-          "publishedAt": "2026-08-19T10:27:23Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-EPCIS-SHACL-Generic.json"
         },
         {
@@ -423,7 +423,7 @@
           "label": "SHACL shapes (Rail SHACL)",
           "version": "2.5",
           "status": "staging",
-          "publishedAt": "2026-08-19T10:27:23Z",
+          "publishedAt": "2026-09-21T12:05:57Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-SHACL.json"
         },
         {

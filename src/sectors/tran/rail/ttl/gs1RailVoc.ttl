@@ -27,7 +27,7 @@
     dc:description "The GS1 Rail vocabulary, described using W3C RDF Schema and the Web Ontology Language. The vocabulary builds on and refers to schema.org where appropriate."@en;
     dc:identifier "GS1 Rail Vocabulary";
     dc:issued "2025-10-23"^^xsd:date;
-    dc:lastModified "2026-09-18"^^xsd:date;
+    dc:lastModified "2026-09-25"^^xsd:date;
     a owl:Ontology, voaf:Vocabulary;
     owl:versionInfo "2.5";
     voaf:extends <https://ref.gs1.org/epcis/>;
@@ -166,6 +166,11 @@ rail:bearingTemperature a disco:DataProcessingMethod;
     rdfs:comment "Indicates that the sensor data report referenced provides measurement details in °C on the temperature of bearings (normalized axle number, left and right value) of the vehicle. The temperature is usually measured on the outer side at the bottom."@en;
     rdfs:isDefinedBy "rail:";
     rdfs:label "Bearing Temperature";
+    sw:term_status "stable".
+rail:brakeTemperature a disco:DataProcessingMethod;
+    rdfs:comment "Indicates that the sensor data report referenced provides measurement details in °C on the temperature of brakes (normalized axle number, left and right value) of the vehicle. The temperature is distinguished between shoe brake and disc brake temperature."@en;
+    rdfs:isDefinedBy "rail:";
+    rdfs:label "Brake Temperature";
     sw:term_status "stable".
 rail:bottomValue a owl:DatatypeProperty, rdf:Property;
     rdfs:comment "A measurement measured at the bottom of the reference object, depending on the context, rounded up to three decimal places."@en;

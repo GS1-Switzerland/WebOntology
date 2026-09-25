@@ -84,9 +84,12 @@ jobs:
           cp -a public/. "gh-pages/current/"
           # Regenerate the registry manifest from the final gh-pages content
           # (current/ + every versions/<tag>/ snapshot) before committing.
+          # PUBLIC_BASE_URL is deliberately NOT set here — see the matching
+          # comment in deploy-stage.yml for why: the script's own default
+          # is the single source of truth for this value now, so it can't
+          # drift out of sync between the two workflows again.
           GH_PAGES_ROOT="$(pwd)/gh-pages" \
           RELEASE_VERSION="${VERSION}" \
-          PUBLIC_BASE_URL="https://ref.gs1.ch/voc" \
           GH_PAGES_BASE="https://gs1-switzerland.github.io/WebOntology" \
           node "$(pwd)/scripts/generate-manifest.mjs"
           cd gh-pages

@@ -61,8 +61,16 @@ jobs:
           cp -a public/. gh-pages/stage/
           # Regenerate the registry manifest so staging changes are
           # reflected immediately, not just on the next prod promotion.
+          # PUBLIC_BASE_URL is deliberately NOT set here — the script's
+          # own default (https://ref.gs1.ch/voc/, see generate-manifest.mjs)
+          # is the correct, current public resolver host, and this file
+          # regenerates the manifest for EVERY tier (current/staging/
+          # versions) in one pass, not just the staging entries. An
+          # override here — this used to be the pre-migration
+          # gs1-epcis-reg.org domain — clobbers the *entire* manifest,
+          # including production's "current" entries, with the wrong
+          # host until the next promote-to-prod run fixes it again.
           GH_PAGES_ROOT="$(pwd)/gh-pages" \
-          PUBLIC_BASE_URL="https://gs1-epcis-reg.org" \
           GH_PAGES_BASE="https://gs1-switzerland.github.io/WebOntology" \
           node "$(pwd)/scripts/generate-manifest.mjs"
           cd gh-pages

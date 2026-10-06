@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-10-06T05:54:54.439Z",
+  "generatedAt": "2026-10-06T05:56:49.591Z",
   "domains": [
     {
       "slug": "bearing",
@@ -451,9 +451,9 @@
           "mediaType": "application/ld+json",
           "kind": "context",
           "label": "JSON-LD @context",
-          "version": "2.5",
+          "version": "2.6",
           "status": "staging",
-          "publishedAt": "2026-09-25T06:31:29Z",
+          "publishedAt": "2026-10-06T05:54:54Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/ontologies/rail-context.jsonld"
         },
         {
@@ -461,9 +461,9 @@
           "mediaType": "application/ld+json",
           "kind": "vocabulary",
           "label": "Rail vocabulary (JSON-LD, staging)",
-          "version": "2.5",
+          "version": "2.6",
           "status": "staging",
-          "publishedAt": "2026-09-25T06:31:29Z",
+          "publishedAt": "2026-10-06T05:54:54Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/vocabularies/gs1RailVoc.jsonld"
         },
         {
@@ -471,9 +471,9 @@
           "mediaType": "text/turtle",
           "kind": "vocabulary",
           "label": "Rail vocabulary (Turtle, staging)",
-          "version": "2.5",
+          "version": "2.6",
           "status": "staging",
-          "publishedAt": "2026-09-25T06:31:29Z",
+          "publishedAt": "2026-10-06T05:54:54Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/ttl/gs1RailVoc.ttl"
         },
         {
@@ -481,9 +481,9 @@
           "mediaType": "application/schema+json",
           "kind": "shacl",
           "label": "SHACL shapes (Rail EPCIS SHACL Generic)",
-          "version": "2.5",
+          "version": "2.6",
           "status": "staging",
-          "publishedAt": "2026-09-25T06:31:29Z",
+          "publishedAt": "2026-10-06T05:54:54Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-EPCIS-SHACL-Generic.json"
         },
         {
@@ -491,9 +491,9 @@
           "mediaType": "application/schema+json",
           "kind": "shacl",
           "label": "SHACL shapes (Rail SHACL)",
-          "version": "2.5",
+          "version": "2.6",
           "status": "staging",
-          "publishedAt": "2026-09-25T06:31:29Z",
+          "publishedAt": "2026-10-06T05:54:54Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-SHACL.json"
         },
         {

@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-10-23T07:07:39.368Z",
+  "generatedAt": "2026-10-23T07:16:19.024Z",
   "domains": [
     {
       "slug": "bearing",
@@ -14,7 +14,7 @@
           "mediaType": "application/ld+json",
           "kind": "ontology",
           "label": "Bearing ontology",
-          "version": "v2.3.3",
+          "version": "v2.3.4",
           "status": "current",
           "publishedAt": "2026-10-06T06:18:33Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/current/sectors/manu/bearing/ontologies/bearingOntology.jsonld"
@@ -24,7 +24,7 @@
           "mediaType": "application/ld+json",
           "kind": "vocabulary",
           "label": "Bearing vocabulary (JSON-LD)",
-          "version": "v2.3.3",
+          "version": "v2.3.4",
           "status": "current",
           "publishedAt": "2026-10-06T06:18:33Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/current/sectors/manu/bearing/vocabularies/gs1BearingVoc.jsonld"
@@ -34,7 +34,7 @@
           "mediaType": "application/octet-stream",
           "kind": "shacl",
           "label": "SHACL shapes (empty Page)",
-          "version": "v2.3.3",
+          "version": "v2.3.4",
           "status": "current",
           "publishedAt": "2026-10-06T06:18:33Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/current/sectors/manu/bearing/shacl/emptyPage.txt"
@@ -44,7 +44,7 @@
           "mediaType": "application/ld+json",
           "kind": "ontology",
           "label": "Bearing ontology",
-          "version": "v2.3.3",
+          "version": "v2.3.4",
           "status": "staging",
           "publishedAt": "2026-10-06T06:08:41Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/manu/bearing/ontologies/bearingOntology.jsonld"
@@ -54,7 +54,7 @@
           "mediaType": "application/ld+json",
           "kind": "vocabulary",
           "label": "Bearing vocabulary (JSON-LD, staging)",
-          "version": "v2.3.3",
+          "version": "v2.3.4",
           "status": "staging",
           "publishedAt": "2026-10-06T06:08:41Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/manu/bearing/vocabularies/gs1BearingVoc.jsonld"
@@ -64,10 +64,40 @@
           "mediaType": "application/octet-stream",
           "kind": "shacl",
           "label": "SHACL shapes (empty Page)",
-          "version": "v2.3.3",
+          "version": "v2.3.4",
           "status": "staging",
           "publishedAt": "2026-10-06T06:08:41Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/manu/bearing/shacl/emptyPage.txt"
+        },
+        {
+          "url": "https://ref.gs1.ch/voc/bearing/versions/v2.3.4/bearingOntology.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "ontology",
+          "label": "Bearing ontology",
+          "version": "v2.3.4",
+          "status": "deprecated",
+          "publishedAt": "2026-10-23T07:16:18.993Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.4/sectors/manu/bearing/ontologies/bearingOntology.jsonld"
+        },
+        {
+          "url": "https://ref.gs1.ch/voc/bearing/versions/v2.3.4/gs1BearingVoc.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "vocabulary",
+          "label": "Bearing vocabulary (JSON-LD, v2.3.4)",
+          "version": "v2.3.4",
+          "status": "deprecated",
+          "publishedAt": "2026-10-23T07:16:18.993Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.4/sectors/manu/bearing/vocabularies/gs1BearingVoc.jsonld"
+        },
+        {
+          "url": "https://ref.gs1.ch/voc/bearing/versions/v2.3.4/emptyPage.txt",
+          "mediaType": "application/octet-stream",
+          "kind": "shacl",
+          "label": "SHACL shapes (empty Page)",
+          "version": "v2.3.4",
+          "status": "deprecated",
+          "publishedAt": "2026-10-23T07:16:18.993Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.4/sectors/manu/bearing/shacl/emptyPage.txt"
         },
         {
           "url": "https://ref.gs1.ch/voc/bearing/versions/v2.3.3/bearingOntology.jsonld",
@@ -76,7 +106,7 @@
           "label": "Bearing ontology",
           "version": "v2.3.3",
           "status": "deprecated",
-          "publishedAt": "2026-10-23T07:07:39.329Z",
+          "publishedAt": "2026-10-23T07:07:39Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.3/sectors/manu/bearing/ontologies/bearingOntology.jsonld"
         },
         {
@@ -86,7 +116,7 @@
           "label": "Bearing vocabulary (JSON-LD, v2.3.3)",
           "version": "v2.3.3",
           "status": "deprecated",
-          "publishedAt": "2026-10-23T07:07:39.329Z",
+          "publishedAt": "2026-10-23T07:07:39Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.3/sectors/manu/bearing/vocabularies/gs1BearingVoc.jsonld"
         },
         {
@@ -96,7 +126,7 @@
           "label": "SHACL shapes (empty Page)",
           "version": "v2.3.3",
           "status": "deprecated",
-          "publishedAt": "2026-10-23T07:07:39.329Z",
+          "publishedAt": "2026-10-23T07:07:39Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.3/sectors/manu/bearing/shacl/emptyPage.txt"
         },
         {
@@ -188,36 +218,6 @@
           "status": "deprecated",
           "publishedAt": "2026-09-25T07:38:00Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v1.1.2/sectors/manu/bearing/shacl/emptyPage.txt"
-        },
-        {
-          "url": "https://ref.gs1.ch/voc/bearing/versions/v2.3.1/bearingOntology.jsonld",
-          "mediaType": "application/ld+json",
-          "kind": "ontology",
-          "label": "Bearing ontology",
-          "version": "v2.3.1",
-          "status": "deprecated",
-          "publishedAt": "2026-09-25T06:37:21Z",
-          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.1/sectors/manu/bearing/ontologies/bearingOntology.jsonld"
-        },
-        {
-          "url": "https://ref.gs1.ch/voc/bearing/versions/v2.3.1/gs1BearingVoc.jsonld",
-          "mediaType": "application/ld+json",
-          "kind": "vocabulary",
-          "label": "Bearing vocabulary (JSON-LD, v2.3.1)",
-          "version": "v2.3.1",
-          "status": "deprecated",
-          "publishedAt": "2026-09-25T06:37:21Z",
-          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.1/sectors/manu/bearing/vocabularies/gs1BearingVoc.jsonld"
-        },
-        {
-          "url": "https://ref.gs1.ch/voc/bearing/versions/v2.3.1/emptyPage.txt",
-          "mediaType": "application/octet-stream",
-          "kind": "shacl",
-          "label": "SHACL shapes (empty Page)",
-          "version": "v2.3.1",
-          "status": "deprecated",
-          "publishedAt": "2026-09-25T06:37:21Z",
-          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.1/sectors/manu/bearing/shacl/emptyPage.txt"
         }
       ]
     },
@@ -268,13 +268,33 @@
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/disco/vocabularies/gs1DiscoVoc.jsonld"
         },
         {
+          "url": "https://ref.gs1.ch/voc/disco/versions/v2.3.4/disco-context.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "context",
+          "label": "JSON-LD @context",
+          "version": "2.6",
+          "status": "deprecated",
+          "publishedAt": "2026-10-23T07:16:19.000Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.4/shared/disco/ontologies/disco-context.jsonld"
+        },
+        {
+          "url": "https://ref.gs1.ch/voc/disco/versions/v2.3.4/gs1DiscoVoc.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "vocabulary",
+          "label": "Disco vocabulary (JSON-LD, v2.3.4)",
+          "version": "2.6",
+          "status": "deprecated",
+          "publishedAt": "2026-10-23T07:16:19.000Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.4/shared/disco/vocabularies/gs1DiscoVoc.jsonld"
+        },
+        {
           "url": "https://ref.gs1.ch/voc/disco/versions/v2.3.3/disco-context.jsonld",
           "mediaType": "application/ld+json",
           "kind": "context",
           "label": "JSON-LD @context",
           "version": "2.6",
           "status": "deprecated",
-          "publishedAt": "2026-10-23T07:07:39.338Z",
+          "publishedAt": "2026-10-23T07:07:39Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.3/shared/disco/ontologies/disco-context.jsonld"
         },
         {
@@ -284,7 +304,7 @@
           "label": "Disco vocabulary (JSON-LD, v2.3.3)",
           "version": "2.6",
           "status": "deprecated",
-          "publishedAt": "2026-10-23T07:07:39.338Z",
+          "publishedAt": "2026-10-23T07:07:39Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.3/shared/disco/vocabularies/gs1DiscoVoc.jsonld"
         },
         {
@@ -346,26 +366,6 @@
           "status": "deprecated",
           "publishedAt": "2026-09-25T07:38:00Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v1.1.2/shared/disco/vocabularies/gs1DiscoVoc.jsonld"
-        },
-        {
-          "url": "https://ref.gs1.ch/voc/disco/versions/v2.3.1/disco-context.jsonld",
-          "mediaType": "application/ld+json",
-          "kind": "context",
-          "label": "JSON-LD @context",
-          "version": "2.5",
-          "status": "deprecated",
-          "publishedAt": "2026-09-25T06:37:21Z",
-          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.1/shared/disco/ontologies/disco-context.jsonld"
-        },
-        {
-          "url": "https://ref.gs1.ch/voc/disco/versions/v2.3.1/gs1DiscoVoc.jsonld",
-          "mediaType": "application/ld+json",
-          "kind": "vocabulary",
-          "label": "Disco vocabulary (JSON-LD, v2.3.1)",
-          "version": "2.5",
-          "status": "deprecated",
-          "publishedAt": "2026-09-25T06:37:21Z",
-          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.1/shared/disco/vocabularies/gs1DiscoVoc.jsonld"
         }
       ]
     },
@@ -477,13 +477,63 @@
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-SHACL.json"
         },
         {
+          "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.4/rail-context.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "context",
+          "label": "JSON-LD @context",
+          "version": "2.6",
+          "status": "deprecated",
+          "publishedAt": "2026-10-23T07:16:18.996Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.4/sectors/tran/rail/ontologies/rail-context.jsonld"
+        },
+        {
+          "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.4/gs1RailVoc.jsonld",
+          "mediaType": "application/ld+json",
+          "kind": "vocabulary",
+          "label": "Rail vocabulary (JSON-LD, v2.3.4)",
+          "version": "2.6",
+          "status": "deprecated",
+          "publishedAt": "2026-10-23T07:16:18.996Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.4/sectors/tran/rail/vocabularies/gs1RailVoc.jsonld"
+        },
+        {
+          "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.4/gs1RailVoc.ttl",
+          "mediaType": "text/turtle",
+          "kind": "vocabulary",
+          "label": "Rail vocabulary (Turtle, v2.3.4)",
+          "version": "2.6",
+          "status": "deprecated",
+          "publishedAt": "2026-10-23T07:16:18.996Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.4/sectors/tran/rail/ttl/gs1RailVoc.ttl"
+        },
+        {
+          "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.4/Rail-EPCIS-SHACL-Generic.json",
+          "mediaType": "application/schema+json",
+          "kind": "shacl",
+          "label": "SHACL shapes (Rail EPCIS SHACL Generic)",
+          "version": "2.6",
+          "status": "deprecated",
+          "publishedAt": "2026-10-23T07:16:18.996Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.4/sectors/tran/rail/shacl/Rail-EPCIS-SHACL-Generic.json"
+        },
+        {
+          "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.4/Rail-SHACL.json",
+          "mediaType": "application/schema+json",
+          "kind": "shacl",
+          "label": "SHACL shapes (Rail SHACL)",
+          "version": "2.6",
+          "status": "deprecated",
+          "publishedAt": "2026-10-23T07:16:18.996Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.4/sectors/tran/rail/shacl/Rail-SHACL.json"
+        },
+        {
           "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.3/rail-context.jsonld",
           "mediaType": "application/ld+json",
           "kind": "context",
           "label": "JSON-LD @context",
           "version": "2.6",
           "status": "deprecated",
-          "publishedAt": "2026-10-23T07:07:39.334Z",
+          "publishedAt": "2026-10-23T07:07:39Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.3/sectors/tran/rail/ontologies/rail-context.jsonld"
         },
         {
@@ -493,7 +543,7 @@
           "label": "Rail vocabulary (JSON-LD, v2.3.3)",
           "version": "2.6",
           "status": "deprecated",
-          "publishedAt": "2026-10-23T07:07:39.334Z",
+          "publishedAt": "2026-10-23T07:07:39Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.3/sectors/tran/rail/vocabularies/gs1RailVoc.jsonld"
         },
         {
@@ -503,7 +553,7 @@
           "label": "Rail vocabulary (Turtle, v2.3.3)",
           "version": "2.6",
           "status": "deprecated",
-          "publishedAt": "2026-10-23T07:07:39.334Z",
+          "publishedAt": "2026-10-23T07:07:39Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.3/sectors/tran/rail/ttl/gs1RailVoc.ttl"
         },
         {
@@ -513,7 +563,7 @@
           "label": "SHACL shapes (Rail EPCIS SHACL Generic)",
           "version": "2.6",
           "status": "deprecated",
-          "publishedAt": "2026-10-23T07:07:39.334Z",
+          "publishedAt": "2026-10-23T07:07:39Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.3/sectors/tran/rail/shacl/Rail-EPCIS-SHACL-Generic.json"
         },
         {
@@ -523,7 +573,7 @@
           "label": "SHACL shapes (Rail SHACL)",
           "version": "2.6",
           "status": "deprecated",
-          "publishedAt": "2026-10-23T07:07:39.334Z",
+          "publishedAt": "2026-10-23T07:07:39Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.3/sectors/tran/rail/shacl/Rail-SHACL.json"
         },
         {
@@ -675,56 +725,6 @@
           "status": "deprecated",
           "publishedAt": "2026-09-25T07:38:00Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/versions/v1.1.2/sectors/tran/rail/shacl/Rail-SHACL.json"
-        },
-        {
-          "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.1/rail-context.jsonld",
-          "mediaType": "application/ld+json",
-          "kind": "context",
-          "label": "JSON-LD @context",
-          "version": "2.5",
-          "status": "deprecated",
-          "publishedAt": "2026-09-25T06:37:21Z",
-          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.1/sectors/tran/rail/ontologies/rail-context.jsonld"
-        },
-        {
-          "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.1/gs1RailVoc.jsonld",
-          "mediaType": "application/ld+json",
-          "kind": "vocabulary",
-          "label": "Rail vocabulary (JSON-LD, v2.3.1)",
-          "version": "2.5",
-          "status": "deprecated",
-          "publishedAt": "2026-09-25T06:37:21Z",
-          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.1/sectors/tran/rail/vocabularies/gs1RailVoc.jsonld"
-        },
-        {
-          "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.1/gs1RailVoc.ttl",
-          "mediaType": "text/turtle",
-          "kind": "vocabulary",
-          "label": "Rail vocabulary (Turtle, v2.3.1)",
-          "version": "2.5",
-          "status": "deprecated",
-          "publishedAt": "2026-09-25T06:37:21Z",
-          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.1/sectors/tran/rail/ttl/gs1RailVoc.ttl"
-        },
-        {
-          "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.1/Rail-EPCIS-SHACL-Generic.json",
-          "mediaType": "application/schema+json",
-          "kind": "shacl",
-          "label": "SHACL shapes (Rail EPCIS SHACL Generic)",
-          "version": "2.5",
-          "status": "deprecated",
-          "publishedAt": "2026-09-25T06:37:21Z",
-          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.1/sectors/tran/rail/shacl/Rail-EPCIS-SHACL-Generic.json"
-        },
-        {
-          "url": "https://ref.gs1.ch/voc/rail/versions/v2.3.1/Rail-SHACL.json",
-          "mediaType": "application/schema+json",
-          "kind": "shacl",
-          "label": "SHACL shapes (Rail SHACL)",
-          "version": "2.5",
-          "status": "deprecated",
-          "publishedAt": "2026-09-25T06:37:21Z",
-          "source": "https://gs1-switzerland.github.io/WebOntology/versions/v2.3.1/sectors/tran/rail/shacl/Rail-SHACL.json"
         }
       ]
     }

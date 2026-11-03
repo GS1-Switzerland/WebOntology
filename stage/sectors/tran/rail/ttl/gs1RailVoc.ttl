@@ -216,7 +216,7 @@ rail:en15654Speed a rdf:Property, owl:ObjectProperty;
     rdfs:isDefinedBy "rail:";
     rdfs:label "Mean speed of vehicle";
     sw:term_status "stable";
-    rdfs:range xsd:string;
+    rdfs:range xsd:double;
     schema:unitCode "KMH".
 rail:europeanTrackLocation a owl:DatatypeProperty, rdf:Property;
     rdfs:comment "Represents a location label / human readable context submitted by the data provider indicating the location associated with a rail asset or event. The European Track Location is the place where the event occurs (gs1:Place), not the EPCIS readPoint property. Note: The European Location Label is very often composed of either UIC country code + line number + kilometer or station code plus + track number"@en;

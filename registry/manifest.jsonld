@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-11-10T15:58:24.518Z",
+  "generatedAt": "2026-11-10T15:59:40.588Z",
   "domains": [
     {
       "slug": "bearing",
@@ -433,7 +433,7 @@
           "label": "JSON-LD @context",
           "version": "2.7",
           "status": "staging",
-          "publishedAt": "2026-11-10T15:56:51Z",
+          "publishedAt": "2026-11-10T15:58:24Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/ontologies/rail-context.jsonld"
         },
         {
@@ -443,7 +443,7 @@
           "label": "Rail vocabulary (JSON-LD, staging)",
           "version": "2.7",
           "status": "staging",
-          "publishedAt": "2026-11-10T15:56:51Z",
+          "publishedAt": "2026-11-10T15:58:24Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/vocabularies/gs1RailVoc.jsonld"
         },
         {
@@ -453,7 +453,7 @@
           "label": "Rail vocabulary (Turtle, staging)",
           "version": "2.7",
           "status": "staging",
-          "publishedAt": "2026-11-10T15:56:51Z",
+          "publishedAt": "2026-11-10T15:58:24Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/ttl/gs1RailVoc.ttl"
         },
         {
@@ -463,7 +463,7 @@
           "label": "SHACL shapes (Rail EPCIS SHACL Generic)",
           "version": "2.7",
           "status": "staging",
-          "publishedAt": "2026-11-10T15:56:51Z",
+          "publishedAt": "2026-11-10T15:58:24Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-EPCIS-SHACL-Generic.json"
         },
         {
@@ -473,7 +473,7 @@
           "label": "SHACL shapes (Rail SHACL)",
           "version": "2.7",
           "status": "staging",
-          "publishedAt": "2026-11-10T15:56:51Z",
+          "publishedAt": "2026-11-10T15:58:24Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/sectors/tran/rail/shacl/Rail-SHACL.json"
         },
         {

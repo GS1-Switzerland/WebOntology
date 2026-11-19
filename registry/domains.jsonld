@@ -18,6 +18,12 @@
             "codeValue": "bearing",
             "codeName": "Domain Bearing – Bearing",
             "order": 2
-        }
+        },
+        {
+            "codeList": "Gs1Domain",
+            "codeValue": "site-access",
+            "codeName": "Domain Site-Access – site-access",
+            "order": 3
+        }        
     ]
 }

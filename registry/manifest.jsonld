@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-11-19T09:22:04.420Z",
+  "generatedAt": "2026-11-19T09:22:44.073Z",
   "domains": [
     {
       "slug": "bearing",
@@ -741,7 +741,7 @@
           "label": "JSON-LD @context",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-19T08:56:37Z",
+          "publishedAt": "2026-11-19T09:22:04Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/ontologies/gs1-site-access-context.jsonld"
         }
       ]

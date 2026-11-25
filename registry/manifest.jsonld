@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-11-25T14:43:42.422Z",
+  "generatedAt": "2026-11-25T14:43:51.720Z",
   "domains": [
     {
       "slug": "bearing",
@@ -761,7 +761,7 @@
           "label": "JSON-LD @context",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-25T14:42:47Z",
+          "publishedAt": "2026-11-25T14:43:42Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/ontologies/gs1-site-access-context.jsonld"
         },
         {
@@ -771,8 +771,18 @@
           "label": "Site Access vocabulary (JSON-LD, staging)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-25T14:42:47Z",
+          "publishedAt": "2026-11-25T14:43:42Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/vocabularies/gs1-site-access-vocabulary.jsonld"
+        },
+        {
+          "url": "https://ref.gs1.ch/voc/site-access/staging/gs1-site-access-shapes.ttl",
+          "mediaType": "text/turtle",
+          "kind": "vocabulary",
+          "label": "Site Access vocabulary (Turtle, staging)",
+          "version": "0.0.0",
+          "status": "staging",
+          "publishedAt": "2026-11-25T14:43:42Z",
+          "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/ttl/gs1-site-access-shapes.ttl"
         },
         {
           "url": "https://ref.gs1.ch/voc/site-access/staging/gs1-site-access.ttl",
@@ -781,7 +791,7 @@
           "label": "Site Access vocabulary (Turtle, staging)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-25T14:42:47Z",
+          "publishedAt": "2026-11-25T14:43:42Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/ttl/gs1-site-access.ttl"
         },
         {

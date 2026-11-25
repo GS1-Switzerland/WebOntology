@@ -1,0 +1,3742 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "gs1": "https://ref.gs1.org/voc/",
+    "schema": "http://schema.org/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dct": "http://purl.org/dc/terms/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "sw": "http://www.w3.org/2003/06/sw-vocab-status/ns#",
+    "id": "@id",
+    "type": "@type",
+    "label": {
+      "@id": "rdfs:label",
+      "@container": "@language"
+    },
+    "comment": {
+      "@id": "rdfs:comment",
+      "@container": "@language"
+    },
+    "title": {
+      "@id": "dct:title",
+      "@container": "@language"
+    },
+    "description": {
+      "@id": "dct:description",
+      "@container": "@language"
+    },
+    "subClassOf": {
+      "@id": "rdfs:subClassOf",
+      "@type": "@id"
+    },
+    "domain": {
+      "@id": "rdfs:domain",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "rdfs:range",
+      "@type": "@id"
+    },
+    "inScheme": {
+      "@id": "skos:inScheme",
+      "@type": "@id"
+    },
+    "isDefinedBy": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "usedWithLinkType": {
+      "@id": "gs1:usedWithLinkType",
+      "@type": "@id"
+    },
+    "termStatus": "sw:term_status",
+    "versionInfo": "owl:versionInfo",
+    "created": {
+      "@id": "dct:created",
+      "@type": "xsd:date"
+    },
+    "license": {
+      "@id": "dct:license",
+      "@type": "@id"
+    },
+    "seeAlso": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "gs1:module/siteAccess",
+      "@type": "owl:Ontology",
+      "title": {
+        "en": "GS1 Site Access and Logistics Information Module",
+        "de": "GS1-Modul für Standortzugang und Logistikinformationen",
+        "fr": "Module GS1 pour l’accès au site et les informations logistiques",
+        "it": "Modulo GS1 per l’accesso al sito e le informazioni logistiche"
+      },
+      "description": {
+        "en": "Terms for describing how a physical site (GLN-identified gs1:Place) can be found and accessed by visitors, delivery drivers, suppliers, contractors and employees: access points, instructions, restrictions, access times, registration and contacts. Payload vocabulary for the GS1 Digital Link link types gs1:siteAccessInstructions (see note on gs1:siteAccessRequirements), gs1:logisticsInfo and gs1:scheduleTime. GS1 WebVoc terms are re-used first (gs1:Place, gs1:containsPlace, gs1:locationRole, gs1:ContactPoint, gs1:contactRoleCode, gs1:PostalAddress, gs1:GeoCoordinates, gs1:QuantitativeValue, gs1:referencedFile ...), then schema.org; only gaps are defined as new terms. All terms defined in this module are PROPOSED additions to the GS1 Web Vocabulary.",
+        "de": "Begriffe zur Beschreibung, wie ein physischer Standort (GLN-identifizierter gs1:Place) von Besuchern, Lieferfahrern, Lieferanten, Auftragnehmern und Mitarbeitenden gefunden und betreten werden kann: Zugangspunkte, Anweisungen, Beschränkungen, Zugangszeiten, Registrierung und Kontakte. Nutzlastvokabular für die GS1-Digital-Link-Linktypen gs1:siteAccessInstructions (siehe Hinweis zu gs1:siteAccessRequirements), gs1:logisticsInfo und gs1:scheduleTime. Zuerst werden GS1-WebVoc-Begriffe wiederverwendet (gs1:Place, gs1:containsPlace, gs1:locationRole, gs1:ContactPoint, gs1:contactRoleCode, gs1:PostalAddress, gs1:GeoCoordinates, gs1:QuantitativeValue, gs1:referencedFile …), danach schema.org; nur Lücken werden als neue Begriffe definiert. Alle in diesem Modul definierten Begriffe sind VORGESCHLAGENE Ergänzungen des GS1 Web Vocabulary.",
+        "fr": "Termes pour décrire comment un site physique (gs1:Place identifié par un GLN) peut être trouvé et accédé par des visiteurs, chauffeurs-livreurs, fournisseurs, prestataires externes et employés : points d’accès, instructions, restrictions, horaires d’accès, enregistrement et contacts. Vocabulaire de charge utile pour les types de lien GS1 Digital Link gs1:siteAccessInstructions (voir la note sur gs1:siteAccessRequirements), gs1:logisticsInfo et gs1:scheduleTime. Les termes GS1 WebVoc sont réutilisés en premier (gs1:Place, gs1:containsPlace, gs1:locationRole, gs1:ContactPoint, gs1:contactRoleCode, gs1:PostalAddress, gs1:GeoCoordinates, gs1:QuantitativeValue, gs1:referencedFile …), puis schema.org ; seules les lacunes sont définies comme nouveaux termes. Tous les termes définis dans ce module sont des ajouts PROPOSÉS au GS1 Web Vocabulary.",
+        "it": "Termini per descrivere come un sito fisico (gs1:Place identificato da un GLN) può essere trovato e raggiunto da visitatori, autisti addetti alle consegne, fornitori, appaltatori e dipendenti: punti di accesso, istruzioni, restrizioni, orari di accesso, registrazione e contatti. Vocabolario del payload per i tipi di collegamento GS1 Digital Link gs1:siteAccessInstructions (vedi la nota su gs1:siteAccessRequirements), gs1:logisticsInfo e gs1:scheduleTime. Si riutilizzano per primi i termini GS1 WebVoc (gs1:Place, gs1:containsPlace, gs1:locationRole, gs1:ContactPoint, gs1:contactRoleCode, gs1:PostalAddress, gs1:GeoCoordinates, gs1:QuantitativeValue, gs1:referencedFile …), poi schema.org; solo le lacune sono definite come nuovi termini. Tutti i termini definiti in questo modulo sono aggiunte PROPOSTE al GS1 Web Vocabulary."
+      },
+      "versionInfo": "0.2.0-draft",
+      "created": "2026-11-19",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "seeAlso": [
+        "https://ref.gs1.org/voc/",
+        "http://schema.org/"
+      ]
+    },
+    {
+      "@id": "gs1:AccessInstruction",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Access Instruction",
+        "de": "Zugangsanweisung",
+        "fr": "Instruction d’accès",
+        "it": "Istruzione di accesso"
+      },
+      "comment": {
+        "en": "A practical instruction: arrive, check in, park, load/unload, depart, emergency. Order steps with schema:position.",
+        "de": "Eine praktische Anweisung: Ankunft, Anmeldung, Parken, Be- und Entladen, Abfahrt, Notfall. Die Schritte werden mit schema:position geordnet.",
+        "fr": "Une instruction pratique : arrivée, enregistrement, stationnement, chargement/déchargement, départ, urgence. Les étapes sont ordonnées avec schema:position.",
+        "it": "Un’istruzione pratica: arrivo, registrazione, parcheggio, carico/scarico, partenza, emergenza. I passaggi si ordinano con schema:position."
+      },
+      "subClassOf": "gs1:SiteAccessElement",
+      "usedWithLinkType": [
+        "gs1:logisticsInfo",
+        "gs1:siteAccessInstructions",
+        "gs1:siteAccessRequirements"
+      ],
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestriction",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Access Restriction",
+        "de": "Zugangsbeschränkung",
+        "fr": "Restriction d’accès",
+        "it": "Restrizione di accesso"
+      },
+      "comment": {
+        "en": "A prohibition, requirement, limit or advisory for entering or operating at the site. Machine-evaluable via restrictionType + restrictionMode + restrictionValue.",
+        "de": "Ein Verbot, eine Vorgabe, ein Grenzwert oder eine Empfehlung für das Betreten oder den Betrieb am Standort. Maschinell auswertbar über restrictionType + restrictionMode + restrictionValue.",
+        "fr": "Une interdiction, une exigence, une limite ou une recommandation pour l’entrée ou l’exploitation sur le site. Exploitable par machine via restrictionType + restrictionMode + restrictionValue.",
+        "it": "Un divieto, un obbligo, un limite o una raccomandazione per l’ingresso o l’operatività nel sito. Valutabile automaticamente tramite restrictionType + restrictionMode + restrictionValue."
+      },
+      "subClassOf": "gs1:SiteAccessElement",
+      "usedWithLinkType": [
+        "gs1:logisticsInfo",
+        "gs1:siteAccessInstructions",
+        "gs1:siteAccessRequirements"
+      ],
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionModeCode",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Access Restriction Mode Code",
+        "de": "Wirkungsweise der Beschränkung",
+        "fr": "Mode de la restriction",
+        "it": "Modalità della restrizione"
+      },
+      "comment": {
+        "en": "How a restriction operates. Code list in WebVoc style: members are gs1:AccessRestrictionModeCode-MEMBER_NAME and skos:Concepts.",
+        "de": "Wie eine Beschränkung wirkt. Codeliste im WebVoc-Stil: Die Elemente heißen gs1:AccessRestrictionModeCode-MEMBER_NAME und sind skos:Concepts.",
+        "fr": "La manière dont une restriction s’applique. Liste de codes dans le style WebVoc : les membres sont gs1:AccessRestrictionModeCode-MEMBER_NAME et des skos:Concept.",
+        "it": "Come opera una restrizione. Lista di codici in stile WebVoc: i membri sono gs1:AccessRestrictionModeCode-MEMBER_NAME e skos:Concept."
+      },
+      "subClassOf": "skos:Concept",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Access Restriction Type Code",
+        "de": "Art der Zugangsbeschränkung",
+        "fr": "Type de restriction d’accès",
+        "it": "Tipo di restrizione di accesso"
+      },
+      "comment": {
+        "en": "The subject matter of an access restriction. Code list in WebVoc style: members are gs1:AccessRestrictionTypeCode-MEMBER_NAME and skos:Concepts.",
+        "de": "Der Gegenstand einer Zugangsbeschränkung. Codeliste im WebVoc-Stil: Die Elemente heißen gs1:AccessRestrictionTypeCode-MEMBER_NAME und sind skos:Concepts.",
+        "fr": "L’objet d’une restriction d’accès. Liste de codes dans le style WebVoc : les membres sont gs1:AccessRestrictionTypeCode-MEMBER_NAME et des skos:Concept.",
+        "it": "L’oggetto di una restrizione di accesso. Lista di codici in stile WebVoc: i membri sono gs1:AccessRestrictionTypeCode-MEMBER_NAME e skos:Concept."
+      },
+      "subClassOf": "skos:Concept",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessTimeWindow",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Access Time Window",
+        "de": "Zugangszeitfenster",
+        "fr": "Plage horaire d’accès",
+        "it": "Fascia oraria di accesso"
+      },
+      "comment": {
+        "en": "A recurring or dated time window in which access, visiting, delivery or collection is possible, restricted or closed. WebVoc has no opening-hours class (only the openingHoursInfo link type), so schema:OpeningHoursSpecification is specialised: schema:dayOfWeek, schema:opens, schema:closes and gs1:validFrom / gs1:validThrough (WebVoc, xsd:dateTime) are re-used.",
+        "de": "Ein wiederkehrendes oder datiertes Zeitfenster, in dem Zutritt, Besuch, Anlieferung oder Abholung möglich, eingeschränkt oder geschlossen ist. WebVoc kennt keine Öffnungszeiten-Klasse (nur den Linktyp openingHoursInfo); deshalb wird schema:OpeningHoursSpecification spezialisiert: schema:dayOfWeek, schema:opens, schema:closes sowie gs1:validFrom / gs1:validThrough (WebVoc, xsd:dateTime) werden wiederverwendet.",
+        "fr": "Une plage horaire récurrente ou datée pendant laquelle l’accès, la visite, la livraison ou l’enlèvement est possible, restreint ou fermé. WebVoc n’a pas de classe d’horaires d’ouverture (seulement le type de lien openingHoursInfo) ; schema:OpeningHoursSpecification est donc spécialisée : schema:dayOfWeek, schema:opens, schema:closes ainsi que gs1:validFrom / gs1:validThrough (WebVoc, xsd:dateTime) sont réutilisés.",
+        "it": "Una fascia oraria ricorrente o datata in cui accesso, visita, consegna o ritiro sono possibili, limitati o chiusi. WebVoc non ha una classe per gli orari di apertura (solo il tipo di collegamento openingHoursInfo); si specializza quindi schema:OpeningHoursSpecification: si riutilizzano schema:dayOfWeek, schema:opens, schema:closes e gs1:validFrom / gs1:validThrough (WebVoc, xsd:dateTime)."
+      },
+      "subClassOf": [
+        "gs1:SiteAccessElement",
+        "schema:OpeningHoursSpecification"
+      ],
+      "usedWithLinkType": [
+        "gs1:logisticsInfo",
+        "gs1:scheduleTime",
+        "gs1:siteAccessInstructions",
+        "gs1:siteAccessRequirements"
+      ],
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessTimeWindowTypeCode",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Access Time Window Type Code",
+        "de": "Art des Zeitfensters",
+        "fr": "Type de plage horaire",
+        "it": "Tipo di fascia oraria"
+      },
+      "comment": {
+        "en": "The purpose of a time window. Code list in WebVoc style: members are gs1:AccessTimeWindowTypeCode-MEMBER_NAME and skos:Concepts.",
+        "de": "Der Zweck eines Zeitfensters. Codeliste im WebVoc-Stil: Die Elemente heißen gs1:AccessTimeWindowTypeCode-MEMBER_NAME und sind skos:Concepts.",
+        "fr": "La finalité d’une plage horaire. Liste de codes dans le style WebVoc : les membres sont gs1:AccessTimeWindowTypeCode-MEMBER_NAME et des skos:Concept.",
+        "it": "Lo scopo di una fascia oraria. Lista di codici in stile WebVoc: i membri sono gs1:AccessTimeWindowTypeCode-MEMBER_NAME e skos:Concept."
+      },
+      "subClassOf": "skos:Concept",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:LocationGuidance",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Location Guidance",
+        "de": "Ortshinweis",
+        "fr": "Indications de localisation",
+        "it": "Indicazioni di localizzazione"
+      },
+      "comment": {
+        "en": "Practical help to find the site or an access point: navigation address, route, signage, warnings. General descriptions use WebVoc gs1:locationDescription; maps use gs1:referencedFile.",
+        "de": "Praktische Hilfe, um den Standort oder einen Zugangspunkt zu finden: Navigationsadresse, Route, Beschilderung, Warnungen. Allgemeine Beschreibungen nutzen gs1:locationDescription aus WebVoc; Karten nutzen gs1:referencedFile.",
+        "fr": "Aide pratique pour trouver le site ou un point d’accès : adresse de navigation, itinéraire, signalisation, avertissements. Les descriptions générales utilisent gs1:locationDescription de WebVoc ; les plans utilisent gs1:referencedFile.",
+        "it": "Aiuto pratico per trovare il sito o un punto di accesso: indirizzo di navigazione, percorso, segnaletica, avvisi. Le descrizioni generali usano gs1:locationDescription di WebVoc; le mappe usano gs1:referencedFile."
+      },
+      "subClassOf": "gs1:SiteAccessElement",
+      "usedWithLinkType": [
+        "gs1:logisticsInfo",
+        "gs1:siteAccessInstructions",
+        "gs1:siteAccessRequirements"
+      ],
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Registration Credential Type Code",
+        "de": "Art des Nachweises",
+        "fr": "Type de justificatif",
+        "it": "Tipo di documento da presentare"
+      },
+      "comment": {
+        "en": "Information or document to be presented. Code list in WebVoc style: members are gs1:RegistrationCredentialTypeCode-MEMBER_NAME and skos:Concepts.",
+        "de": "Vorzulegende Angabe oder vorzulegendes Dokument. Codeliste im WebVoc-Stil: Die Elemente heißen gs1:RegistrationCredentialTypeCode-MEMBER_NAME und sind skos:Concepts.",
+        "fr": "Information ou document à présenter. Liste de codes dans le style WebVoc : les membres sont gs1:RegistrationCredentialTypeCode-MEMBER_NAME et des skos:Concept.",
+        "it": "Informazione o documento da presentare. Lista di codici in stile WebVoc: i membri sono gs1:RegistrationCredentialTypeCode-MEMBER_NAME e skos:Concept."
+      },
+      "subClassOf": "skos:Concept",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCode",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Registration Method Code",
+        "de": "Registrierungsweg",
+        "fr": "Mode d’enregistrement",
+        "it": "Modalità di registrazione"
+      },
+      "comment": {
+        "en": "How registration, booking or announcement is done. Code list in WebVoc style: members are gs1:RegistrationMethodCode-MEMBER_NAME and skos:Concepts.",
+        "de": "Wie Registrierung, Buchung oder Anmeldung erfolgt. Codeliste im WebVoc-Stil: Die Elemente heißen gs1:RegistrationMethodCode-MEMBER_NAME und sind skos:Concepts.",
+        "fr": "La manière dont l’enregistrement, la réservation ou l’annonce se fait. Liste de codes dans le style WebVoc : les membres sont gs1:RegistrationMethodCode-MEMBER_NAME et des skos:Concept.",
+        "it": "Come avviene la registrazione, la prenotazione o l’annuncio. Lista di codici in stile WebVoc: i membri sono gs1:RegistrationMethodCode-MEMBER_NAME e skos:Concept."
+      },
+      "subClassOf": "skos:Concept",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationRequirement",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Registration Requirement",
+        "de": "Registrierungsanforderung",
+        "fr": "Exigence d’enregistrement",
+        "it": "Requisito di registrazione"
+      },
+      "comment": {
+        "en": "What must be arranged before or on arrival: book a slot, pre-register, present credentials, complete an induction.",
+        "de": "Was vor oder bei der Ankunft zu veranlassen ist: Slot buchen, vorab registrieren, Nachweise vorlegen, eine Einweisung absolvieren.",
+        "fr": "Ce qui doit être organisé avant ou à l’arrivée : réserver un créneau, s’enregistrer à l’avance, présenter des justificatifs, suivre une induction.",
+        "it": "Ciò che va organizzato prima o all’arrivo: prenotare uno slot, preregistrarsi, presentare documenti, completare una formazione introduttiva."
+      },
+      "subClassOf": "gs1:SiteAccessElement",
+      "usedWithLinkType": [
+        "gs1:logisticsInfo",
+        "gs1:siteAccessInstructions",
+        "gs1:siteAccessRequirements"
+      ],
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCode",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Required Equipment Type Code",
+        "de": "Erforderliche Ausrüstung",
+        "fr": "Équipement requis",
+        "it": "Attrezzatura richiesta"
+      },
+      "comment": {
+        "en": "Equipment a person or vehicle must wear or carry. Code list in WebVoc style: members are gs1:RequiredEquipmentTypeCode-MEMBER_NAME and skos:Concepts.",
+        "de": "Ausrüstung, die eine Person oder ein Fahrzeug tragen bzw. mitführen muss. Codeliste im WebVoc-Stil: Die Elemente heißen gs1:RequiredEquipmentTypeCode-MEMBER_NAME und sind skos:Concepts.",
+        "fr": "Équipement qu’une personne ou un véhicule doit porter ou avoir à bord. Liste de codes dans le style WebVoc : les membres sont gs1:RequiredEquipmentTypeCode-MEMBER_NAME et des skos:Concept.",
+        "it": "Attrezzatura che una persona o un veicolo deve indossare o avere con sé. Lista di codici in stile WebVoc: i membri sono gs1:RequiredEquipmentTypeCode-MEMBER_NAME e skos:Concept."
+      },
+      "subClassOf": "skos:Concept",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteAccessElement",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Site Access Element",
+        "de": "Zugangselement",
+        "fr": "Élément d’accès",
+        "it": "Elemento di accesso"
+      },
+      "comment": {
+        "en": "Abstract superclass of statement-level elements. Carries cross-cutting qualifiers addressedTo, appliesToAccessPoint, applicableVehicleType, isMandatory. The same qualifiers are used on gs1:Place (access points) and gs1:ContactPoint.",
+        "de": "Abstrakte Oberklasse der Aussageelemente. Trägt die übergreifenden Qualifizierer addressedTo, appliesToAccessPoint, applicableVehicleType und isMandatory. Dieselben Qualifizierer werden an gs1:Place (Zugangspunkten) und gs1:ContactPoint verwendet.",
+        "fr": "Superclasse abstraite des éléments d’énoncé. Porte les qualificatifs transversaux addressedTo, appliesToAccessPoint, applicableVehicleType et isMandatory. Les mêmes qualificatifs sont utilisés sur gs1:Place (points d’accès) et gs1:ContactPoint.",
+        "it": "Superclasse astratta degli elementi di affermazione. Porta i qualificatori trasversali addressedTo, appliesToAccessPoint, applicableVehicleType e isMandatory. Gli stessi qualificatori si usano su gs1:Place (punti di accesso) e gs1:ContactPoint."
+      },
+      "subClassOf": "schema:Thing",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteAccessInformation",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Site Access Information",
+        "de": "Standortzugangsinformation",
+        "fr": "Informations d’accès au site",
+        "it": "Informazioni di accesso al sito"
+      },
+      "comment": {
+        "en": "Root node of a site access / logistics information document for one site (gs1:Place). Aggregates access instructions, restrictions, access times, registration requirements and location guidance; contacts and access points hang on the gs1:Place itself (gs1:contactPoint, gs1:containsPlace). Inherits schema:CreativeWork metadata (inLanguage, dateModified, version).",
+        "de": "Wurzelknoten eines Dokuments mit Zugangs- und Logistikinformationen für einen Standort (gs1:Place). Bündelt Zugangsanweisungen, Beschränkungen, Zeitfenster, Registrierungsanforderungen und Ortshinweise; Kontakte und Zugangspunkte hängen am gs1:Place selbst (gs1:contactPoint, gs1:containsPlace). Erbt die Metadaten von schema:CreativeWork (inLanguage, dateModified, version).",
+        "fr": "Nœud racine d’un document d’informations d’accès et de logistique pour un site (gs1:Place). Regroupe les instructions d’accès, restrictions, plages horaires, exigences d’enregistrement et indications de localisation ; les contacts et points d’accès se rattachent au gs1:Place lui-même (gs1:contactPoint, gs1:containsPlace). Hérite des métadonnées de schema:CreativeWork (inLanguage, dateModified, version).",
+        "it": "Nodo radice di un documento con informazioni di accesso e logistica per un sito (gs1:Place). Riunisce istruzioni di accesso, restrizioni, fasce orarie, requisiti di registrazione e indicazioni di localizzazione; contatti e punti di accesso sono collegati al gs1:Place stesso (gs1:contactPoint, gs1:containsPlace). Eredita i metadati di schema:CreativeWork (inLanguage, dateModified, version)."
+      },
+      "subClassOf": "schema:CreativeWork",
+      "usedWithLinkType": [
+        "gs1:logisticsInfo",
+        "gs1:scheduleTime",
+        "gs1:siteAccessInstructions",
+        "gs1:siteAccessRequirements"
+      ],
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteAccessRoleCode",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Site Access Role Code",
+        "de": "Rolle für den Standortzugang",
+        "fr": "Rôle pour l’accès au site",
+        "it": "Ruolo per l’accesso al sito"
+      },
+      "comment": {
+        "en": "The audience (addressee) role a statement is meant for. Code list in WebVoc style: members are gs1:SiteAccessRoleCode-MEMBER_NAME and skos:Concepts.",
+        "de": "Die Rolle (Adressatengruppe), für die eine Aussage gedacht ist. Codeliste im WebVoc-Stil: Die Elemente heißen gs1:SiteAccessRoleCode-MEMBER_NAME und sind skos:Concepts.",
+        "fr": "Le rôle (groupe destinataire) auquel un énoncé s’adresse. Liste de codes dans le style WebVoc : les membres sont gs1:SiteAccessRoleCode-MEMBER_NAME et des skos:Concept.",
+        "it": "Il ruolo (gruppo destinatario) a cui è rivolta un’affermazione. Lista di codici in stile WebVoc: i membri sono gs1:SiteAccessRoleCode-MEMBER_NAME e skos:Concept."
+      },
+      "subClassOf": "skos:Concept",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteFacilityTypeCode",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Site Facility Type Code",
+        "de": "Standorteinrichtung",
+        "fr": "Équipement du site",
+        "it": "Struttura del sito"
+      },
+      "comment": {
+        "en": "Driver- and visitor-relevant facility at the site. Code list in WebVoc style: members are gs1:SiteFacilityTypeCode-MEMBER_NAME and skos:Concepts.",
+        "de": "Für Fahrer und Besucher relevante Einrichtung am Standort. Codeliste im WebVoc-Stil: Die Elemente heißen gs1:SiteFacilityTypeCode-MEMBER_NAME und sind skos:Concepts.",
+        "fr": "Équipement du site pertinent pour les chauffeurs et les visiteurs. Liste de codes dans le style WebVoc : les membres sont gs1:SiteFacilityTypeCode-MEMBER_NAME et des skos:Concept.",
+        "it": "Struttura del sito rilevante per autisti e visitatori. Lista di codici in stile WebVoc: i membri sono gs1:SiteFacilityTypeCode-MEMBER_NAME e skos:Concept."
+      },
+      "subClassOf": "skos:Concept",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCode",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Site Instruction Type Code",
+        "de": "Art der Anweisung",
+        "fr": "Type d’instruction",
+        "it": "Tipo di istruzione"
+      },
+      "comment": {
+        "en": "The kind of procedure an access instruction describes. Code list in WebVoc style: members are gs1:SiteInstructionTypeCode-MEMBER_NAME and skos:Concepts.",
+        "de": "Die Art des Vorgehens, die eine Zugangsanweisung beschreibt. Codeliste im WebVoc-Stil: Die Elemente heißen gs1:SiteInstructionTypeCode-MEMBER_NAME und sind skos:Concepts.",
+        "fr": "Le type de procédure décrit par une instruction d’accès. Liste de codes dans le style WebVoc : les membres sont gs1:SiteInstructionTypeCode-MEMBER_NAME et des skos:Concept.",
+        "it": "Il tipo di procedura descritta da un’istruzione di accesso. Lista di codici in stile WebVoc: i membri sono gs1:SiteInstructionTypeCode-MEMBER_NAME e skos:Concept."
+      },
+      "subClassOf": "skos:Concept",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode",
+      "@type": "owl:Class",
+      "label": {
+        "en": "Vehicle Type Code",
+        "de": "Fahrzeugart",
+        "fr": "Type de véhicule",
+        "it": "Tipo di veicolo"
+      },
+      "comment": {
+        "en": "Vehicle category for access statements. Code list in WebVoc style: members are gs1:VehicleTypeCode-MEMBER_NAME and skos:Concepts.",
+        "de": "Fahrzeugkategorie für Zugangsaussagen. Codeliste im WebVoc-Stil: Die Elemente heißen gs1:VehicleTypeCode-MEMBER_NAME und sind skos:Concepts.",
+        "fr": "Catégorie de véhicule pour les énoncés d’accès. Liste de codes dans le style WebVoc : les membres sont gs1:VehicleTypeCode-MEMBER_NAME et des skos:Concept.",
+        "it": "Categoria di veicolo per le affermazioni di accesso. Lista di codici in stile WebVoc: i membri sono gs1:VehicleTypeCode-MEMBER_NAME e skos:Concept."
+      },
+      "subClassOf": "skos:Concept",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionModeCodeScheme",
+      "@type": "skos:ConceptScheme",
+      "label": {
+        "en": "Access Restriction Mode Code Scheme",
+        "de": "Wirkungsweise der Beschränkung (Konzeptschema)",
+        "fr": "Mode de la restriction (schéma de concepts)",
+        "it": "Modalità della restrizione (schema di concetti)"
+      },
+      "comment": {
+        "en": "Concept scheme of gs1:AccessRestrictionModeCode.",
+        "de": "Konzeptschema von gs1:AccessRestrictionModeCode.",
+        "fr": "Schéma de concepts de gs1:AccessRestrictionModeCode.",
+        "it": "Schema di concetti di gs1:AccessRestrictionModeCode."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCodeScheme",
+      "@type": "skos:ConceptScheme",
+      "label": {
+        "en": "Access Restriction Type Code Scheme",
+        "de": "Art der Zugangsbeschränkung (Konzeptschema)",
+        "fr": "Type de restriction d’accès (schéma de concepts)",
+        "it": "Tipo di restrizione di accesso (schema di concetti)"
+      },
+      "comment": {
+        "en": "Concept scheme of gs1:AccessRestrictionTypeCode.",
+        "de": "Konzeptschema von gs1:AccessRestrictionTypeCode.",
+        "fr": "Schéma de concepts de gs1:AccessRestrictionTypeCode.",
+        "it": "Schema di concetti di gs1:AccessRestrictionTypeCode."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessTimeWindowTypeCodeScheme",
+      "@type": "skos:ConceptScheme",
+      "label": {
+        "en": "Access Time Window Type Code Scheme",
+        "de": "Art des Zeitfensters (Konzeptschema)",
+        "fr": "Type de plage horaire (schéma de concepts)",
+        "it": "Tipo di fascia oraria (schema di concetti)"
+      },
+      "comment": {
+        "en": "Concept scheme of gs1:AccessTimeWindowTypeCode.",
+        "de": "Konzeptschema von gs1:AccessTimeWindowTypeCode.",
+        "fr": "Schéma de concepts de gs1:AccessTimeWindowTypeCode.",
+        "it": "Schema di concetti di gs1:AccessTimeWindowTypeCode."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCodeScheme",
+      "@type": "skos:ConceptScheme",
+      "label": {
+        "en": "Registration Credential Type Code Scheme",
+        "de": "Art des Nachweises (Konzeptschema)",
+        "fr": "Type de justificatif (schéma de concepts)",
+        "it": "Tipo di documento da presentare (schema di concetti)"
+      },
+      "comment": {
+        "en": "Concept scheme of gs1:RegistrationCredentialTypeCode.",
+        "de": "Konzeptschema von gs1:RegistrationCredentialTypeCode.",
+        "fr": "Schéma de concepts de gs1:RegistrationCredentialTypeCode.",
+        "it": "Schema di concetti di gs1:RegistrationCredentialTypeCode."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCodeScheme",
+      "@type": "skos:ConceptScheme",
+      "label": {
+        "en": "Registration Method Code Scheme",
+        "de": "Registrierungsweg (Konzeptschema)",
+        "fr": "Mode d’enregistrement (schéma de concepts)",
+        "it": "Modalità di registrazione (schema di concetti)"
+      },
+      "comment": {
+        "en": "Concept scheme of gs1:RegistrationMethodCode.",
+        "de": "Konzeptschema von gs1:RegistrationMethodCode.",
+        "fr": "Schéma de concepts de gs1:RegistrationMethodCode.",
+        "it": "Schema di concetti di gs1:RegistrationMethodCode."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCodeScheme",
+      "@type": "skos:ConceptScheme",
+      "label": {
+        "en": "Required Equipment Type Code Scheme",
+        "de": "Erforderliche Ausrüstung (Konzeptschema)",
+        "fr": "Équipement requis (schéma de concepts)",
+        "it": "Attrezzatura richiesta (schema di concetti)"
+      },
+      "comment": {
+        "en": "Concept scheme of gs1:RequiredEquipmentTypeCode.",
+        "de": "Konzeptschema von gs1:RequiredEquipmentTypeCode.",
+        "fr": "Schéma de concepts de gs1:RequiredEquipmentTypeCode.",
+        "it": "Schema di concetti di gs1:RequiredEquipmentTypeCode."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteAccessRoleCodeScheme",
+      "@type": "skos:ConceptScheme",
+      "label": {
+        "en": "Site Access Role Code Scheme",
+        "de": "Rolle für den Standortzugang (Konzeptschema)",
+        "fr": "Rôle pour l’accès au site (schéma de concepts)",
+        "it": "Ruolo per l’accesso al sito (schema di concetti)"
+      },
+      "comment": {
+        "en": "Concept scheme of gs1:SiteAccessRoleCode.",
+        "de": "Konzeptschema von gs1:SiteAccessRoleCode.",
+        "fr": "Schéma de concepts de gs1:SiteAccessRoleCode.",
+        "it": "Schema di concetti di gs1:SiteAccessRoleCode."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteFacilityTypeCodeScheme",
+      "@type": "skos:ConceptScheme",
+      "label": {
+        "en": "Site Facility Type Code Scheme",
+        "de": "Standorteinrichtung (Konzeptschema)",
+        "fr": "Équipement du site (schéma de concepts)",
+        "it": "Struttura del sito (schema di concetti)"
+      },
+      "comment": {
+        "en": "Concept scheme of gs1:SiteFacilityTypeCode.",
+        "de": "Konzeptschema von gs1:SiteFacilityTypeCode.",
+        "fr": "Schéma de concepts de gs1:SiteFacilityTypeCode.",
+        "it": "Schema di concetti di gs1:SiteFacilityTypeCode."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCodeScheme",
+      "@type": "skos:ConceptScheme",
+      "label": {
+        "en": "Site Instruction Type Code Scheme",
+        "de": "Art der Anweisung (Konzeptschema)",
+        "fr": "Type d’instruction (schéma de concepts)",
+        "it": "Tipo di istruzione (schema di concetti)"
+      },
+      "comment": {
+        "en": "Concept scheme of gs1:SiteInstructionTypeCode.",
+        "de": "Konzeptschema von gs1:SiteInstructionTypeCode.",
+        "fr": "Schéma de concepts de gs1:SiteInstructionTypeCode.",
+        "it": "Schema di concetti di gs1:SiteInstructionTypeCode."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCodeScheme",
+      "@type": "skos:ConceptScheme",
+      "label": {
+        "en": "Vehicle Type Code Scheme",
+        "de": "Fahrzeugart (Konzeptschema)",
+        "fr": "Type de véhicule (schéma de concepts)",
+        "it": "Tipo di veicolo (schema di concetti)"
+      },
+      "comment": {
+        "en": "Concept scheme of gs1:VehicleTypeCode.",
+        "de": "Konzeptschema von gs1:VehicleTypeCode.",
+        "fr": "Schéma de concepts de gs1:VehicleTypeCode.",
+        "it": "Schema di concetti di gs1:VehicleTypeCode."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionModeCode-ADVISORY",
+      "@type": [
+        "gs1:AccessRestrictionModeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Advisory",
+        "de": "Empfehlung",
+        "fr": "Recommandation",
+        "it": "Raccomandazione"
+      },
+      "comment": {
+        "en": "Recommendation only.",
+        "de": "Nur eine Empfehlung.",
+        "fr": "Simple recommandation.",
+        "it": "Solo una raccomandazione."
+      },
+      "inScheme": "gs1:AccessRestrictionModeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionModeCode-LIMITED",
+      "@type": [
+        "gs1:AccessRestrictionModeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Limited",
+        "de": "Begrenzt",
+        "fr": "Limité",
+        "it": "Limitato"
+      },
+      "comment": {
+        "en": "A quantitative limit applies; see restrictionValue.",
+        "de": "Es gilt ein Grenzwert; siehe restrictionValue.",
+        "fr": "Une limite quantitative s’applique ; voir restrictionValue.",
+        "it": "Si applica un limite quantitativo; vedi restrictionValue."
+      },
+      "inScheme": "gs1:AccessRestrictionModeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionModeCode-PROHIBITED",
+      "@type": [
+        "gs1:AccessRestrictionModeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Prohibited",
+        "de": "Verboten",
+        "fr": "Interdit",
+        "it": "Vietato"
+      },
+      "comment": {
+        "en": "Not allowed.",
+        "de": "Nicht erlaubt.",
+        "fr": "Non autorisé.",
+        "it": "Non consentito."
+      },
+      "inScheme": "gs1:AccessRestrictionModeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionModeCode-REQUIRED",
+      "@type": [
+        "gs1:AccessRestrictionModeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Required",
+        "de": "Vorgeschrieben",
+        "fr": "Obligatoire",
+        "it": "Obbligatorio"
+      },
+      "comment": {
+        "en": "Mandatory.",
+        "de": "Verpflichtend.",
+        "fr": "Obligatoire.",
+        "it": "Obbligatorio."
+      },
+      "inScheme": "gs1:AccessRestrictionModeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-AGE_RESTRICTION",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Age Restriction",
+        "de": "Mindestalter",
+        "fr": "Âge minimum",
+        "it": "Età minima"
+      },
+      "comment": {
+        "en": "Minimum age.",
+        "de": "Mindestalter.",
+        "fr": "Âge minimum.",
+        "it": "Età minima."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-AXLE_LOAD_LIMIT",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Axle Load Limit",
+        "de": "Achslast (Grenzwert)",
+        "fr": "Charge maximale par essieu",
+        "it": "Carico massimo per asse"
+      },
+      "comment": {
+        "en": "Maximum axle load.",
+        "de": "Maximale Achslast.",
+        "fr": "Charge maximale par essieu.",
+        "it": "Carico massimo per asse."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-CAPACITY_LIMIT",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Capacity Limit",
+        "de": "Kapazitätsgrenze",
+        "fr": "Limite de capacité",
+        "it": "Limite di capacità"
+      },
+      "comment": {
+        "en": "Maximum people or vehicles on site or at a point.",
+        "de": "Höchstzahl an Personen oder Fahrzeugen auf dem Gelände oder an einem Punkt.",
+        "fr": "Nombre maximal de personnes ou de véhicules sur le site ou en un point.",
+        "it": "Numero massimo di persone o veicoli nel sito o in un punto."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-EMISSION_ZONE_RESTRICTION",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Emission Zone Restriction",
+        "de": "Umweltzone",
+        "fr": "Zone à faibles émissions",
+        "it": "Zona a basse emissioni"
+      },
+      "comment": {
+        "en": "Low-emission or similar zone requirement.",
+        "de": "Anforderung einer Umweltzone o. Ä.",
+        "fr": "Exigence d’une zone à faibles émissions ou similaire.",
+        "it": "Requisito di una zona a basse emissioni o simile."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-ESCORT_REQUIRED",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Escort Required",
+        "de": "Begleitpflicht",
+        "fr": "Accompagnement obligatoire",
+        "it": "Obbligo di accompagnamento"
+      },
+      "comment": {
+        "en": "Must be escorted.",
+        "de": "Begleitung ist erforderlich.",
+        "fr": "Un accompagnement est requis.",
+        "it": "È richiesto l’accompagnamento."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-HAZARDOUS_GOODS_RESTRICTION",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Hazardous Goods Restriction",
+        "de": "Gefahrgut",
+        "fr": "Marchandises dangereuses",
+        "it": "Merci pericolose"
+      },
+      "comment": {
+        "en": "Dangerous goods restrictions, e.g. ADR.",
+        "de": "Einschränkungen für Gefahrgut, z. B. ADR.",
+        "fr": "Restrictions sur les marchandises dangereuses, par ex. ADR.",
+        "it": "Restrizioni sulle merci pericolose, ad es. ADR."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-HYGIENE_REQUIREMENT",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Hygiene Requirement",
+        "de": "Hygieneanforderung",
+        "fr": "Exigence d’hygiène",
+        "it": "Requisito igienico"
+      },
+      "comment": {
+        "en": "Health, hygiene or clothing rules.",
+        "de": "Gesundheits-, Hygiene- oder Kleidungsregeln.",
+        "fr": "Règles de santé, d’hygiène ou de tenue.",
+        "it": "Regole di salute, igiene o abbigliamento."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-MOBILE_DEVICE_RESTRICTION",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Mobile Device Restriction",
+        "de": "Mobiltelefone und Geräte",
+        "fr": "Téléphones et appareils",
+        "it": "Telefoni e dispositivi"
+      },
+      "comment": {
+        "en": "Phone or device restrictions.",
+        "de": "Einschränkungen für Telefone und andere Geräte.",
+        "fr": "Restrictions sur les téléphones et autres appareils.",
+        "it": "Restrizioni su telefoni e altri dispositivi."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-NO_IDLING_RESTRICTION",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "No Idling Restriction",
+        "de": "Motor aus",
+        "fr": "Moteur éteint",
+        "it": "Motore spento"
+      },
+      "comment": {
+        "en": "Engines off while waiting or unloading.",
+        "de": "Motor beim Warten oder Entladen abstellen.",
+        "fr": "Moteur à couper pendant l’attente ou le déchargement.",
+        "it": "Spegnere il motore durante l’attesa o lo scarico."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-OTHER_RESTRICTION",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Other Restriction",
+        "de": "Sonstige Beschränkung",
+        "fr": "Autre restriction",
+        "it": "Altra restrizione"
+      },
+      "comment": {
+        "en": "Not covered by another member; explain in restrictionText.",
+        "de": "Nicht anderweitig abgedeckt; in restrictionText erläutern.",
+        "fr": "Non couverte par un autre membre ; à expliquer dans restrictionText.",
+        "it": "Non coperta da un altro membro; spiegare in restrictionText."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-PHOTOGRAPHY_RESTRICTION",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Photography Restriction",
+        "de": "Foto- und Aufnahmeverbot",
+        "fr": "Restriction photo et enregistrement",
+        "it": "Restrizione su foto e riprese"
+      },
+      "comment": {
+        "en": "Photography or recording restrictions.",
+        "de": "Einschränkungen für Fotografieren oder Aufzeichnen.",
+        "fr": "Restrictions sur la photographie ou l’enregistrement.",
+        "it": "Restrizioni su fotografie o registrazioni."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-PPE_REQUIREMENT",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "PPE Requirement",
+        "de": "Persönliche Schutzausrüstung",
+        "fr": "Équipement de protection individuelle",
+        "it": "Dispositivi di protezione individuale"
+      },
+      "comment": {
+        "en": "Personal protective equipment (see requiredEquipment).",
+        "de": "Persönliche Schutzausrüstung (siehe requiredEquipment).",
+        "fr": "Équipement de protection individuelle (voir requiredEquipment).",
+        "it": "Dispositivi di protezione individuale (vedi requiredEquipment)."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-PROHIBITED_ITEMS",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Prohibited Items",
+        "de": "Verbotene Gegenstände",
+        "fr": "Objets interdits",
+        "it": "Oggetti vietati"
+      },
+      "comment": {
+        "en": "Items that may not be brought on site.",
+        "de": "Gegenstände, die nicht mitgebracht werden dürfen.",
+        "fr": "Objets qui ne peuvent pas être introduits sur le site.",
+        "it": "Oggetti che non possono essere introdotti nel sito."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-SECURITY_SCREENING",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Security Screening",
+        "de": "Sicherheitskontrolle",
+        "fr": "Contrôle de sécurité",
+        "it": "Controllo di sicurezza"
+      },
+      "comment": {
+        "en": "Screening of persons, vehicles or loads.",
+        "de": "Kontrolle von Personen, Fahrzeugen oder Ladung.",
+        "fr": "Contrôle des personnes, véhicules ou chargements.",
+        "it": "Controllo di persone, veicoli o carichi."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-SPEED_LIMIT",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Speed Limit",
+        "de": "Höchstgeschwindigkeit",
+        "fr": "Limitation de vitesse",
+        "it": "Limite di velocità"
+      },
+      "comment": {
+        "en": "On-site speed limit.",
+        "de": "Höchstgeschwindigkeit auf dem Gelände.",
+        "fr": "Vitesse maximale sur le site.",
+        "it": "Velocità massima nel sito."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-VEHICLE_HEIGHT_LIMIT",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Vehicle Height Limit",
+        "de": "Fahrzeughöhe (Grenzwert)",
+        "fr": "Hauteur maximale du véhicule",
+        "it": "Altezza massima del veicolo"
+      },
+      "comment": {
+        "en": "Maximum vehicle height.",
+        "de": "Maximale Fahrzeughöhe.",
+        "fr": "Hauteur maximale du véhicule.",
+        "it": "Altezza massima del veicolo."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-VEHICLE_LENGTH_LIMIT",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Vehicle Length Limit",
+        "de": "Fahrzeuglänge (Grenzwert)",
+        "fr": "Longueur maximale du véhicule",
+        "it": "Lunghezza massima del veicolo"
+      },
+      "comment": {
+        "en": "Maximum vehicle or combination length.",
+        "de": "Maximale Fahrzeug- oder Zuglänge.",
+        "fr": "Longueur maximale du véhicule ou de l’ensemble.",
+        "it": "Lunghezza massima del veicolo o del convoglio."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-VEHICLE_TYPE_RESTRICTION",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Vehicle Type Restriction",
+        "de": "Fahrzeugartbeschränkung",
+        "fr": "Restriction de types de véhicules",
+        "it": "Restrizione dei tipi di veicolo"
+      },
+      "comment": {
+        "en": "Restriction to or exclusion of vehicle types (see applicableVehicleType).",
+        "de": "Zulassung oder Ausschluss bestimmter Fahrzeugarten (siehe applicableVehicleType).",
+        "fr": "Autorisation ou exclusion de types de véhicules (voir applicableVehicleType).",
+        "it": "Ammissione o esclusione di determinati tipi di veicolo (vedi applicableVehicleType)."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-VEHICLE_WEIGHT_LIMIT",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Vehicle Weight Limit",
+        "de": "Fahrzeuggewicht (Grenzwert)",
+        "fr": "Poids maximal du véhicule",
+        "it": "Peso massimo del veicolo"
+      },
+      "comment": {
+        "en": "Maximum gross vehicle weight.",
+        "de": "Maximales zulässiges Gesamtgewicht.",
+        "fr": "Poids total maximal autorisé.",
+        "it": "Peso complessivo massimo consentito."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessRestrictionTypeCode-VEHICLE_WIDTH_LIMIT",
+      "@type": [
+        "gs1:AccessRestrictionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Vehicle Width Limit",
+        "de": "Fahrzeugbreite (Grenzwert)",
+        "fr": "Largeur maximale du véhicule",
+        "it": "Larghezza massima del veicolo"
+      },
+      "comment": {
+        "en": "Maximum vehicle width.",
+        "de": "Maximale Fahrzeugbreite.",
+        "fr": "Largeur maximale du véhicule.",
+        "it": "Larghezza massima del veicolo."
+      },
+      "inScheme": "gs1:AccessRestrictionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessTimeWindowTypeCode-CLOSED_PERIOD",
+      "@type": [
+        "gs1:AccessTimeWindowTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Closed Period",
+        "de": "Geschlossen",
+        "fr": "Fermeture",
+        "it": "Chiusura"
+      },
+      "comment": {
+        "en": "Closed, e.g. public holidays, stock-take.",
+        "de": "Geschlossen, z. B. an Feiertagen oder bei Inventur.",
+        "fr": "Fermé, par ex. jours fériés ou inventaire.",
+        "it": "Chiuso, ad es. giorni festivi o inventario."
+      },
+      "inScheme": "gs1:AccessTimeWindowTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessTimeWindowTypeCode-COLLECTION_WINDOW",
+      "@type": [
+        "gs1:AccessTimeWindowTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Collection Window",
+        "de": "Abholzeitfenster",
+        "fr": "Plage d’enlèvement",
+        "it": "Fascia di ritiro"
+      },
+      "comment": {
+        "en": "Hours in which outbound goods can be collected.",
+        "de": "Zeiten, in denen ausgehende Ware abgeholt werden kann.",
+        "fr": "Heures pendant lesquelles les marchandises sortantes peuvent être enlevées.",
+        "it": "Orari in cui si possono ritirare le merci in uscita."
+      },
+      "inScheme": "gs1:AccessTimeWindowTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessTimeWindowTypeCode-DELIVERY_WINDOW",
+      "@type": [
+        "gs1:AccessTimeWindowTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Delivery Window",
+        "de": "Anlieferzeitfenster",
+        "fr": "Plage de livraison",
+        "it": "Fascia di consegna"
+      },
+      "comment": {
+        "en": "Hours in which inbound deliveries are accepted.",
+        "de": "Zeiten, in denen Anlieferungen angenommen werden.",
+        "fr": "Heures pendant lesquelles les livraisons sont acceptées.",
+        "it": "Orari in cui si accettano le consegne."
+      },
+      "inScheme": "gs1:AccessTimeWindowTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessTimeWindowTypeCode-GENERAL_ACCESS_HOURS",
+      "@type": [
+        "gs1:AccessTimeWindowTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "General Access Hours",
+        "de": "Allgemeine Zutrittszeiten",
+        "fr": "Heures d’accès générales",
+        "it": "Orari di accesso generali"
+      },
+      "comment": {
+        "en": "Hours in which the site can generally be accessed.",
+        "de": "Zeiten, in denen der Standort grundsätzlich zugänglich ist.",
+        "fr": "Heures pendant lesquelles le site est en général accessible.",
+        "it": "Orari in cui il sito è in generale accessibile."
+      },
+      "inScheme": "gs1:AccessTimeWindowTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessTimeWindowTypeCode-OUT_OF_HOURS_ACCESS",
+      "@type": [
+        "gs1:AccessTimeWindowTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Out Of Hours Access",
+        "de": "Zutritt außerhalb der Zeiten",
+        "fr": "Accès hors horaires",
+        "it": "Accesso fuori orario"
+      },
+      "comment": {
+        "en": "Limited access outside general hours, e.g. by badge.",
+        "de": "Eingeschränkter Zutritt außerhalb der allgemeinen Zeiten, z. B. per Ausweis.",
+        "fr": "Accès limité en dehors des heures générales, par ex. par badge.",
+        "it": "Accesso limitato fuori dagli orari generali, ad es. con badge."
+      },
+      "inScheme": "gs1:AccessTimeWindowTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessTimeWindowTypeCode-RESTRICTED_PERIOD",
+      "@type": [
+        "gs1:AccessTimeWindowTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Restricted Period",
+        "de": "Eingeschränkter Zeitraum",
+        "fr": "Période restreinte",
+        "it": "Periodo con restrizioni"
+      },
+      "comment": {
+        "en": "Access only for some roles/vehicles or with extra conditions.",
+        "de": "Zutritt nur für bestimmte Rollen oder Fahrzeuge oder mit zusätzlichen Bedingungen.",
+        "fr": "Accès réservé à certains rôles ou véhicules ou soumis à des conditions supplémentaires.",
+        "it": "Accesso solo per certi ruoli o veicoli o con condizioni aggiuntive."
+      },
+      "inScheme": "gs1:AccessTimeWindowTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:AccessTimeWindowTypeCode-VISITING_HOURS",
+      "@type": [
+        "gs1:AccessTimeWindowTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Visiting Hours",
+        "de": "Besuchszeiten",
+        "fr": "Heures de visite",
+        "it": "Orari di visita"
+      },
+      "comment": {
+        "en": "Hours in which visitors are received.",
+        "de": "Zeiten, in denen Besucher empfangen werden.",
+        "fr": "Heures pendant lesquelles les visiteurs sont reçus.",
+        "it": "Orari in cui si ricevono i visitatori."
+      },
+      "inScheme": "gs1:AccessTimeWindowTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:ContactRoleType-EMERGENCY_CONTACT",
+      "@type": [
+        "gs1:ContactRoleType",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Emergency_Contact",
+        "de": "Notfallkontakt",
+        "fr": "Contact d’urgence",
+        "it": "Contatto di emergenza"
+      },
+      "comment": {
+        "en": "General emergencies and incidents (WebVoc has only EMERGENCY_DANGEROUS_GOODS_CONTACT).",
+        "de": "Allgemeine Notfälle und Vorfälle (WebVoc kennt nur EMERGENCY_DANGEROUS_GOODS_CONTACT).",
+        "fr": "Urgences et incidents en général (WebVoc ne connaît que EMERGENCY_DANGEROUS_GOODS_CONTACT).",
+        "it": "Emergenze e incidenti in generale (WebVoc conosce solo EMERGENCY_DANGEROUS_GOODS_CONTACT)."
+      },
+      "inScheme": "gs1:ContactRoleTypeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:ContactRoleType-GATE_SECURITY_CONTACT",
+      "@type": [
+        "gs1:ContactRoleType",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Gate_Security_Contact",
+        "de": "Pforte und Sicherheit",
+        "fr": "Portail et sécurité",
+        "it": "Portineria e sicurezza"
+      },
+      "comment": {
+        "en": "Gate or security control.",
+        "de": "Pforte oder Sicherheitskontrolle.",
+        "fr": "Portail ou contrôle de sécurité.",
+        "it": "Portineria o controllo di sicurezza."
+      },
+      "inScheme": "gs1:ContactRoleTypeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:ContactRoleType-RECEPTION_CONTACT",
+      "@type": [
+        "gs1:ContactRoleType",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Reception_Contact",
+        "de": "Empfang",
+        "fr": "Accueil",
+        "it": "Reception"
+      },
+      "comment": {
+        "en": "Reception or front desk.",
+        "de": "Empfang oder Rezeption.",
+        "fr": "Accueil ou réception.",
+        "it": "Reception o banco accoglienza."
+      },
+      "inScheme": "gs1:ContactRoleTypeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:ContactRoleType-SLOT_BOOKING_CONTACT",
+      "@type": [
+        "gs1:ContactRoleType",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Slot_Booking_Contact",
+        "de": "Slotbuchung",
+        "fr": "Réservation de créneaux",
+        "it": "Prenotazione slot"
+      },
+      "comment": {
+        "en": "Dock/slot booking and delivery scheduling.",
+        "de": "Rampen- bzw. Slotbuchung und Anlieferplanung.",
+        "fr": "Réservation de quais/créneaux et planification des livraisons.",
+        "it": "Prenotazione di baie/slot e pianificazione delle consegne."
+      },
+      "inScheme": "gs1:ContactRoleTypeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:ContactRoleType-VISITOR_HOST_CONTACT",
+      "@type": [
+        "gs1:ContactRoleType",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Visitor_Host_Contact",
+        "de": "Gastgeber der Besucher",
+        "fr": "Hôte des visiteurs",
+        "it": "Ospite di riferimento"
+      },
+      "comment": {
+        "en": "Host or sponsor of visitors.",
+        "de": "Gastgeber oder Pate der Besucher.",
+        "fr": "Hôte ou parrain des visiteurs.",
+        "it": "Ospite o referente dei visitatori."
+      },
+      "inScheme": "gs1:ContactRoleTypeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:LocationRoleType-EMERGENCY_ACCESS",
+      "@type": [
+        "gs1:LocationRoleType",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Emergency_Access",
+        "de": "Notzufahrt",
+        "fr": "Accès de secours",
+        "it": "Accesso di emergenza"
+      },
+      "comment": {
+        "en": "Access reserved for emergency services.",
+        "de": "Zugang ausschließlich für Einsatzkräfte.",
+        "fr": "Accès réservé aux services d’urgence.",
+        "it": "Accesso riservato ai servizi di emergenza."
+      },
+      "inScheme": "gs1:LocationRoleTypeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:LocationRoleType-PARKING_AREA",
+      "@type": [
+        "gs1:LocationRoleType",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Parking_Area",
+        "de": "Parkplatz",
+        "fr": "Aire de stationnement",
+        "it": "Area di parcheggio"
+      },
+      "comment": {
+        "en": "Parking area for cars and/or trucks.",
+        "de": "Parkfläche für Pkw und/oder Lkw.",
+        "fr": "Aire de stationnement pour voitures et/ou camions.",
+        "it": "Area di parcheggio per auto e/o camion."
+      },
+      "inScheme": "gs1:LocationRoleTypeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:LocationRoleType-PEDESTRIAN_GATE",
+      "@type": [
+        "gs1:LocationRoleType",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Pedestrian_Gate",
+        "de": "Fußgängertor",
+        "fr": "Portillon piéton",
+        "it": "Ingresso pedonale"
+      },
+      "comment": {
+        "en": "Gate for pedestrians only.",
+        "de": "Tor nur für Fußgänger.",
+        "fr": "Portail réservé aux piétons.",
+        "it": "Ingresso riservato ai pedoni."
+      },
+      "inScheme": "gs1:LocationRoleTypeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:LocationRoleType-TRUCK_WAITING_AREA",
+      "@type": [
+        "gs1:LocationRoleType",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Truck_Waiting_Area",
+        "de": "Lkw-Wartebereich",
+        "fr": "Zone d’attente des camions",
+        "it": "Area di attesa camion"
+      },
+      "comment": {
+        "en": "Marshalling or waiting area for vehicles before being called to a dock.",
+        "de": "Sammel- oder Warteplatz für Fahrzeuge, bevor sie zu einer Rampe gerufen werden.",
+        "fr": "Zone de regroupement ou d’attente des véhicules avant appel à un quai.",
+        "it": "Area di sosta o attesa dei veicoli prima della chiamata a una baia."
+      },
+      "inScheme": "gs1:LocationRoleTypeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:LocationRoleType-WEIGHBRIDGE",
+      "@type": [
+        "gs1:LocationRoleType",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Weighbridge",
+        "de": "Fahrzeugwaage",
+        "fr": "Pont-bascule",
+        "it": "Pesa a ponte"
+      },
+      "comment": {
+        "en": "Weighbridge or vehicle scale.",
+        "de": "Fahrzeugwaage.",
+        "fr": "Pont-bascule ou balance pour véhicules.",
+        "it": "Pesa a ponte o bilancia per veicoli."
+      },
+      "inScheme": "gs1:LocationRoleTypeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:ReferencedFileTypeCode-SITE_PLAN",
+      "@type": [
+        "gs1:ReferencedFileTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Site Plan",
+        "de": "Lageplan",
+        "fr": "Plan du site",
+        "it": "Planimetria del sito"
+      },
+      "comment": {
+        "en": "Site plan or map showing gates, docks and routes.",
+        "de": "Lageplan oder Karte mit Toren, Rampen und Routen.",
+        "fr": "Plan ou carte montrant portails, quais et itinéraires.",
+        "it": "Planimetria o mappa con cancelli, baie e percorsi."
+      },
+      "inScheme": "gs1:ReferencedFileTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-ACCESS_BADGE",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Access Badge",
+        "de": "Zutrittsausweis",
+        "fr": "Badge d’accès",
+        "it": "Badge di accesso"
+      },
+      "comment": {
+        "en": "Employee or contractor access badge or card.",
+        "de": "Zutrittsausweis oder -karte für Mitarbeitende oder Auftragnehmer.",
+        "fr": "Badge ou carte d’accès pour employés ou prestataires.",
+        "it": "Badge o tessera di accesso per dipendenti o appaltatori."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-BOOKING_REFERENCE",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Booking Reference",
+        "de": "Buchungsreferenz",
+        "fr": "Référence de réservation",
+        "it": "Riferimento di prenotazione"
+      },
+      "comment": {
+        "en": "Slot or appointment confirmation.",
+        "de": "Bestätigung des Slots oder Termins.",
+        "fr": "Confirmation du créneau ou du rendez-vous.",
+        "it": "Conferma dello slot o dell’appuntamento."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-COMPANY_NAME",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Company Name",
+        "de": "Firmenname",
+        "fr": "Nom de l’entreprise",
+        "it": "Nome dell’azienda"
+      },
+      "comment": {
+        "en": "Name of employing or sending company.",
+        "de": "Name des beschäftigenden oder entsendenden Unternehmens.",
+        "fr": "Nom de l’entreprise employeuse ou expéditrice.",
+        "it": "Nome dell’azienda datrice di lavoro o mittente."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-DELIVERY_NOTE_NUMBER",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Delivery Note Number",
+        "de": "Lieferscheinnummer",
+        "fr": "Numéro de bon de livraison",
+        "it": "Numero del documento di trasporto"
+      },
+      "comment": {
+        "en": "Delivery note or despatch advice reference.",
+        "de": "Referenz des Lieferscheins oder Liefermeldung.",
+        "fr": "Référence du bon de livraison ou de l’avis d’expédition.",
+        "it": "Riferimento del documento di trasporto o dell’avviso di spedizione."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-DRIVER_LICENCE",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Driver Licence",
+        "de": "Führerschein",
+        "fr": "Permis de conduire",
+        "it": "Patente di guida"
+      },
+      "comment": {
+        "en": "Driving licence.",
+        "de": "Führerschein.",
+        "fr": "Permis de conduire.",
+        "it": "Patente di guida."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-HOST_NAME",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Host Name",
+        "de": "Name des Gastgebers",
+        "fr": "Nom de l’hôte",
+        "it": "Nome dell’ospite"
+      },
+      "comment": {
+        "en": "Name of the person being visited.",
+        "de": "Name der besuchten Person.",
+        "fr": "Nom de la personne visitée.",
+        "it": "Nome della persona visitata."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-NON_DISCLOSURE_AGREEMENT",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Non Disclosure Agreement",
+        "de": "Geheimhaltungsvereinbarung",
+        "fr": "Accord de confidentialité",
+        "it": "Accordo di riservatezza"
+      },
+      "comment": {
+        "en": "Signed confidentiality agreement.",
+        "de": "Unterzeichnete Vertraulichkeitsvereinbarung.",
+        "fr": "Accord de confidentialité signé.",
+        "it": "Accordo di riservatezza firmato."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-PERMIT_TO_WORK",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Permit To Work",
+        "de": "Arbeitsfreigabe",
+        "fr": "Permis de travail",
+        "it": "Autorizzazione al lavoro"
+      },
+      "comment": {
+        "en": "Work authorisation / permit to work (contractors).",
+        "de": "Arbeitsfreigabe bzw. Erlaubnisschein (Auftragnehmer).",
+        "fr": "Autorisation de travail (prestataires externes).",
+        "it": "Autorizzazione al lavoro / permesso di lavoro (appaltatori)."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-PHOTO_ID",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Photo Id",
+        "de": "Amtlicher Lichtbildausweis",
+        "fr": "Pièce d’identité avec photo",
+        "it": "Documento d’identità con foto"
+      },
+      "comment": {
+        "en": "Government photo identification.",
+        "de": "Amtlicher Ausweis mit Foto.",
+        "fr": "Pièce d’identité officielle avec photo.",
+        "it": "Documento d’identità ufficiale con foto."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-PROOF_OF_INSURANCE",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Proof Of Insurance",
+        "de": "Versicherungsnachweis",
+        "fr": "Attestation d’assurance",
+        "it": "Prova di assicurazione"
+      },
+      "comment": {
+        "en": "Insurance certificate.",
+        "de": "Versicherungsbescheinigung.",
+        "fr": "Certificat d’assurance.",
+        "it": "Certificato assicurativo."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-PURCHASE_ORDER_NUMBER",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Purchase Order Number",
+        "de": "Bestellnummer",
+        "fr": "Numéro de commande",
+        "it": "Numero d’ordine"
+      },
+      "comment": {
+        "en": "Purchase order reference.",
+        "de": "Bestellreferenz.",
+        "fr": "Référence de commande.",
+        "it": "Riferimento dell’ordine d’acquisto."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-SAFETY_INDUCTION",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Safety Induction",
+        "de": "Nachweis der Sicherheitseinweisung",
+        "fr": "Induction de sécurité",
+        "it": "Formazione introduttiva sulla sicurezza"
+      },
+      "comment": {
+        "en": "Proof of completed site induction.",
+        "de": "Nachweis einer absolvierten Standorteinweisung.",
+        "fr": "Preuve d’une induction de site effectuée.",
+        "it": "Prova di una formazione introduttiva sul sito completata."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-SHIPMENT_IDENTIFIER_SSCC",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Shipment Identifier SSCC",
+        "de": "SSCC der Sendung",
+        "fr": "SSCC de l’expédition",
+        "it": "SSCC della spedizione"
+      },
+      "comment": {
+        "en": "SSCC (GS1 AI 00) of the logistic units delivered.",
+        "de": "SSCC (GS1 AI 00) der gelieferten Logistikeinheiten.",
+        "fr": "SSCC (GS1 AI 00) des unités logistiques livrées.",
+        "it": "SSCC (GS1 AI 00) delle unità logistiche consegnate."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-VEHICLE_PLATE",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Vehicle Plate",
+        "de": "Kfz-Kennzeichen",
+        "fr": "Plaque d’immatriculation",
+        "it": "Targa del veicolo"
+      },
+      "comment": {
+        "en": "Vehicle and trailer registration number.",
+        "de": "Kennzeichen von Fahrzeug und Anhänger.",
+        "fr": "Numéro d’immatriculation du véhicule et de la remorque.",
+        "it": "Targa del veicolo e del rimorchio."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationCredentialTypeCode-VISITOR_INVITATION",
+      "@type": [
+        "gs1:RegistrationCredentialTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Visitor Invitation",
+        "de": "Einladung",
+        "fr": "Invitation",
+        "it": "Invito"
+      },
+      "comment": {
+        "en": "Invitation or pre-registration confirmation.",
+        "de": "Einladung oder Voranmeldungsbestätigung.",
+        "fr": "Invitation ou confirmation de pré-enregistrement.",
+        "it": "Invito o conferma di preregistrazione."
+      },
+      "inScheme": "gs1:RegistrationCredentialTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCode-EMAIL",
+      "@type": [
+        "gs1:RegistrationMethodCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Email",
+        "de": "E-Mail",
+        "fr": "E-mail",
+        "it": "E-mail"
+      },
+      "comment": {
+        "en": "By e-mail.",
+        "de": "Per E-Mail.",
+        "fr": "Par e-mail.",
+        "it": "Per e-mail."
+      },
+      "inScheme": "gs1:RegistrationMethodCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCode-KIOSK",
+      "@type": [
+        "gs1:RegistrationMethodCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Kiosk",
+        "de": "Terminal vor Ort",
+        "fr": "Borne sur site",
+        "it": "Terminale in loco"
+      },
+      "comment": {
+        "en": "Self-service terminal on site.",
+        "de": "Selbstbedienungsterminal am Standort.",
+        "fr": "Borne en libre-service sur le site.",
+        "it": "Terminale self-service nel sito."
+      },
+      "inScheme": "gs1:RegistrationMethodCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCode-MOBILE_APP",
+      "@type": [
+        "gs1:RegistrationMethodCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Mobile App",
+        "de": "Mobile App",
+        "fr": "Application mobile",
+        "it": "App mobile"
+      },
+      "comment": {
+        "en": "Mobile application.",
+        "de": "Mobile Anwendung.",
+        "fr": "Application mobile.",
+        "it": "Applicazione mobile."
+      },
+      "inScheme": "gs1:RegistrationMethodCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCode-NO_REGISTRATION",
+      "@type": [
+        "gs1:RegistrationMethodCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "No Registration",
+        "de": "Keine Registrierung",
+        "fr": "Aucun enregistrement",
+        "it": "Nessuna registrazione"
+      },
+      "comment": {
+        "en": "No registration needed.",
+        "de": "Keine Registrierung erforderlich.",
+        "fr": "Aucun enregistrement nécessaire.",
+        "it": "Nessuna registrazione necessaria."
+      },
+      "inScheme": "gs1:RegistrationMethodCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCode-ONLINE_FORM",
+      "@type": [
+        "gs1:RegistrationMethodCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Online Form",
+        "de": "Online-Formular",
+        "fr": "Formulaire en ligne",
+        "it": "Modulo online"
+      },
+      "comment": {
+        "en": "Web form.",
+        "de": "Webformular.",
+        "fr": "Formulaire web.",
+        "it": "Modulo web."
+      },
+      "inScheme": "gs1:RegistrationMethodCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCode-ON_ARRIVAL",
+      "@type": [
+        "gs1:RegistrationMethodCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "On Arrival",
+        "de": "Bei Ankunft",
+        "fr": "À l’arrivée",
+        "it": "All’arrivo"
+      },
+      "comment": {
+        "en": "At the gate or reception on arrival.",
+        "de": "Am Tor oder an der Rezeption bei Ankunft.",
+        "fr": "Au portail ou à l’accueil à l’arrivée.",
+        "it": "Al cancello o alla reception all’arrivo."
+      },
+      "inScheme": "gs1:RegistrationMethodCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCode-PHONE",
+      "@type": [
+        "gs1:RegistrationMethodCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Phone",
+        "de": "Telefon",
+        "fr": "Téléphone",
+        "it": "Telefono"
+      },
+      "comment": {
+        "en": "By telephone.",
+        "de": "Per Telefon.",
+        "fr": "Par téléphone.",
+        "it": "Per telefono."
+      },
+      "inScheme": "gs1:RegistrationMethodCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCode-SLOT_BOOKING_PLATFORM",
+      "@type": [
+        "gs1:RegistrationMethodCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Slot Booking Platform",
+        "de": "Slotbuchungsplattform",
+        "fr": "Plateforme de réservation de créneaux",
+        "it": "Piattaforma di prenotazione slot"
+      },
+      "comment": {
+        "en": "Dock/slot booking or transport-management platform.",
+        "de": "Rampen- bzw. Slotbuchung oder Transportmanagementplattform.",
+        "fr": "Réservation de quais/créneaux ou plateforme de gestion du transport.",
+        "it": "Prenotazione di baie/slot o piattaforma di gestione dei trasporti."
+      },
+      "inScheme": "gs1:RegistrationMethodCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RegistrationMethodCode-THROUGH_HOST",
+      "@type": [
+        "gs1:RegistrationMethodCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Through Host",
+        "de": "Über den Gastgeber",
+        "fr": "Par l’hôte",
+        "it": "Tramite l’ospite"
+      },
+      "comment": {
+        "en": "Registered by the host inside the organisation.",
+        "de": "Registrierung durch den Gastgeber innerhalb der Organisation.",
+        "fr": "Enregistrement effectué par l’hôte au sein de l’organisation.",
+        "it": "Registrazione effettuata dall’ospite all’interno dell’organizzazione."
+      },
+      "inScheme": "gs1:RegistrationMethodCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCode-HARD_HAT",
+      "@type": [
+        "gs1:RequiredEquipmentTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Hard Hat",
+        "de": "Schutzhelm",
+        "fr": "Casque de protection",
+        "it": "Casco protettivo"
+      },
+      "comment": {
+        "en": "Protective helmet.",
+        "de": "Schutzhelm.",
+        "fr": "Casque de protection.",
+        "it": "Casco protettivo."
+      },
+      "inScheme": "gs1:RequiredEquipmentTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCode-HEARING_PROTECTION",
+      "@type": [
+        "gs1:RequiredEquipmentTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Hearing Protection",
+        "de": "Gehörschutz",
+        "fr": "Protection auditive",
+        "it": "Protezione dell’udito"
+      },
+      "comment": {
+        "en": "Ear protection.",
+        "de": "Gehörschutz.",
+        "fr": "Protection de l’ouïe.",
+        "it": "Protezione dell’udito."
+      },
+      "inScheme": "gs1:RequiredEquipmentTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCode-HIGH_VISIBILITY_CLOTHING",
+      "@type": [
+        "gs1:RequiredEquipmentTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "High Visibility Clothing",
+        "de": "Warnkleidung",
+        "fr": "Vêtements haute visibilité",
+        "it": "Indumenti ad alta visibilità"
+      },
+      "comment": {
+        "en": "High-visibility vest or jacket.",
+        "de": "Warnweste oder Warnjacke.",
+        "fr": "Gilet ou veste haute visibilité.",
+        "it": "Gilet o giacca ad alta visibilità."
+      },
+      "inScheme": "gs1:RequiredEquipmentTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCode-HYGIENE_WEAR",
+      "@type": [
+        "gs1:RequiredEquipmentTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Hygiene Wear",
+        "de": "Hygienekleidung",
+        "fr": "Tenue d’hygiène",
+        "it": "Abbigliamento igienico"
+      },
+      "comment": {
+        "en": "Hairnet, coat or similar.",
+        "de": "Haarnetz, Kittel oder Ähnliches.",
+        "fr": "Charlotte, blouse ou similaire.",
+        "it": "Retina per capelli, camice o simili."
+      },
+      "inScheme": "gs1:RequiredEquipmentTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCode-LOAD_SECURING_EQUIPMENT",
+      "@type": [
+        "gs1:RequiredEquipmentTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Load Securing Equipment",
+        "de": "Ladungssicherung",
+        "fr": "Équipement d’arrimage",
+        "it": "Attrezzatura per il fissaggio del carico"
+      },
+      "comment": {
+        "en": "Straps or other load securing equipment.",
+        "de": "Gurte oder andere Ladungssicherungsmittel.",
+        "fr": "Sangles ou autres moyens d’arrimage de la charge.",
+        "it": "Cinghie o altri mezzi di fissaggio del carico."
+      },
+      "inScheme": "gs1:RequiredEquipmentTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCode-PROTECTIVE_GLOVES",
+      "@type": [
+        "gs1:RequiredEquipmentTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Protective Gloves",
+        "de": "Schutzhandschuhe",
+        "fr": "Gants de protection",
+        "it": "Guanti protettivi"
+      },
+      "comment": {
+        "en": "Protective gloves.",
+        "de": "Schutzhandschuhe.",
+        "fr": "Gants de protection.",
+        "it": "Guanti protettivi."
+      },
+      "inScheme": "gs1:RequiredEquipmentTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCode-SAFETY_FOOTWEAR",
+      "@type": [
+        "gs1:RequiredEquipmentTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Safety Footwear",
+        "de": "Sicherheitsschuhe",
+        "fr": "Chaussures de sécurité",
+        "it": "Calzature di sicurezza"
+      },
+      "comment": {
+        "en": "Safety shoes or boots.",
+        "de": "Sicherheitsschuhe oder -stiefel.",
+        "fr": "Chaussures ou bottes de sécurité.",
+        "it": "Scarpe o stivali di sicurezza."
+      },
+      "inScheme": "gs1:RequiredEquipmentTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCode-SAFETY_GLASSES",
+      "@type": [
+        "gs1:RequiredEquipmentTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Safety Glasses",
+        "de": "Schutzbrille",
+        "fr": "Lunettes de protection",
+        "it": "Occhiali di protezione"
+      },
+      "comment": {
+        "en": "Eye protection.",
+        "de": "Augenschutz.",
+        "fr": "Protection des yeux.",
+        "it": "Protezione degli occhi."
+      },
+      "inScheme": "gs1:RequiredEquipmentTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:RequiredEquipmentTypeCode-WHEEL_CHOCKS",
+      "@type": [
+        "gs1:RequiredEquipmentTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Wheel Chocks",
+        "de": "Unterlegkeile",
+        "fr": "Cales de roue",
+        "it": "Cunei per ruote"
+      },
+      "comment": {
+        "en": "Wheel chocks.",
+        "de": "Unterlegkeile für das Fahrzeug.",
+        "fr": "Cales de roue pour le véhicule.",
+        "it": "Cunei per le ruote del veicolo."
+      },
+      "inScheme": "gs1:RequiredEquipmentTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteAccessRoleCode-ANY",
+      "@type": [
+        "gs1:SiteAccessRoleCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Any",
+        "de": "Alle",
+        "fr": "Tous",
+        "it": "Tutti"
+      },
+      "comment": {
+        "en": "Statement applies to every role; use instead of repeating it for each role.",
+        "de": "Die Aussage gilt für jede Rolle; verwenden, statt sie für jede Rolle zu wiederholen.",
+        "fr": "L’énoncé s’applique à tous les rôles ; à utiliser au lieu de le répéter pour chaque rôle.",
+        "it": "L’affermazione vale per tutti i ruoli; da usare invece di ripeterla per ogni ruolo."
+      },
+      "inScheme": "gs1:SiteAccessRoleCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteAccessRoleCode-CONTRACTOR",
+      "@type": [
+        "gs1:SiteAccessRoleCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Contractor",
+        "de": "Auftragnehmer",
+        "fr": "Prestataire externe",
+        "it": "Appaltatore"
+      },
+      "comment": {
+        "en": "External service provider or tradesperson working on site: maintenance, construction, cleaning, IT, security. Typically needs work authorisation and induction.",
+        "de": "Externer Dienstleister oder Handwerker, der vor Ort arbeitet: Wartung, Bau, Reinigung, IT, Sicherheit. Benötigt in der Regel eine Arbeitsfreigabe und eine Einweisung.",
+        "fr": "Prestataire de services ou artisan externe travaillant sur le site : maintenance, construction, nettoyage, informatique, sécurité. A généralement besoin d’une autorisation de travail et d’une induction.",
+        "it": "Fornitore di servizi o artigiano esterno che lavora nel sito: manutenzione, edilizia, pulizia, IT, sicurezza. Di norma necessita di autorizzazione al lavoro e formazione introduttiva."
+      },
+      "inScheme": "gs1:SiteAccessRoleCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteAccessRoleCode-DELIVERY_DRIVER",
+      "@type": [
+        "gs1:SiteAccessRoleCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Delivery Driver",
+        "de": "Lieferfahrer",
+        "fr": "Chauffeur-livreur",
+        "it": "Autista addetto alle consegne"
+      },
+      "comment": {
+        "en": "Person operating a vehicle that delivers goods to, or collects goods from, the site (own fleet, carrier or courier).",
+        "de": "Person, die ein Fahrzeug führt, das Waren zum Standort liefert oder dort abholt (eigene Flotte, Spedition oder Kurier).",
+        "fr": "Personne qui conduit un véhicule livrant ou enlevant des marchandises sur le site (flotte propre, transporteur ou coursier).",
+        "it": "Persona che guida un veicolo che consegna o ritira merci presso il sito (flotta propria, vettore o corriere)."
+      },
+      "inScheme": "gs1:SiteAccessRoleCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteAccessRoleCode-EMPLOYEE",
+      "@type": [
+        "gs1:SiteAccessRoleCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Employee",
+        "de": "Mitarbeitende",
+        "fr": "Employé",
+        "it": "Dipendente"
+      },
+      "comment": {
+        "en": "Staff of the site operator or its group, incl. temporary staff, entering with their own access credential.",
+        "de": "Personal des Standortbetreibers oder seiner Gruppe, einschließlich Zeitarbeitskräften, mit eigenem Zutrittsmittel.",
+        "fr": "Personnel de l’exploitant du site ou de son groupe, y compris le personnel temporaire, entrant avec son propre moyen d’accès.",
+        "it": "Personale del gestore del sito o del suo gruppo, compreso il personale temporaneo, che accede con il proprio mezzo di accesso."
+      },
+      "inScheme": "gs1:SiteAccessRoleCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteAccessRoleCode-SUPPLIER",
+      "@type": [
+        "gs1:SiteAccessRoleCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Supplier",
+        "de": "Lieferant",
+        "fr": "Fournisseur",
+        "it": "Fornitore"
+      },
+      "comment": {
+        "en": "Trading-partner organisation supplying goods or services to the site operator and its representatives (sales, quality, booking of deliveries). Often not the person who drives the truck.",
+        "de": "Handelspartner-Organisation, die den Standortbetreiber mit Waren oder Dienstleistungen beliefert, und ihre Vertreter (Vertrieb, Qualität, Lieferdisposition). Oft nicht die Person, die den Lkw fährt.",
+        "fr": "Organisation partenaire commerciale qui fournit des biens ou des services à l’exploitant du site, et ses représentants (vente, qualité, réservation des livraisons). Souvent pas la personne qui conduit le camion.",
+        "it": "Organizzazione partner commerciale che fornisce beni o servizi al gestore del sito e suoi rappresentanti (vendite, qualità, prenotazione delle consegne). Spesso non è la persona che guida il camion."
+      },
+      "inScheme": "gs1:SiteAccessRoleCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteAccessRoleCode-VISITOR",
+      "@type": [
+        "gs1:SiteAccessRoleCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Visitor",
+        "de": "Besucher",
+        "fr": "Visiteur",
+        "it": "Visitatore"
+      },
+      "comment": {
+        "en": "Person entering on foot or by passenger vehicle who is none of the other roles: guests, meeting attendees, auditors.",
+        "de": "Person, die zu Fuß oder mit einem Pkw den Standort betritt und keine der anderen Rollen hat: Gäste, Meeting-Teilnehmende, Auditoren.",
+        "fr": "Personne qui entre à pied ou en voiture particulière sur le site et n’a aucun des autres rôles : invités, participants à une réunion, auditeurs.",
+        "it": "Persona che entra a piedi o con un’auto privata e non ha nessuno degli altri ruoli: ospiti, partecipanti a riunioni, auditor."
+      },
+      "inScheme": "gs1:SiteAccessRoleCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteFacilityTypeCode-DRIVER_CANTEEN",
+      "@type": [
+        "gs1:SiteFacilityTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Driver Canteen",
+        "de": "Kantine",
+        "fr": "Cantine",
+        "it": "Mensa"
+      },
+      "comment": {
+        "en": "Canteen or catering.",
+        "de": "Kantine oder Verpflegung.",
+        "fr": "Cantine ou restauration.",
+        "it": "Mensa o ristorazione."
+      },
+      "inScheme": "gs1:SiteFacilityTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteFacilityTypeCode-DRIVER_TOILETS",
+      "@type": [
+        "gs1:SiteFacilityTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Driver Toilets",
+        "de": "Fahrer-WC",
+        "fr": "Toilettes pour chauffeurs",
+        "it": "Servizi igienici per autisti"
+      },
+      "comment": {
+        "en": "Toilets for drivers.",
+        "de": "Toiletten für Fahrer.",
+        "fr": "Toilettes pour les chauffeurs.",
+        "it": "Servizi igienici per gli autisti."
+      },
+      "inScheme": "gs1:SiteFacilityTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteFacilityTypeCode-DRIVER_WAITING_AREA",
+      "@type": [
+        "gs1:SiteFacilityTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Driver Waiting Area",
+        "de": "Fahrer-Aufenthaltsraum",
+        "fr": "Salle d’attente des chauffeurs",
+        "it": "Sala d’attesa autisti"
+      },
+      "comment": {
+        "en": "Waiting room for drivers.",
+        "de": "Warteraum für Fahrer.",
+        "fr": "Salle d’attente pour les chauffeurs.",
+        "it": "Sala d’attesa per gli autisti."
+      },
+      "inScheme": "gs1:SiteFacilityTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteFacilityTypeCode-EV_CHARGING_POINT",
+      "@type": [
+        "gs1:SiteFacilityTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "EV Charging Point",
+        "de": "Ladestation für Elektrofahrzeuge",
+        "fr": "Borne de recharge pour véhicules électriques",
+        "it": "Punto di ricarica per veicoli elettrici"
+      },
+      "comment": {
+        "en": "Electric vehicle charging.",
+        "de": "Lademöglichkeit für Elektrofahrzeuge.",
+        "fr": "Possibilité de recharge pour véhicules électriques.",
+        "it": "Possibilità di ricarica per veicoli elettrici."
+      },
+      "inScheme": "gs1:SiteFacilityTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteFacilityTypeCode-TRUCK_PARKING",
+      "@type": [
+        "gs1:SiteFacilityTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Truck Parking",
+        "de": "Lkw-Parkplatz",
+        "fr": "Parking poids lourds",
+        "it": "Parcheggio camion"
+      },
+      "comment": {
+        "en": "Parking for trucks.",
+        "de": "Parkplatz für Lkw.",
+        "fr": "Parking pour camions.",
+        "it": "Parcheggio per camion."
+      },
+      "inScheme": "gs1:SiteFacilityTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteFacilityTypeCode-TRUCK_WASH",
+      "@type": [
+        "gs1:SiteFacilityTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Truck Wash",
+        "de": "Lkw-Waschanlage",
+        "fr": "Station de lavage",
+        "it": "Lavaggio veicoli"
+      },
+      "comment": {
+        "en": "Vehicle washing.",
+        "de": "Fahrzeugwäsche.",
+        "fr": "Lavage de véhicules.",
+        "it": "Lavaggio dei veicoli."
+      },
+      "inScheme": "gs1:SiteFacilityTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteFacilityTypeCode-VISITOR_PARKING",
+      "@type": [
+        "gs1:SiteFacilityTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Visitor Parking",
+        "de": "Besucherparkplatz",
+        "fr": "Parking visiteurs",
+        "it": "Parcheggio visitatori"
+      },
+      "comment": {
+        "en": "Parking for visitors.",
+        "de": "Parkplatz für Besucher.",
+        "fr": "Parking pour les visiteurs.",
+        "it": "Parcheggio per i visitatori."
+      },
+      "inScheme": "gs1:SiteFacilityTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteFacilityTypeCode-WIFI_ACCESS",
+      "@type": [
+        "gs1:SiteFacilityTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Wifi Access",
+        "de": "Gäste-WLAN",
+        "fr": "Wi-Fi invités",
+        "it": "Wi-Fi ospiti"
+      },
+      "comment": {
+        "en": "Guest wireless network.",
+        "de": "Drahtloses Netzwerk für Gäste.",
+        "fr": "Réseau sans fil pour les invités.",
+        "it": "Rete wireless per gli ospiti."
+      },
+      "inScheme": "gs1:SiteFacilityTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCode-ARRIVAL_PROCEDURE",
+      "@type": [
+        "gs1:SiteInstructionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Arrival Procedure",
+        "de": "Ankunft",
+        "fr": "Arrivée",
+        "it": "Arrivo"
+      },
+      "comment": {
+        "en": "On approaching and arriving.",
+        "de": "Verhalten bei Annäherung und Ankunft.",
+        "fr": "Que faire en approchant et en arrivant.",
+        "it": "Cosa fare all’avvicinamento e all’arrivo."
+      },
+      "inScheme": "gs1:SiteInstructionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCode-CHECK_IN_PROCEDURE",
+      "@type": [
+        "gs1:SiteInstructionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Check In Procedure",
+        "de": "Anmeldung",
+        "fr": "Enregistrement à l’arrivée",
+        "it": "Registrazione all’arrivo"
+      },
+      "comment": {
+        "en": "Registration, identification and pass.",
+        "de": "Registrierung, Identifikation und Ausweis.",
+        "fr": "Enregistrement, identification et badge.",
+        "it": "Registrazione, identificazione e pass."
+      },
+      "inScheme": "gs1:SiteInstructionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCode-DEPARTURE_PROCEDURE",
+      "@type": [
+        "gs1:SiteInstructionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Departure Procedure",
+        "de": "Abfahrt",
+        "fr": "Départ",
+        "it": "Partenza"
+      },
+      "comment": {
+        "en": "Check-out and leaving.",
+        "de": "Abmeldung und Verlassen des Standorts.",
+        "fr": "Sortie et départ du site.",
+        "it": "Uscita e abbandono del sito."
+      },
+      "inScheme": "gs1:SiteInstructionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCode-EMERGENCY_PROCEDURE",
+      "@type": [
+        "gs1:SiteInstructionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Emergency Procedure",
+        "de": "Notfall",
+        "fr": "Urgence",
+        "it": "Emergenza"
+      },
+      "comment": {
+        "en": "Evacuation and incident reporting.",
+        "de": "Evakuierung und Meldung von Vorfällen.",
+        "fr": "Évacuation et signalement des incidents.",
+        "it": "Evacuazione e segnalazione di incidenti."
+      },
+      "inScheme": "gs1:SiteInstructionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCode-LOADING_PROCEDURE",
+      "@type": [
+        "gs1:SiteInstructionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Loading Procedure",
+        "de": "Beladen",
+        "fr": "Chargement",
+        "it": "Carico"
+      },
+      "comment": {
+        "en": "Collecting and loading outbound goods.",
+        "de": "Abholung und Verladung ausgehender Ware.",
+        "fr": "Enlèvement et chargement des marchandises sortantes.",
+        "it": "Ritiro e carico delle merci in uscita."
+      },
+      "inScheme": "gs1:SiteInstructionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCode-OUT_OF_HOURS_PROCEDURE",
+      "@type": [
+        "gs1:SiteInstructionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Out Of Hours Procedure",
+        "de": "Außerhalb der Öffnungszeiten",
+        "fr": "Hors heures d’ouverture",
+        "it": "Fuori orario"
+      },
+      "comment": {
+        "en": "Procedure outside normal hours, e.g. key safe or call-in.",
+        "de": "Vorgehen außerhalb der normalen Zeiten, z. B. Schlüsseltresor oder telefonische Anmeldung.",
+        "fr": "Procédure en dehors des horaires normaux, par ex. boîte à clés ou appel préalable.",
+        "it": "Procedura fuori dagli orari normali, ad es. cassetta delle chiavi o chiamata."
+      },
+      "inScheme": "gs1:SiteInstructionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCode-PARKING_PROCEDURE",
+      "@type": [
+        "gs1:SiteInstructionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Parking Procedure",
+        "de": "Parken und Warten",
+        "fr": "Stationnement et attente",
+        "it": "Parcheggio e attesa"
+      },
+      "comment": {
+        "en": "Where and how to park or wait.",
+        "de": "Wo und wie geparkt oder gewartet wird.",
+        "fr": "Où et comment se garer ou attendre.",
+        "it": "Dove e come parcheggiare o attendere."
+      },
+      "inScheme": "gs1:SiteInstructionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCode-SAFETY_BRIEFING",
+      "@type": [
+        "gs1:SiteInstructionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Safety Briefing",
+        "de": "Sicherheitseinweisung",
+        "fr": "Briefing de sécurité",
+        "it": "Briefing di sicurezza"
+      },
+      "comment": {
+        "en": "Site rules and safety information.",
+        "de": "Standortregeln und Sicherheitsinformationen.",
+        "fr": "Règles du site et informations de sécurité.",
+        "it": "Regole del sito e informazioni di sicurezza."
+      },
+      "inScheme": "gs1:SiteInstructionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:SiteInstructionTypeCode-UNLOADING_PROCEDURE",
+      "@type": [
+        "gs1:SiteInstructionTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Unloading Procedure",
+        "de": "Entladen",
+        "fr": "Déchargement",
+        "it": "Scarico"
+      },
+      "comment": {
+        "en": "Presenting and unloading inbound goods.",
+        "de": "Bereitstellung und Entladung eingehender Ware.",
+        "fr": "Présentation et déchargement des marchandises entrantes.",
+        "it": "Presentazione e scarico delle merci in arrivo."
+      },
+      "inScheme": "gs1:SiteInstructionTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode-ARTICULATED_TRUCK",
+      "@type": [
+        "gs1:VehicleTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Articulated Truck",
+        "de": "Sattelzug",
+        "fr": "Semi-remorque",
+        "it": "Autoarticolato"
+      },
+      "comment": {
+        "en": "Tractor unit with semi-trailer.",
+        "de": "Zugmaschine mit Sattelauflieger.",
+        "fr": "Tracteur avec semi-remorque.",
+        "it": "Trattore con semirimorchio."
+      },
+      "inScheme": "gs1:VehicleTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode-BICYCLE",
+      "@type": [
+        "gs1:VehicleTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Bicycle",
+        "de": "Fahrrad",
+        "fr": "Vélo",
+        "it": "Bicicletta"
+      },
+      "comment": {
+        "en": "Bicycle or cargo bike.",
+        "de": "Fahrrad oder Lastenrad.",
+        "fr": "Vélo ou vélo cargo.",
+        "it": "Bicicletta o bicicletta cargo."
+      },
+      "inScheme": "gs1:VehicleTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode-DRAWBAR_COMBINATION",
+      "@type": [
+        "gs1:VehicleTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Drawbar Combination",
+        "de": "Lastzug mit Deichselanhänger",
+        "fr": "Train routier avec remorque à timon",
+        "it": "Autotreno con rimorchio a timone"
+      },
+      "comment": {
+        "en": "Rigid truck with drawbar trailer.",
+        "de": "Lastwagen mit Deichselanhänger.",
+        "fr": "Camion avec remorque à timon.",
+        "it": "Autocarro con rimorchio a timone."
+      },
+      "inScheme": "gs1:VehicleTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode-MOTORCYCLE",
+      "@type": [
+        "gs1:VehicleTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Motorcycle",
+        "de": "Motorrad",
+        "fr": "Moto",
+        "it": "Motocicletta"
+      },
+      "comment": {
+        "en": "Motorcycle.",
+        "de": "Motorrad.",
+        "fr": "Moto.",
+        "it": "Motocicletta."
+      },
+      "inScheme": "gs1:VehicleTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode-ON_FOOT",
+      "@type": [
+        "gs1:VehicleTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "On Foot",
+        "de": "Zu Fuß",
+        "fr": "À pied",
+        "it": "A piedi"
+      },
+      "comment": {
+        "en": "Pedestrian.",
+        "de": "Fußgänger.",
+        "fr": "Piéton.",
+        "it": "Pedone."
+      },
+      "inScheme": "gs1:VehicleTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode-PASSENGER_CAR",
+      "@type": [
+        "gs1:VehicleTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Passenger Car",
+        "de": "Pkw",
+        "fr": "Voiture particulière",
+        "it": "Autovettura"
+      },
+      "comment": {
+        "en": "Passenger car.",
+        "de": "Personenkraftwagen.",
+        "fr": "Voiture particulière.",
+        "it": "Autovettura."
+      },
+      "inScheme": "gs1:VehicleTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode-REFRIGERATED_TRUCK",
+      "@type": [
+        "gs1:VehicleTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Refrigerated Truck",
+        "de": "Kühlfahrzeug",
+        "fr": "Véhicule frigorifique",
+        "it": "Veicolo frigorifero"
+      },
+      "comment": {
+        "en": "Temperature-controlled vehicle.",
+        "de": "Fahrzeug mit Temperaturführung.",
+        "fr": "Véhicule à température dirigée.",
+        "it": "Veicolo a temperatura controllata."
+      },
+      "inScheme": "gs1:VehicleTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode-RIGID_TRUCK",
+      "@type": [
+        "gs1:VehicleTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Rigid Truck",
+        "de": "Lkw (Solo)",
+        "fr": "Camion porteur",
+        "it": "Autocarro"
+      },
+      "comment": {
+        "en": "Rigid truck.",
+        "de": "Lastwagen ohne Anhänger.",
+        "fr": "Camion sans remorque.",
+        "it": "Autocarro senza rimorchio."
+      },
+      "inScheme": "gs1:VehicleTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode-TANKER_TRUCK",
+      "@type": [
+        "gs1:VehicleTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Tanker Truck",
+        "de": "Tankfahrzeug",
+        "fr": "Camion-citerne",
+        "it": "Autocisterna"
+      },
+      "comment": {
+        "en": "Tanker vehicle.",
+        "de": "Tankfahrzeug.",
+        "fr": "Véhicule-citerne.",
+        "it": "Veicolo cisterna."
+      },
+      "inScheme": "gs1:VehicleTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:VehicleTypeCode-VAN",
+      "@type": [
+        "gs1:VehicleTypeCode",
+        "skos:Concept"
+      ],
+      "label": {
+        "en": "Van",
+        "de": "Lieferwagen",
+        "fr": "Véhicule utilitaire léger",
+        "it": "Furgone"
+      },
+      "comment": {
+        "en": "Light commercial vehicle.",
+        "de": "Leichtes Nutzfahrzeug.",
+        "fr": "Véhicule utilitaire léger.",
+        "it": "Veicolo commerciale leggero."
+      },
+      "inScheme": "gs1:VehicleTypeCodeScheme",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:addressedTo",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "addressed to",
+        "de": "gerichtet an",
+        "fr": "destiné à",
+        "it": "rivolto a"
+      },
+      "comment": {
+        "en": "Role(s) for which a statement is relevant. Use on any gs1:SiteAccessElement, on a gs1:Place used as access point, or on a gs1:ContactPoint. Absence means gs1:SiteAccessRoleCode-ANY.",
+        "de": "Rolle(n), für die eine Aussage relevant ist. Verwendbar an jedem gs1:SiteAccessElement, an einem als Zugangspunkt genutzten gs1:Place oder an einem gs1:ContactPoint. Fehlt die Angabe, gilt gs1:SiteAccessRoleCode-ANY.",
+        "fr": "Rôle(s) pour lesquels un énoncé est pertinent. Utilisable sur tout gs1:SiteAccessElement, sur un gs1:Place servant de point d’accès ou sur un gs1:ContactPoint. En l’absence, gs1:SiteAccessRoleCode-ANY s’applique.",
+        "it": "Ruolo/i per cui un’affermazione è rilevante. Utilizzabile su ogni gs1:SiteAccessElement, su un gs1:Place usato come punto di accesso o su un gs1:ContactPoint. Se assente, vale gs1:SiteAccessRoleCode-ANY."
+      },
+      "range": "gs1:SiteAccessRoleCode",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:advanceNotice",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "advance notice",
+        "de": "Vorlaufzeit",
+        "fr": "préavis",
+        "it": "preavviso"
+      },
+      "comment": {
+        "en": "Minimum lead time before arrival, ISO 8601 (PT24H).",
+        "de": "Mindestvorlauf vor der Ankunft, ISO 8601 (PT24H).",
+        "fr": "Délai minimal avant l’arrivée, ISO 8601 (PT24H).",
+        "it": "Anticipo minimo rispetto all’arrivo, ISO 8601 (PT24H)."
+      },
+      "domain": "gs1:RegistrationRequirement",
+      "range": "xsd:duration",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:applicableVehicleType",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "applicable vehicle type",
+        "de": "gilt für Fahrzeugart",
+        "fr": "s’applique au type de véhicule",
+        "it": "si applica al tipo di veicolo"
+      },
+      "comment": {
+        "en": "Vehicle type(s) for which the statement is relevant.",
+        "de": "Fahrzeugart(en), für die die Aussage relevant ist.",
+        "fr": "Type(s) de véhicule pour lesquels l’énoncé est pertinent.",
+        "it": "Tipo/i di veicolo per cui l’affermazione è rilevante."
+      },
+      "range": "gs1:VehicleTypeCode",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:appliesToAccessPoint",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "applies to access point",
+        "de": "gilt für Zugangspunkt",
+        "fr": "s’applique au point d’accès",
+        "it": "si applica al punto di accesso"
+      },
+      "comment": {
+        "en": "Restricts the statement to a specific access point (a gs1:Place). Absence means the whole site.",
+        "de": "Beschränkt die Aussage auf einen bestimmten Zugangspunkt (einen gs1:Place). Fehlt die Angabe, gilt sie für den gesamten Standort.",
+        "fr": "Limite l’énoncé à un point d’accès précis (un gs1:Place). En l’absence, il vaut pour tout le site.",
+        "it": "Limita l’affermazione a un punto di accesso specifico (un gs1:Place). Se assente, vale per l’intero sito."
+      },
+      "range": "gs1:Place",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:arrivalTolerance",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "arrival tolerance",
+        "de": "Ankunftstoleranz",
+        "fr": "tolérance d’arrivée",
+        "it": "tolleranza di arrivo"
+      },
+      "comment": {
+        "en": "Accepted deviation from slot start, ISO 8601 (PT15M).",
+        "de": "Zulässige Abweichung vom Slotbeginn, ISO 8601 (PT15M).",
+        "fr": "Écart admis par rapport au début du créneau, ISO 8601 (PT15M).",
+        "it": "Scostamento ammesso rispetto all’inizio dello slot, ISO 8601 (PT15M)."
+      },
+      "domain": "gs1:AccessTimeWindow",
+      "range": "xsd:duration",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:describesSite",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "describes site",
+        "de": "beschreibt Standort",
+        "fr": "décrit le site",
+        "it": "descrive il sito"
+      },
+      "comment": {
+        "en": "The site (a gs1:Place, typically with a GLN) described by the document. If WebVoc gs1:location is confirmed to fit this domain it can replace this term.",
+        "de": "Der im Dokument beschriebene Standort (ein gs1:Place, in der Regel mit GLN). Falls sich gs1:location für diese Domäne als passend erweist, kann es diesen Begriff ersetzen.",
+        "fr": "Le site (un gs1:Place, généralement avec un GLN) décrit par le document. Si gs1:location s’avère adapté à ce domaine, il peut remplacer ce terme.",
+        "it": "Il sito (un gs1:Place, di norma con GLN) descritto dal documento. Se gs1:location risulta adatto a questo dominio, può sostituire questo termine."
+      },
+      "domain": "gs1:SiteAccessInformation",
+      "range": "gs1:Place",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:hasAccessInstruction",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "has access instruction",
+        "de": "hat Zugangsanweisung",
+        "fr": "a une instruction d’accès",
+        "it": "ha istruzione di accesso"
+      },
+      "comment": {
+        "en": "An access instruction.",
+        "de": "Eine Zugangsanweisung.",
+        "fr": "Une instruction d’accès.",
+        "it": "Un’istruzione di accesso."
+      },
+      "domain": "gs1:SiteAccessInformation",
+      "range": "gs1:AccessInstruction",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:hasAccessRestriction",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "has access restriction",
+        "de": "hat Zugangsbeschränkung",
+        "fr": "a une restriction d’accès",
+        "it": "ha restrizione di accesso"
+      },
+      "comment": {
+        "en": "An access restriction.",
+        "de": "Eine Zugangsbeschränkung.",
+        "fr": "Une restriction d’accès.",
+        "it": "Una restrizione di accesso."
+      },
+      "domain": "gs1:SiteAccessInformation",
+      "range": "gs1:AccessRestriction",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:hasAccessTime",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "has access time",
+        "de": "hat Zugangszeit",
+        "fr": "a une plage horaire d’accès",
+        "it": "ha fascia oraria di accesso"
+      },
+      "comment": {
+        "en": "An access time window.",
+        "de": "Ein Zugangszeitfenster.",
+        "fr": "Une plage horaire d’accès.",
+        "it": "Una fascia oraria di accesso."
+      },
+      "domain": "gs1:SiteAccessInformation",
+      "range": "gs1:AccessTimeWindow",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:hasLocationGuidance",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "has location guidance",
+        "de": "hat Ortshinweis",
+        "fr": "a une indication de localisation",
+        "it": "ha indicazione di localizzazione"
+      },
+      "comment": {
+        "en": "A piece of location guidance.",
+        "de": "Ein Ortshinweis.",
+        "fr": "Une indication de localisation.",
+        "it": "Un’indicazione di localizzazione."
+      },
+      "domain": "gs1:SiteAccessInformation",
+      "range": "gs1:LocationGuidance",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:hasRegistrationRequirement",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "has registration requirement",
+        "de": "hat Registrierungsanforderung",
+        "fr": "a une exigence d’enregistrement",
+        "it": "ha requisito di registrazione"
+      },
+      "comment": {
+        "en": "A registration requirement.",
+        "de": "Eine Registrierungsanforderung.",
+        "fr": "Une exigence d’enregistrement.",
+        "it": "Un requisito di registrazione."
+      },
+      "domain": "gs1:SiteAccessInformation",
+      "range": "gs1:RegistrationRequirement",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:hasSiteFacility",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "has site facility",
+        "de": "hat Standorteinrichtung",
+        "fr": "a un équipement du site",
+        "it": "ha struttura del sito"
+      },
+      "comment": {
+        "en": "A facility available at the place or access point.",
+        "de": "Eine am Ort oder Zugangspunkt verfügbare Einrichtung.",
+        "fr": "Un équipement disponible sur le lieu ou le point d’accès.",
+        "it": "Una struttura disponibile nel luogo o nel punto di accesso."
+      },
+      "domain": "gs1:Place",
+      "range": "gs1:SiteFacilityTypeCode",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:inductionValidity",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "induction validity",
+        "de": "Gültigkeit der Einweisung",
+        "fr": "validité de l’induction",
+        "it": "validità della formazione introduttiva"
+      },
+      "comment": {
+        "en": "How long a completed induction or registration stays valid (P365D).",
+        "de": "Wie lange eine absolvierte Einweisung oder Registrierung gültig bleibt (P365D).",
+        "fr": "Durée de validité d’une induction ou d’un enregistrement effectué (P365D).",
+        "it": "Per quanto tempo resta valida una formazione o registrazione completata (P365D)."
+      },
+      "domain": "gs1:RegistrationRequirement",
+      "range": "xsd:duration",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:instructionText",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "instruction text",
+        "de": "Anweisungstext",
+        "fr": "texte de l’instruction",
+        "it": "testo dell’istruzione"
+      },
+      "comment": {
+        "en": "Instruction text; language map in JSON-LD.",
+        "de": "Text der Anweisung; in JSON-LD als Sprachabbildung.",
+        "fr": "Texte de l’instruction ; table de langues en JSON-LD.",
+        "it": "Testo dell’istruzione; mappa delle lingue in JSON-LD."
+      },
+      "domain": "gs1:AccessInstruction",
+      "range": "rdfs:Literal",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:instructionType",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "instruction type",
+        "de": "Anweisungsart",
+        "fr": "type d’instruction",
+        "it": "tipo di istruzione"
+      },
+      "comment": {
+        "en": "Kind of procedure.",
+        "de": "Art des Vorgehens.",
+        "fr": "Type de procédure.",
+        "it": "Tipo di procedura."
+      },
+      "domain": "gs1:AccessInstruction",
+      "range": "gs1:SiteInstructionTypeCode",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:isMandatory",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "is mandatory",
+        "de": "ist verbindlich",
+        "fr": "est obligatoire",
+        "it": "è obbligatorio"
+      },
+      "comment": {
+        "en": "True if compliance is compulsory.",
+        "de": "Wahr, wenn die Einhaltung verpflichtend ist.",
+        "fr": "Vrai si le respect est obligatoire.",
+        "it": "Vero se il rispetto è obbligatorio."
+      },
+      "range": "xsd:boolean",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:maxVehiclesPerSlot",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "max vehicles per slot",
+        "de": "max. Fahrzeuge pro Slot",
+        "fr": "nombre max. de véhicules par créneau",
+        "it": "numero massimo di veicoli per slot"
+      },
+      "comment": {
+        "en": "Maximum vehicles per slot.",
+        "de": "Höchstzahl an Fahrzeugen pro Slot.",
+        "fr": "Nombre maximal de véhicules par créneau.",
+        "it": "Numero massimo di veicoli per slot."
+      },
+      "domain": "gs1:AccessTimeWindow",
+      "range": "xsd:positiveInteger",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:navigationAddress",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "navigation address",
+        "de": "Navigationsadresse",
+        "fr": "adresse de navigation",
+        "it": "indirizzo di navigazione"
+      },
+      "comment": {
+        "en": "Address to enter in a navigation system when it differs from the registered address.",
+        "de": "Adresse zur Eingabe in ein Navigationssystem, wenn sie von der registrierten Adresse abweicht.",
+        "fr": "Adresse à saisir dans un système de navigation lorsqu’elle diffère de l’adresse enregistrée.",
+        "it": "Indirizzo da inserire in un sistema di navigazione quando differisce da quello registrato."
+      },
+      "domain": "gs1:LocationGuidance",
+      "range": "gs1:PostalAddress",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:navigationWarning",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "navigation warning",
+        "de": "Navigationswarnung",
+        "fr": "avertissement de navigation",
+        "it": "avviso di navigazione"
+      },
+      "comment": {
+        "en": "Known pitfall, e.g. satnav sends trucks to the wrong gate, low bridge.",
+        "de": "Bekannte Fallstricke, z. B. Navi führt Lkw zum falschen Tor, niedrige Brücke.",
+        "fr": "Piège connu, par ex. le GPS envoie les camions au mauvais portail, pont bas.",
+        "it": "Insidia nota, ad es. il navigatore manda i camion al cancello sbagliato, ponte basso."
+      },
+      "domain": "gs1:LocationGuidance",
+      "range": "rdfs:Literal",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:registrationContact",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "registration contact",
+        "de": "Kontakt für die Registrierung",
+        "fr": "contact pour l’enregistrement",
+        "it": "contatto per la registrazione"
+      },
+      "comment": {
+        "en": "Contact for registration questions.",
+        "de": "Kontakt für Fragen zur Registrierung.",
+        "fr": "Contact pour les questions sur l’enregistrement.",
+        "it": "Contatto per domande sulla registrazione."
+      },
+      "domain": "gs1:RegistrationRequirement",
+      "range": "gs1:ContactPoint",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:registrationMethod",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "registration method",
+        "de": "Registrierungsweg",
+        "fr": "mode d’enregistrement",
+        "it": "modalità di registrazione"
+      },
+      "comment": {
+        "en": "How registration or booking is done.",
+        "de": "Wie die Registrierung oder Buchung erfolgt.",
+        "fr": "Comment l’enregistrement ou la réservation se fait.",
+        "it": "Come avviene la registrazione o la prenotazione."
+      },
+      "domain": "gs1:RegistrationRequirement",
+      "range": "gs1:RegistrationMethodCode",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:registrationText",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "registration text",
+        "de": "Registrierungstext",
+        "fr": "texte d’enregistrement",
+        "it": "testo di registrazione"
+      },
+      "comment": {
+        "en": "Explanation of the registration process.",
+        "de": "Erläuterung des Registrierungsablaufs.",
+        "fr": "Explication de la procédure d’enregistrement.",
+        "it": "Spiegazione della procedura di registrazione."
+      },
+      "domain": "gs1:RegistrationRequirement",
+      "range": "rdfs:Literal",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:registrationUrl",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "registration url",
+        "de": "Registrierungs-URL",
+        "fr": "URL d’enregistrement",
+        "it": "URL di registrazione"
+      },
+      "comment": {
+        "en": "Web address of the registration or booking facility.",
+        "de": "Webadresse der Registrierungs- oder Buchungsmöglichkeit.",
+        "fr": "Adresse web du service d’enregistrement ou de réservation.",
+        "it": "Indirizzo web del servizio di registrazione o prenotazione."
+      },
+      "domain": "gs1:RegistrationRequirement",
+      "range": "xsd:anyURI",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:requiredCredential",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "required credential",
+        "de": "erforderlicher Nachweis",
+        "fr": "justificatif requis",
+        "it": "documento richiesto"
+      },
+      "comment": {
+        "en": "Information or document to present.",
+        "de": "Vorzulegende Angabe oder vorzulegendes Dokument.",
+        "fr": "Information ou document à présenter.",
+        "it": "Informazione o documento da presentare."
+      },
+      "domain": "gs1:RegistrationRequirement",
+      "range": "gs1:RegistrationCredentialTypeCode",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:requiredEquipment",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "required equipment",
+        "de": "erforderliche Ausrüstung",
+        "fr": "équipement requis",
+        "it": "attrezzatura richiesta"
+      },
+      "comment": {
+        "en": "Equipment required.",
+        "de": "Erforderliche Ausrüstung.",
+        "fr": "Équipement requis.",
+        "it": "Attrezzatura richiesta."
+      },
+      "domain": "gs1:AccessRestriction",
+      "range": "gs1:RequiredEquipmentTypeCode",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:requiresAppointment",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "requires appointment",
+        "de": "erfordert Termin",
+        "fr": "nécessite un rendez-vous",
+        "it": "richiede un appuntamento"
+      },
+      "comment": {
+        "en": "Access in this window needs a booked appointment or slot.",
+        "de": "Zutritt in diesem Zeitfenster erfordert einen gebuchten Termin oder Slot.",
+        "fr": "L’accès pendant cette plage nécessite un rendez-vous ou un créneau réservé.",
+        "it": "L’accesso in questa fascia richiede un appuntamento o uno slot prenotato."
+      },
+      "domain": "gs1:AccessTimeWindow",
+      "range": "xsd:boolean",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:restrictionMode",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "restriction mode",
+        "de": "Wirkungsweise der Beschränkung",
+        "fr": "mode de la restriction",
+        "it": "modalità della restrizione"
+      },
+      "comment": {
+        "en": "Prohibited, required, limited or advisory.",
+        "de": "Verboten, vorgeschrieben, begrenzt oder empfohlen.",
+        "fr": "Interdit, obligatoire, limité ou recommandé.",
+        "it": "Vietato, obbligatorio, limitato o raccomandato."
+      },
+      "domain": "gs1:AccessRestriction",
+      "range": "gs1:AccessRestrictionModeCode",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:restrictionText",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "restriction text",
+        "de": "Beschränkungstext",
+        "fr": "texte de la restriction",
+        "it": "testo della restrizione"
+      },
+      "comment": {
+        "en": "Human-readable statement of the restriction.",
+        "de": "Menschenlesbare Formulierung der Beschränkung.",
+        "fr": "Formulation lisible de la restriction.",
+        "it": "Formulazione leggibile della restrizione."
+      },
+      "domain": "gs1:AccessRestriction",
+      "range": "rdfs:Literal",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:restrictionType",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "restriction type",
+        "de": "Art der Beschränkung",
+        "fr": "type de restriction",
+        "it": "tipo di restrizione"
+      },
+      "comment": {
+        "en": "Subject of the restriction.",
+        "de": "Gegenstand der Beschränkung.",
+        "fr": "Objet de la restriction.",
+        "it": "Oggetto della restrizione."
+      },
+      "domain": "gs1:AccessRestriction",
+      "range": "gs1:AccessRestrictionTypeCode",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:restrictionValue",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "restriction value",
+        "de": "Beschränkungswert",
+        "fr": "valeur de la restriction",
+        "it": "valore della restrizione"
+      },
+      "comment": {
+        "en": "Numeric limit as gs1:QuantitativeValue (gs1:value + gs1:unitCode, UN/CEFACT), e.g. 4.0 MTR. With mode Limited the value is a maximum.",
+        "de": "Zahlenwert als gs1:QuantitativeValue (gs1:value + gs1:unitCode, UN/CEFACT), z. B. 4,0 MTR. Bei der Wirkungsweise „begrenzt“ ist der Wert ein Höchstwert.",
+        "fr": "Limite numérique sous forme de gs1:QuantitativeValue (gs1:value + gs1:unitCode, UN/CEFACT), par ex. 4,0 MTR. Avec le mode « limité », la valeur est un maximum.",
+        "it": "Limite numerico come gs1:QuantitativeValue (gs1:value + gs1:unitCode, UN/CEFACT), ad es. 4,0 MTR. Con la modalità «limitato» il valore è un massimo."
+      },
+      "domain": "gs1:AccessRestriction",
+      "range": "gs1:QuantitativeValue",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:routeDescription",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "route description",
+        "de": "Routenbeschreibung",
+        "fr": "description de l’itinéraire",
+        "it": "descrizione del percorso"
+      },
+      "comment": {
+        "en": "Route from the nearest major road or reference point.",
+        "de": "Route von der nächsten Hauptstraße oder einem Bezugspunkt.",
+        "fr": "Itinéraire depuis la route principale ou un point de repère le plus proche.",
+        "it": "Percorso dalla strada principale o da un punto di riferimento più vicino."
+      },
+      "domain": "gs1:LocationGuidance",
+      "range": "rdfs:Literal",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:signageDescription",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "signage description",
+        "de": "Beschilderungshinweis",
+        "fr": "description de la signalisation",
+        "it": "descrizione della segnaletica"
+      },
+      "comment": {
+        "en": "Signs, colours or numbers to follow.",
+        "de": "Schilder, Farben oder Nummern, denen zu folgen ist.",
+        "fr": "Panneaux, couleurs ou numéros à suivre.",
+        "it": "Cartelli, colori o numeri da seguire."
+      },
+      "domain": "gs1:LocationGuidance",
+      "range": "rdfs:Literal",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:slotDuration",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "slot duration",
+        "de": "Slotdauer",
+        "fr": "durée du créneau",
+        "it": "durata dello slot"
+      },
+      "comment": {
+        "en": "Length of one bookable slot, ISO 8601 (PT30M).",
+        "de": "Dauer eines buchbaren Slots, ISO 8601 (PT30M).",
+        "fr": "Durée d’un créneau réservable, ISO 8601 (PT30M).",
+        "it": "Durata di uno slot prenotabile, ISO 8601 (PT30M)."
+      },
+      "domain": "gs1:AccessTimeWindow",
+      "range": "xsd:duration",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:timeWindowDescription",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "time window description",
+        "de": "Beschreibung des Zeitfensters",
+        "fr": "description de la plage horaire",
+        "it": "descrizione della fascia oraria"
+      },
+      "comment": {
+        "en": "Explanation, e.g. reason for a closure.",
+        "de": "Erläuterung, z. B. der Grund einer Schließung.",
+        "fr": "Explication, par ex. motif d’une fermeture.",
+        "it": "Spiegazione, ad es. il motivo di una chiusura."
+      },
+      "domain": "gs1:AccessTimeWindow",
+      "range": "rdfs:Literal",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:timeWindowType",
+      "@type": "owl:ObjectProperty",
+      "label": {
+        "en": "time window type",
+        "de": "Art des Zeitfensters",
+        "fr": "type de plage horaire",
+        "it": "tipo di fascia oraria"
+      },
+      "comment": {
+        "en": "Purpose of the window.",
+        "de": "Zweck des Zeitfensters.",
+        "fr": "Finalité de la plage horaire.",
+        "it": "Scopo della fascia oraria."
+      },
+      "domain": "gs1:AccessTimeWindow",
+      "range": "gs1:AccessTimeWindowTypeCode",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:timeZone",
+      "@type": "owl:DatatypeProperty",
+      "label": {
+        "en": "time zone",
+        "de": "Zeitzone",
+        "fr": "fuseau horaire",
+        "it": "fuso orario"
+      },
+      "comment": {
+        "en": "IANA time zone (e.g. Europe/Berlin) in which schema:opens/closes and dates are interpreted. On gs1:SiteAccessInformation (document default) or gs1:AccessTimeWindow (override).",
+        "de": "IANA-Zeitzone (z. B. Europe/Berlin), in der schema:opens/closes und Datumsangaben zu lesen sind. An gs1:SiteAccessInformation (Standard für das Dokument) oder gs1:AccessTimeWindow (Überschreibung).",
+        "fr": "Fuseau horaire IANA (par ex. Europe/Paris) dans lequel schema:opens/closes et les dates sont interprétés. Sur gs1:SiteAccessInformation (valeur par défaut du document) ou gs1:AccessTimeWindow (remplacement).",
+        "it": "Fuso orario IANA (ad es. Europe/Rome) in cui si interpretano schema:opens/closes e le date. Su gs1:SiteAccessInformation (predefinito del documento) o su gs1:AccessTimeWindow (sostituzione)."
+      },
+      "range": "xsd:string",
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    },
+    {
+      "@id": "gs1:usedWithLinkType",
+      "@type": "owl:AnnotationProperty",
+      "label": {
+        "en": "used with link type",
+        "de": "verwendet mit Linktyp",
+        "fr": "utilisé avec le type de lien",
+        "it": "usato con il tipo di collegamento"
+      },
+      "comment": {
+        "en": "Annotates a class: the GS1 Digital Link link type(s) under which instances of the class are expected to be published. gs1:siteAccessRequirements exists in the current WebVoc core context; gs1:siteAccessInstructions is the link type named in the requirement - both are listed until the final name is confirmed.",
+        "de": "Annotiert eine Klasse: Der GS1-Digital-Link-Linktyp bzw. die Linktypen, unter denen Instanzen dieser Klasse veröffentlicht werden. gs1:siteAccessRequirements existiert im aktuellen WebVoc-Kernkontext; gs1:siteAccessInstructions ist der in der Anforderung genannte Linktyp – beide sind aufgeführt, bis der endgültige Name feststeht.",
+        "fr": "Annote une classe : le ou les types de lien GS1 Digital Link sous lesquels les instances de cette classe sont publiées. gs1:siteAccessRequirements existe dans le contexte de base actuel de WebVoc ; gs1:siteAccessInstructions est le type de lien nommé dans l’exigence – les deux sont listés jusqu’à confirmation du nom définitif.",
+        "it": "Annota una classe: il/i tipo/i di collegamento GS1 Digital Link con cui si pubblicano le istanze della classe. gs1:siteAccessRequirements esiste nell’attuale contesto di base di WebVoc; gs1:siteAccessInstructions è il tipo di collegamento indicato nel requisito – entrambi sono elencati finché il nome definitivo non è confermato."
+      },
+      "isDefinedBy": "gs1:module/siteAccess",
+      "termStatus": "unstable"
+    }
+  ]
+}

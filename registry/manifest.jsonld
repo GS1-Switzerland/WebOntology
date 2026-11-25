@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-11-25T10:41:42.964Z",
+  "generatedAt": "2026-11-25T10:43:59.342Z",
   "domains": [
     {
       "slug": "bearing",
@@ -751,7 +751,7 @@
           "label": "JSON-LD @context",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-19T09:22:44Z",
+          "publishedAt": "2026-11-25T10:41:43Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/ontologies/gs1-site-access-context.jsonld"
         },
         {
@@ -761,7 +761,7 @@
           "label": "Site Access vocabulary (JSON-LD, staging)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-19T09:22:44Z",
+          "publishedAt": "2026-11-25T10:41:43Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/vocabularies/gs1-site-access-vocabulary.jsonld"
         },
         {

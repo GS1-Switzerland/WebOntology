@@ -1,0 +1,210 @@
+@prefix gs1:    <https://ref.gs1.org/voc/> .
+@prefix sai:    <https://ref.gs1.org/sai/> .
+@prefix schema: <http://schema.org/> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix gsh:    <https://ref.gs1.org/sai/shapes#> .
+
+# Validation profile for sai:SiteAccessInformation documents (SHACL Core + SPARQL).
+# sh:Violation = not interpretable; sh:Warning = interpretable but impractical.
+
+gsh:SiteAccessInformationShape a sh:NodeShape ;
+    sh:targetClass sai:SiteAccessInformation ;
+    sh:property [ sh:path sai:describesSite ; sh:minCount 1 ; sh:maxCount 1 ; sh:class gs1:Place ;
+        sh:message "A document must describe exactly one gs1:Place (sai:describesSite)." ] ;
+    sh:property [ sh:path schema:inLanguage ; sh:minCount 1 ; sh:severity sh:Warning ;
+        sh:message "Declare schema:inLanguage so resolvers can select the right document." ] ;
+    sh:property [ sh:path sai:timeZone ; sh:minCount 1 ; sh:severity sh:Warning ;
+        sh:message "Declare sai:timeZone (IANA) so opening times can be interpreted." ] ;
+    sh:or ( [ sh:path sai:hasAccessInstruction ; sh:minCount 1 ]
+            [ sh:path sai:hasAccessRestriction ; sh:minCount 1 ]
+            [ sh:path sai:hasAccessTime ; sh:minCount 1 ]
+            [ sh:path sai:hasRegistrationRequirement ; sh:minCount 1 ]
+            [ sh:path sai:hasLocationGuidance ; sh:minCount 1 ]
+            [ sh:path sai:hasHandoverRequirement ; sh:minCount 1 ] ) ;
+    sh:property [ sh:path sai:basedOn ; sh:nodeKind sh:IRI ; sh:maxCount 1 ] ;
+    sh:message "A document must contain at least one instruction, restriction, access time, registration requirement, handover requirement or location guidance." .
+
+# Qualifiers shared by every element, access point (gs1:Place) and contact (gs1:ContactPoint)
+gsh:QualifierShape a sh:NodeShape ;
+    sh:targetClass sai:AccessInstruction , sai:AccessRestriction , sai:AccessTimeWindow ,
+                   sai:RegistrationRequirement , sai:LocationGuidance , sai:HandoverRequirement , gs1:ContactPoint ;
+    sh:targetObjectsOf gs1:containsPlace ;
+    sh:property [ sh:path sai:addressedTo ; sh:class sai:SiteAccessRoleCode ; sh:severity sh:Warning ; sh:minCount 1 ;
+        sh:message "Say who the statement is for (sai:addressedTo), or use SiteAccessRoleCode-ANY." ] ;
+    sh:property [ sh:path sai:appliesToAccessPoint ; sh:class gs1:Place ] ;
+    sh:property [ sh:path sai:applicableVehicleType ; sh:class sai:VehicleTypeCode ] ;
+    sh:property [ sh:path sai:appliesToGoodsType ; sh:class sai:GoodsTypeCode ] ;
+    sh:property [ sh:path sai:isMandatory ; sh:datatype xsd:boolean ; sh:maxCount 1 ] .
+
+gsh:AccessPointShape a sh:NodeShape ;
+    sh:targetObjectsOf gs1:containsPlace ;
+    sh:property [ sh:path gs1:locationRole ; sh:minCount 1 ; sh:nodeKind sh:IRI ; sh:pattern "^https://ref\\.gs1\\.org/(voc|sai)/LocationRoleType-" ;
+        sh:message "An access point (gs1:Place) needs a gs1:locationRole (e.g. GATE, DOCK, MAIN_RECEPTION)." ] ;
+    sh:property [ sh:path gs1:physicalLocationName ; sh:minCount 1 ; sh:severity sh:Warning ] ;
+    sh:sparql [ a sh:SPARQLConstraint ; sh:severity sh:Warning ;
+        sh:message "Give coordinates (gs1:geo) so the access point can be found (indoor points with a floor level are exempt)." ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { FILTER NOT EXISTS { $this gs1:geo ?g } FILTER NOT EXISTS { $this sai:floorLevel ?f }
+              FILTER NOT EXISTS { $this gs1:locationRole ?r . FILTER (STRAFTER(STR(?r),"RoleType-") IN ("DELIVERY_POINT","GOODS_LIFT","MAIL_ROOM","PARCEL_LOCKER")) } }""" ] .
+
+gsh:GeoShape a sh:NodeShape ;
+    sh:targetClass gs1:GeoCoordinates ;
+    sh:property [ sh:path gs1:latitude ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:Literal ; sh:minInclusive -90 ; sh:maxInclusive 90 ] ;
+    sh:property [ sh:path gs1:longitude ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:Literal ; sh:minInclusive -180 ; sh:maxInclusive 180 ] .
+
+gsh:InstructionShape a sh:NodeShape ;
+    sh:targetClass sai:AccessInstruction ;
+    sh:property [ sh:path sai:instructionText ; sh:minCount 1 ; sh:nodeKind sh:Literal ] ;
+    sh:property [ sh:path sai:instructionType ; sh:class sai:SiteInstructionTypeCode ; sh:maxCount 1 ] ;
+    sh:property [ sh:path schema:position ; sh:datatype xsd:integer ; sh:minInclusive 1 ] .
+
+gsh:RestrictionShape a sh:NodeShape ;
+    sh:targetClass sai:AccessRestriction ;
+    sh:property [ sh:path sai:restrictionType ; sh:minCount 1 ; sh:maxCount 1 ; sh:class sai:AccessRestrictionTypeCode ] ;
+    sh:property [ sh:path sai:restrictionMode ; sh:minCount 1 ; sh:maxCount 1 ; sh:class sai:AccessRestrictionModeCode ] ;
+    sh:property [ sh:path sai:requiredEquipment ; sh:class sai:RequiredEquipmentTypeCode ] ;
+    sh:property [ sh:path sai:restrictionValue ; sh:class gs1:QuantitativeValue ;
+        sh:property [ sh:path gs1:unitCode ; sh:minCount 1 ; sh:message "restrictionValue needs a UN/CEFACT gs1:unitCode." ] ;
+        sh:property [ sh:path gs1:value ; sh:minCount 1 ; sh:message "restrictionValue needs gs1:value." ] ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "A restriction with mode Limited must carry sai:restrictionValue." ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { $this sai:restrictionMode sai:AccessRestrictionModeCode-LIMITED .
+              FILTER NOT EXISTS { $this sai:restrictionValue ?v } }""" ] ;
+    sh:sparql [ a sh:SPARQLConstraint ; sh:severity sh:Warning ;
+        sh:message "A PPERequirement should name sai:requiredEquipment." ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { $this sai:restrictionType sai:AccessRestrictionTypeCode-PPE_REQUIREMENT .
+              FILTER NOT EXISTS { $this sai:requiredEquipment ?v } }""" ] .
+
+gsh:AccessTimeWindowShape a sh:NodeShape ;
+    sh:targetClass sai:AccessTimeWindow ;
+    sh:property [ sh:path sai:timeWindowType ; sh:minCount 1 ; sh:class sai:AccessTimeWindowTypeCode ] ;
+    sh:property [ sh:path schema:opens ; sh:datatype xsd:time ; sh:maxCount 1 ] ;
+    sh:property [ sh:path schema:closes ; sh:datatype xsd:time ; sh:maxCount 1 ] ;
+    sh:property [ sh:path schema:dayOfWeek ; sh:nodeKind sh:IRI ;
+        sh:in ( schema:Monday schema:Tuesday schema:Wednesday schema:Thursday schema:Friday schema:Saturday schema:Sunday schema:PublicHolidays ) ] ;
+    sh:property [ sh:path gs1:validFrom ; sh:datatype xsd:dateTime ; sh:maxCount 1 ] ;
+    sh:property [ sh:path gs1:validThrough ; sh:datatype xsd:dateTime ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:requiresAppointment ; sh:datatype xsd:boolean ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:slotDuration ; sh:datatype xsd:duration ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:arrivalTolerance ; sh:datatype xsd:duration ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:maxVehiclesPerSlot ; sh:datatype xsd:positiveInteger ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:closureReason ; sh:class sai:ClosureReasonCode ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:recurrence ; sh:class sai:RecurrenceCode ; sh:maxCount 1 ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "A window that repeats annually needs gs1:validFrom and gs1:validThrough (the dates that repeat)." ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { $this sai:recurrence sai:RecurrenceCode-ANNUALLY .
+              FILTER NOT EXISTS { $this gs1:validFrom ?f . $this gs1:validThrough ?t } }""" ] ;
+    sh:sparql [ a sh:SPARQLConstraint ; sh:severity sh:Warning ;
+        sh:message "A closureReason only makes sense on a window of type ClosedPeriod or BreakPeriod." ;
+        sh:select """PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { $this sai:closureReason ?r . FILTER NOT EXISTS { $this sai:timeWindowType ?ty . FILTER (?ty IN (sai:AccessTimeWindowTypeCode-CLOSED_PERIOD, sai:AccessTimeWindowTypeCode-BREAK_PERIOD)) } }""" ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "opens and closes must both be present, or both absent." ;
+        sh:select """PREFIX schema: <http://schema.org/>
+            SELECT $this WHERE { { $this schema:opens ?o . FILTER NOT EXISTS { $this schema:closes ?c } }
+              UNION { $this schema:closes ?c . FILTER NOT EXISTS { $this schema:opens ?o } } }""" ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "A window needs schema:dayOfWeek or a gs1:validFrom date range." ;
+        sh:select """PREFIX schema: <http://schema.org/> PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { FILTER NOT EXISTS { $this schema:dayOfWeek ?d }
+              FILTER NOT EXISTS { $this gs1:validFrom ?f } }""" ] .
+
+gsh:RegistrationShape a sh:NodeShape ;
+    sh:targetClass sai:RegistrationRequirement ;
+    sh:property [ sh:path sai:registrationMethod ; sh:minCount 1 ; sh:class sai:RegistrationMethodCode ] ;
+    sh:property [ sh:path sai:requiredCredential ; sh:class sai:RegistrationCredentialTypeCode ] ;
+    sh:property [ sh:path sai:advanceNotice ; sh:datatype xsd:duration ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:inductionValidity ; sh:datatype xsd:duration ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:registrationUrl ; sh:datatype xsd:anyURI ] ;
+    sh:property [ sh:path sai:registrationContact ; sh:class gs1:ContactPoint ] ;
+    sh:property [ sh:path sai:registrationPoint ; sh:class gs1:Place ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:idDocumentHandling ; sh:class sai:IdDocumentHandlingCode ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:inductionMode ; sh:class sai:SafetyInductionModeCode ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:inductionUrl ; sh:datatype xsd:anyURI ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:inductionDuration ; sh:datatype xsd:duration ; sh:maxCount 1 ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "An induction that is done online before arrival needs sai:inductionUrl." ;
+        sh:select """PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { $this sai:inductionMode sai:SafetyInductionModeCode-ONLINE_BEFORE_ARRIVAL . FILTER NOT EXISTS { $this sai:inductionUrl ?u } }""" ] .
+
+gsh:ContactPointShape a sh:NodeShape ;
+    sh:targetClass gs1:ContactPoint ;
+    sh:property [ sh:path gs1:contactRoleCode ; sh:minCount 1 ; sh:nodeKind sh:IRI ; sh:pattern "^https://ref\\.gs1\\.org/(voc|sai)/ContactRoleType-" ] ;
+    sh:or ( [ sh:path gs1:telephone ; sh:minCount 1 ] [ sh:path gs1:email ; sh:minCount 1 ] ) ;
+    sh:property [ sh:path sai:useWhen ; sh:class sai:ContactUseCaseCode ] ;
+    sh:property [ sh:path sai:telephoneType ; sh:class sai:TelephoneTypeCode ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:contactPriority ; sh:datatype xsd:positiveInteger ; sh:maxCount 1 ] ;
+    sh:sparql [ a sh:SPARQLConstraint ; sh:severity sh:Warning ;
+        sh:message "A switchboard number rarely helps when the gate is closed or the site cannot be found: add a direct or mobile number." ;
+        sh:select """PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { $this sai:telephoneType sai:TelephoneTypeCode-SWITCHBOARD ; sai:useWhen ?u . FILTER (?u IN (sai:ContactUseCaseCode-GATE_CLOSED, sai:ContactUseCaseCode-SITE_NOT_FOUND)) }""" ] ;
+    sh:message "A contact needs at least a gs1:telephone or gs1:email." .
+
+gsh:LocationGuidanceShape a sh:NodeShape ;
+    sh:targetClass sai:LocationGuidance ;
+    sh:property [ sh:path sai:navigationAddress ; sh:class gs1:PostalAddress ; sh:maxCount 1 ] ;
+    sh:or ( [ sh:path sai:navigationAddress ; sh:minCount 1 ] [ sh:path sai:routeDescription ; sh:minCount 1 ]
+            [ sh:path gs1:locationDescription ; sh:minCount 1 ] [ sh:path sai:signageDescription ; sh:minCount 1 ]
+            [ sh:path sai:navigationWarning ; sh:minCount 1 ] [ sh:path gs1:referencedFile ; sh:minCount 1 ] ) ;
+    sh:message "Location guidance must contain at least one piece of guidance." .
+
+gsh:HandoverRequirementShape a sh:NodeShape ;
+    sh:targetClass sai:HandoverRequirement ;
+    sh:property [ sh:path sai:handoverMethod ; sh:class sai:HandoverMethodCode ] ;
+    sh:property [ sh:path sai:handoverPoint ; sh:class gs1:Place ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:personsRequired ; sh:datatype xsd:positiveInteger ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:siteUnloadingEquipment ; sh:class sai:UnloadingEquipmentCode ] ;
+    sh:property [ sh:path sai:requiredProofOfDelivery ; sh:class sai:ProofOfDeliveryCode ] ;
+    sh:property [ sh:path sai:requiredEquipment ; sh:class sai:RequiredEquipmentTypeCode ] ;
+    sh:or ( [ sh:path sai:handoverMethod ; sh:minCount 1 ] [ sh:path sai:personsRequired ; sh:minCount 1 ]
+            [ sh:path sai:siteUnloadingEquipment ; sh:minCount 1 ] [ sh:path sai:requiredProofOfDelivery ; sh:minCount 1 ]
+            [ sh:path sai:requiredEquipment ; sh:minCount 1 ] [ sh:path sai:handoverPoint ; sh:minCount 1 ] [ sh:path sai:handoverText ; sh:minCount 1 ] ) ;
+    sh:message "A handover requirement must state at least one condition." ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "NoUnloadingAids contradicts other unloading equipment in the same handover requirement." ;
+        sh:select """PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { $this sai:siteUnloadingEquipment sai:UnloadingEquipmentCode-NO_UNLOADING_AIDS , ?o .
+              FILTER (?o != sai:UnloadingEquipmentCode-NO_UNLOADING_AIDS) }""" ] .
+
+# Building and entrance details on any place of the document
+gsh:PlaceDetailShape a sh:NodeShape ;
+    sh:targetObjectsOf sai:describesSite , gs1:containsPlace ;
+    sh:property [ sh:path sai:floorLevel ; sh:datatype xsd:string ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:unitIdentifier ; sh:datatype xsd:string ; sh:maxCount 1 ] ;
+    sh:property [ sh:path sai:buildingName ; sh:nodeKind sh:Literal ] ;
+    sh:property [ sh:path sai:signLabel ; sh:nodeKind sh:Literal ] .
+
+# GLN and GLN extension (GS1 AI 254) on sites and sub-locations
+gsh:GlnShape a sh:NodeShape ;
+    sh:targetObjectsOf sai:describesSite , gs1:containsPlace ;
+    sh:property [ sh:path gs1:globalLocationNumber ; sh:maxCount 1 ; sh:pattern "^[0-9]{13}$" ;
+        sh:message "A GLN has 13 digits." ] ;
+    sh:property [ sh:path sai:glnExtension ; sh:maxCount 1 ; sh:datatype xsd:string ;
+        sh:pattern "^[!\"%&'()*+,\\-./0-9:;<=>?A-Z_a-z]{1,20}$" ;
+        sh:message "A GLN extension has 1 to 20 characters from the GS1 AI character set (letters, digits and !\"%&'()*+,-./:;<=>?_)." ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "A place is identified either by its own GLN or by a GLN extension, not both." ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { $this sai:glnExtension ?e ; gs1:globalLocationNumber ?g }""" ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "A GLN extension needs a GLN above it: the site or a building that has its own GLN." ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { $this sai:glnExtension ?e .
+              FILTER NOT EXISTS { ?a gs1:containsPlace+ $this . ?a gs1:globalLocationNumber ?g } }""" ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "Two places share the same GLN and the same GLN extension." ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE {
+              $this sai:glnExtension ?e . ?a gs1:containsPlace+ $this ; gs1:globalLocationNumber ?g .
+              FILTER NOT EXISTS { ?a gs1:containsPlace+ ?m . ?m gs1:containsPlace+ $this . ?m gs1:globalLocationNumber ?g2 }
+              ?o sai:glnExtension ?e . FILTER (?o != $this)
+              ?a gs1:containsPlace+ ?o .
+              FILTER NOT EXISTS { ?a gs1:containsPlace+ ?m2 . ?m2 gs1:containsPlace+ ?o . ?m2 gs1:globalLocationNumber ?g3 } }""" ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "A Digital Link identifier of a sub-location must end in /254/{extension}." ;
+        sh:select """PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { $this sai:glnExtension ?e . FILTER (isIRI($this) && STRSTARTS(STR($this),"https://id.gs1.org/414/") && !STRENDS(STR($this), CONCAT("/254/",?e))) }""" ] .

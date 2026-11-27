@@ -1,0 +1,2101 @@
+@prefix gs1:    <https://ref.gs1.org/voc/> .
+@prefix sai:    <https://ref.gs1.org/sai/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix sw:     <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+
+<https://ref.gs1.org/sai/> a owl:Ontology ;
+    dct:title "GS1 Site Access and Logistics Information Module (sai)"@en ;
+    dct:description "Terms for describing how a physical site (GLN-identified gs1:Place) can be found and accessed by visitors, delivery drivers, suppliers, contractors and employees: access points, instructions, restrictions, access times, registration and contacts. Payload vocabulary for the GS1 Digital Link link types gs1:siteAccessInstructions (see note on gs1:siteAccessRequirements), gs1:logisticsInfo and gs1:scheduleTime. GS1 WebVoc terms are re-used first (gs1:Place, gs1:containsPlace, gs1:locationRole, gs1:ContactPoint, gs1:contactRoleCode, gs1:PostalAddress, gs1:GeoCoordinates, gs1:QuantitativeValue, gs1:referencedFile ...), then schema.org; only gaps are defined as new terms. Terms defined by this module use the prefix sai: (https://ref.gs1.org/sai/); re-used GS1 WebVoc terms keep gs1:. All sai: terms are PROPOSED and can be moved into the GS1 Web Vocabulary."@en ;
+    owl:versionInfo "0.2.0-draft" ;
+    dct:created "2026-11-19"^^xsd:date ;
+    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:seeAlso <https://ref.gs1.org/voc/> , <http://schema.org/> .
+
+sai:usedWithLinkType a owl:AnnotationProperty ;
+    rdfs:label "used with link type"@en ;
+    rdfs:comment "Annotates a class: the GS1 Digital Link link type(s) under which instances of the class are expected to be published. gs1:siteAccessRequirements exists in the current WebVoc core context; gs1:siteAccessInstructions is the link type named in the requirement - both are listed until the final name is confirmed."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ; sw:term_status "unstable" .
+
+
+# ======================================================================
+# 1. NEW CLASSES (gaps only; Place, ContactPoint, PostalAddress, GeoCoordinates, QuantitativeValue, ReferencedFileDetails are re-used from WebVoc)
+# ======================================================================
+
+sai:SiteAccessInformation a owl:Class ;
+    rdfs:label "Site Access Information"@en ;
+    rdfs:comment "Root node of a site access / logistics information document for one site (gs1:Place). Aggregates access instructions, restrictions, access times, registration requirements and location guidance; contacts and access points hang on the gs1:Place itself (gs1:contactPoint, gs1:containsPlace). Inherits schema:CreativeWork metadata (inLanguage, dateModified, version)."@en ;
+    rdfs:subClassOf schema:CreativeWork ;
+    sai:usedWithLinkType gs1:siteAccessInstructions , gs1:siteAccessRequirements , gs1:logisticsInfo , gs1:scheduleTime ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteAccessElement a owl:Class ;
+    rdfs:label "Site Access Element"@en ;
+    rdfs:comment "Abstract superclass of statement-level elements. Carries cross-cutting qualifiers addressedTo, appliesToAccessPoint, applicableVehicleType, isMandatory. The same qualifiers are used on gs1:Place (access points) and gs1:ContactPoint."@en ;
+    rdfs:subClassOf schema:Thing ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessInstruction a owl:Class ;
+    rdfs:label "Access Instruction"@en ;
+    rdfs:comment "A practical instruction: arrive, check in, park, load/unload, depart, emergency. Order steps with schema:position."@en ;
+    rdfs:subClassOf sai:SiteAccessElement ;
+    sai:usedWithLinkType gs1:siteAccessInstructions , gs1:siteAccessRequirements , gs1:logisticsInfo ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestriction a owl:Class ;
+    rdfs:label "Access Restriction"@en ;
+    rdfs:comment "A prohibition, requirement, limit or advisory for entering or operating at the site. Machine-evaluable via restrictionType + restrictionMode + restrictionValue."@en ;
+    rdfs:subClassOf sai:SiteAccessElement ;
+    sai:usedWithLinkType gs1:siteAccessInstructions , gs1:siteAccessRequirements , gs1:logisticsInfo ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindow a owl:Class ;
+    rdfs:label "Access Time Window"@en ;
+    rdfs:comment "A recurring or dated time window in which access, visiting, delivery or collection is possible, restricted or closed. WebVoc has no opening-hours class (only the openingHoursInfo link type), so schema:OpeningHoursSpecification is specialised: schema:dayOfWeek, schema:opens, schema:closes and gs1:validFrom / gs1:validThrough (WebVoc, xsd:dateTime) are re-used."@en ;
+    rdfs:subClassOf schema:OpeningHoursSpecification , sai:SiteAccessElement ;
+    sai:usedWithLinkType gs1:scheduleTime , gs1:logisticsInfo , gs1:siteAccessInstructions , gs1:siteAccessRequirements ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationRequirement a owl:Class ;
+    rdfs:label "Registration Requirement"@en ;
+    rdfs:comment "What must be arranged before or on arrival: book a slot, pre-register, present credentials, complete an induction."@en ;
+    rdfs:subClassOf sai:SiteAccessElement ;
+    sai:usedWithLinkType gs1:siteAccessInstructions , gs1:siteAccessRequirements , gs1:logisticsInfo ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:LocationGuidance a owl:Class ;
+    rdfs:label "Location Guidance"@en ;
+    rdfs:comment "Practical help to find the site or an access point: navigation address, route, signage, warnings. General descriptions use WebVoc gs1:locationDescription; maps use gs1:referencedFile."@en ;
+    rdfs:subClassOf sai:SiteAccessElement ;
+    sai:usedWithLinkType gs1:siteAccessInstructions , gs1:siteAccessRequirements , gs1:logisticsInfo ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:HandoverRequirement a owl:Class ;
+    rdfs:label "Handover Requirement"@en ;
+    rdfs:comment "The conditions of the final handover: who receives the goods and where, how many people and which equipment are needed, what the site offers for unloading and which proof of delivery must be captured. Answers the questions a driver otherwise discovers only at the dock."@en ;
+    rdfs:subClassOf sai:SiteAccessElement ;
+    sai:usedWithLinkType gs1:siteAccessInstructions , gs1:siteAccessRequirements , gs1:logisticsInfo ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+
+# ======================================================================
+# 2. NEW CODE LISTS
+# ======================================================================
+
+sai:SiteAccessRoleCode a owl:Class ;
+    rdfs:label "Site Access Role Code"@en ;
+    rdfs:comment "The audience (addressee) role a statement is meant for. Code list in WebVoc style: members are sai:SiteAccessRoleCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteAccessRoleCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Site Access Role Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:SiteAccessRoleCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteAccessRoleCode-VISITOR a sai:SiteAccessRoleCode , skos:Concept ;
+    rdfs:label "Visitor"@en ;
+    rdfs:comment "Person entering on foot or by passenger vehicle who is none of the other roles: guests, meeting attendees, auditors."@en ;
+    skos:inScheme sai:SiteAccessRoleCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteAccessRoleCode-DELIVERY_DRIVER a sai:SiteAccessRoleCode , skos:Concept ;
+    rdfs:label "Delivery Driver"@en ;
+    rdfs:comment "Person operating a vehicle that delivers goods to, or collects goods from, the site (own fleet, carrier or courier)."@en ;
+    skos:inScheme sai:SiteAccessRoleCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteAccessRoleCode-SUPPLIER a sai:SiteAccessRoleCode , skos:Concept ;
+    rdfs:label "Supplier"@en ;
+    rdfs:comment "Trading-partner organisation supplying goods or services to the site operator and its representatives (sales, quality, booking of deliveries). Often not the person who drives the truck."@en ;
+    skos:inScheme sai:SiteAccessRoleCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteAccessRoleCode-CONTRACTOR a sai:SiteAccessRoleCode , skos:Concept ;
+    rdfs:label "Contractor"@en ;
+    rdfs:comment "External service provider or tradesperson working on site: maintenance, construction, cleaning, IT, security. Typically needs work authorisation and induction."@en ;
+    skos:inScheme sai:SiteAccessRoleCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteAccessRoleCode-EMPLOYEE a sai:SiteAccessRoleCode , skos:Concept ;
+    rdfs:label "Employee"@en ;
+    rdfs:comment "Staff of the site operator or its group, incl. temporary staff, entering with their own access credential."@en ;
+    skos:inScheme sai:SiteAccessRoleCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteAccessRoleCode-ANY a sai:SiteAccessRoleCode , skos:Concept ;
+    rdfs:label "Any"@en ;
+    rdfs:comment "Statement applies to every role; use instead of repeating it for each role."@en ;
+    skos:inScheme sai:SiteAccessRoleCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode a owl:Class ;
+    rdfs:label "Site Instruction Type Code"@en ;
+    rdfs:comment "The kind of procedure an access instruction describes. Code list in WebVoc style: members are sai:SiteInstructionTypeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Site Instruction Type Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:SiteInstructionTypeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode-ARRIVAL_PROCEDURE a sai:SiteInstructionTypeCode , skos:Concept ;
+    rdfs:label "Arrival Procedure"@en ;
+    rdfs:comment "On approaching and arriving."@en ;
+    skos:inScheme sai:SiteInstructionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode-CHECK_IN_PROCEDURE a sai:SiteInstructionTypeCode , skos:Concept ;
+    rdfs:label "Check In Procedure"@en ;
+    rdfs:comment "Registration, identification and pass."@en ;
+    skos:inScheme sai:SiteInstructionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode-PARKING_PROCEDURE a sai:SiteInstructionTypeCode , skos:Concept ;
+    rdfs:label "Parking Procedure"@en ;
+    rdfs:comment "Where and how to park or wait."@en ;
+    skos:inScheme sai:SiteInstructionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode-UNLOADING_PROCEDURE a sai:SiteInstructionTypeCode , skos:Concept ;
+    rdfs:label "Unloading Procedure"@en ;
+    rdfs:comment "Presenting and unloading inbound goods."@en ;
+    skos:inScheme sai:SiteInstructionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode-LOADING_PROCEDURE a sai:SiteInstructionTypeCode , skos:Concept ;
+    rdfs:label "Loading Procedure"@en ;
+    rdfs:comment "Collecting and loading outbound goods."@en ;
+    skos:inScheme sai:SiteInstructionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode-DEPARTURE_PROCEDURE a sai:SiteInstructionTypeCode , skos:Concept ;
+    rdfs:label "Departure Procedure"@en ;
+    rdfs:comment "Check-out and leaving."@en ;
+    skos:inScheme sai:SiteInstructionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode-SAFETY_BRIEFING a sai:SiteInstructionTypeCode , skos:Concept ;
+    rdfs:label "Safety Briefing"@en ;
+    rdfs:comment "Site rules and safety information."@en ;
+    skos:inScheme sai:SiteInstructionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode-EMERGENCY_PROCEDURE a sai:SiteInstructionTypeCode , skos:Concept ;
+    rdfs:label "Emergency Procedure"@en ;
+    rdfs:comment "Evacuation and incident reporting."@en ;
+    skos:inScheme sai:SiteInstructionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode-OUT_OF_HOURS_PROCEDURE a sai:SiteInstructionTypeCode , skos:Concept ;
+    rdfs:label "Out Of Hours Procedure"@en ;
+    rdfs:comment "Procedure outside normal hours, e.g. key safe or call-in."@en ;
+    skos:inScheme sai:SiteInstructionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteInstructionTypeCode-HANDOVER_PROCEDURE a sai:SiteInstructionTypeCode , skos:Concept ;
+    rdfs:label "Handover Procedure"@en ;
+    rdfs:comment "Handing over the goods: who receives, where and in which order."@en ;
+    skos:inScheme sai:SiteInstructionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode a owl:Class ;
+    rdfs:label "Access Restriction Type Code"@en ;
+    rdfs:comment "The subject matter of an access restriction. Code list in WebVoc style: members are sai:AccessRestrictionTypeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Access Restriction Type Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:AccessRestrictionTypeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-VEHICLE_HEIGHT_LIMIT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Vehicle Height Limit"@en ;
+    rdfs:comment "Maximum vehicle height."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-VEHICLE_WIDTH_LIMIT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Vehicle Width Limit"@en ;
+    rdfs:comment "Maximum vehicle width."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-VEHICLE_LENGTH_LIMIT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Vehicle Length Limit"@en ;
+    rdfs:comment "Maximum vehicle or combination length."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-VEHICLE_WEIGHT_LIMIT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Vehicle Weight Limit"@en ;
+    rdfs:comment "Maximum gross vehicle weight."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-AXLE_LOAD_LIMIT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Axle Load Limit"@en ;
+    rdfs:comment "Maximum axle load."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-VEHICLE_TYPE_RESTRICTION a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Vehicle Type Restriction"@en ;
+    rdfs:comment "Restriction to or exclusion of vehicle types (see applicableVehicleType)."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-EMISSION_ZONE_RESTRICTION a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Emission Zone Restriction"@en ;
+    rdfs:comment "Low-emission or similar zone requirement."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-SPEED_LIMIT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Speed Limit"@en ;
+    rdfs:comment "On-site speed limit."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-PPE_REQUIREMENT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "PPE Requirement"@en ;
+    rdfs:comment "Personal protective equipment (see requiredEquipment)."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-PROHIBITED_ITEMS a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Prohibited Items"@en ;
+    rdfs:comment "Items that may not be brought on site."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-SECURITY_SCREENING a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Security Screening"@en ;
+    rdfs:comment "Screening of persons, vehicles or loads."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-ESCORT_REQUIRED a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Escort Required"@en ;
+    rdfs:comment "Must be escorted."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-PHOTOGRAPHY_RESTRICTION a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Photography Restriction"@en ;
+    rdfs:comment "Photography or recording restrictions."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-MOBILE_DEVICE_RESTRICTION a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Mobile Device Restriction"@en ;
+    rdfs:comment "Phone or device restrictions."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-HAZARDOUS_GOODS_RESTRICTION a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Hazardous Goods Restriction"@en ;
+    rdfs:comment "Dangerous goods restrictions, e.g. ADR."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-AGE_RESTRICTION a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Age Restriction"@en ;
+    rdfs:comment "Minimum age."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-HYGIENE_REQUIREMENT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Hygiene Requirement"@en ;
+    rdfs:comment "Health, hygiene or clothing rules."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-NO_IDLING_RESTRICTION a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "No Idling Restriction"@en ;
+    rdfs:comment "Engines off while waiting or unloading."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-CAPACITY_LIMIT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Capacity Limit"@en ;
+    rdfs:comment "Maximum people or vehicles on site or at a point."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-PALLET_HEIGHT_LIMIT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Pallet Height Limit"@en ;
+    rdfs:comment "Maximum height of a pallet or load unit that can be accepted."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-PACKAGE_WEIGHT_LIMIT a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Package Weight Limit"@en ;
+    rdfs:comment "Maximum weight of one package for manual handling; heavier items need equipment or a second person."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionTypeCode-OTHER_RESTRICTION a sai:AccessRestrictionTypeCode , skos:Concept ;
+    rdfs:label "Other Restriction"@en ;
+    rdfs:comment "Not covered by another member; explain in restrictionText."@en ;
+    skos:inScheme sai:AccessRestrictionTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionModeCode a owl:Class ;
+    rdfs:label "Access Restriction Mode Code"@en ;
+    rdfs:comment "How a restriction operates. Code list in WebVoc style: members are sai:AccessRestrictionModeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionModeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Access Restriction Mode Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:AccessRestrictionModeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionModeCode-PROHIBITED a sai:AccessRestrictionModeCode , skos:Concept ;
+    rdfs:label "Prohibited"@en ;
+    rdfs:comment "Not allowed."@en ;
+    skos:inScheme sai:AccessRestrictionModeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionModeCode-REQUIRED a sai:AccessRestrictionModeCode , skos:Concept ;
+    rdfs:label "Required"@en ;
+    rdfs:comment "Mandatory."@en ;
+    skos:inScheme sai:AccessRestrictionModeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionModeCode-LIMITED a sai:AccessRestrictionModeCode , skos:Concept ;
+    rdfs:label "Limited"@en ;
+    rdfs:comment "A quantitative limit applies; see restrictionValue."@en ;
+    skos:inScheme sai:AccessRestrictionModeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessRestrictionModeCode-ADVISORY a sai:AccessRestrictionModeCode , skos:Concept ;
+    rdfs:label "Advisory"@en ;
+    rdfs:comment "Recommendation only."@en ;
+    skos:inScheme sai:AccessRestrictionModeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode a owl:Class ;
+    rdfs:label "Required Equipment Type Code"@en ;
+    rdfs:comment "Equipment a person or vehicle must wear or carry. Code list in WebVoc style: members are sai:RequiredEquipmentTypeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Required Equipment Type Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:RequiredEquipmentTypeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-HIGH_VISIBILITY_CLOTHING a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "High Visibility Clothing"@en ;
+    rdfs:comment "High-visibility vest or jacket."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-SAFETY_FOOTWEAR a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Safety Footwear"@en ;
+    rdfs:comment "Safety shoes or boots."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-HARD_HAT a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Hard Hat"@en ;
+    rdfs:comment "Protective helmet."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-SAFETY_GLASSES a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Safety Glasses"@en ;
+    rdfs:comment "Eye protection."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-PROTECTIVE_GLOVES a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Protective Gloves"@en ;
+    rdfs:comment "Protective gloves."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-HEARING_PROTECTION a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Hearing Protection"@en ;
+    rdfs:comment "Ear protection."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-HYGIENE_WEAR a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Hygiene Wear"@en ;
+    rdfs:comment "Hairnet, coat or similar."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-WHEEL_CHOCKS a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Wheel Chocks"@en ;
+    rdfs:comment "Wheel chocks."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-LOAD_SECURING_EQUIPMENT a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Load Securing Equipment"@en ;
+    rdfs:comment "Straps or other load securing equipment."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-TAIL_LIFT a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Tail Lift"@en ;
+    rdfs:comment "Vehicle with a working tail lift."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-PALLET_JACK a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Pallet Jack"@en ;
+    rdfs:comment "Pallet jack carried on the vehicle."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RequiredEquipmentTypeCode-HAND_TROLLEY a sai:RequiredEquipmentTypeCode , skos:Concept ;
+    rdfs:label "Hand Trolley"@en ;
+    rdfs:comment "Hand trolley carried by the driver."@en ;
+    skos:inScheme sai:RequiredEquipmentTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode a owl:Class ;
+    rdfs:label "Vehicle Type Code"@en ;
+    rdfs:comment "Vehicle category for access statements. Code list in WebVoc style: members are sai:VehicleTypeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Vehicle Type Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:VehicleTypeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode-ON_FOOT a sai:VehicleTypeCode , skos:Concept ;
+    rdfs:label "On Foot"@en ;
+    rdfs:comment "Pedestrian."@en ;
+    skos:inScheme sai:VehicleTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode-BICYCLE a sai:VehicleTypeCode , skos:Concept ;
+    rdfs:label "Bicycle"@en ;
+    rdfs:comment "Bicycle or cargo bike."@en ;
+    skos:inScheme sai:VehicleTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode-MOTORCYCLE a sai:VehicleTypeCode , skos:Concept ;
+    rdfs:label "Motorcycle"@en ;
+    rdfs:comment "Motorcycle."@en ;
+    skos:inScheme sai:VehicleTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode-PASSENGER_CAR a sai:VehicleTypeCode , skos:Concept ;
+    rdfs:label "Passenger Car"@en ;
+    rdfs:comment "Passenger car."@en ;
+    skos:inScheme sai:VehicleTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode-VAN a sai:VehicleTypeCode , skos:Concept ;
+    rdfs:label "Van"@en ;
+    rdfs:comment "Light commercial vehicle."@en ;
+    skos:inScheme sai:VehicleTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode-RIGID_TRUCK a sai:VehicleTypeCode , skos:Concept ;
+    rdfs:label "Rigid Truck"@en ;
+    rdfs:comment "Rigid truck."@en ;
+    skos:inScheme sai:VehicleTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode-ARTICULATED_TRUCK a sai:VehicleTypeCode , skos:Concept ;
+    rdfs:label "Articulated Truck"@en ;
+    rdfs:comment "Tractor unit with semi-trailer."@en ;
+    skos:inScheme sai:VehicleTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode-DRAWBAR_COMBINATION a sai:VehicleTypeCode , skos:Concept ;
+    rdfs:label "Drawbar Combination"@en ;
+    rdfs:comment "Rigid truck with drawbar trailer."@en ;
+    skos:inScheme sai:VehicleTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode-REFRIGERATED_TRUCK a sai:VehicleTypeCode , skos:Concept ;
+    rdfs:label "Refrigerated Truck"@en ;
+    rdfs:comment "Temperature-controlled vehicle."@en ;
+    skos:inScheme sai:VehicleTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:VehicleTypeCode-TANKER_TRUCK a sai:VehicleTypeCode , skos:Concept ;
+    rdfs:label "Tanker Truck"@en ;
+    rdfs:comment "Tanker vehicle."@en ;
+    skos:inScheme sai:VehicleTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindowTypeCode a owl:Class ;
+    rdfs:label "Access Time Window Type Code"@en ;
+    rdfs:comment "The purpose of a time window. Code list in WebVoc style: members are sai:AccessTimeWindowTypeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindowTypeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Access Time Window Type Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:AccessTimeWindowTypeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindowTypeCode-GENERAL_ACCESS_HOURS a sai:AccessTimeWindowTypeCode , skos:Concept ;
+    rdfs:label "General Access Hours"@en ;
+    rdfs:comment "Hours in which the site can generally be accessed."@en ;
+    skos:inScheme sai:AccessTimeWindowTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindowTypeCode-VISITING_HOURS a sai:AccessTimeWindowTypeCode , skos:Concept ;
+    rdfs:label "Visiting Hours"@en ;
+    rdfs:comment "Hours in which visitors are received."@en ;
+    skos:inScheme sai:AccessTimeWindowTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindowTypeCode-DELIVERY_WINDOW a sai:AccessTimeWindowTypeCode , skos:Concept ;
+    rdfs:label "Delivery Window"@en ;
+    rdfs:comment "Hours in which inbound deliveries are accepted."@en ;
+    skos:inScheme sai:AccessTimeWindowTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindowTypeCode-COLLECTION_WINDOW a sai:AccessTimeWindowTypeCode , skos:Concept ;
+    rdfs:label "Collection Window"@en ;
+    rdfs:comment "Hours in which outbound goods can be collected."@en ;
+    skos:inScheme sai:AccessTimeWindowTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindowTypeCode-OUT_OF_HOURS_ACCESS a sai:AccessTimeWindowTypeCode , skos:Concept ;
+    rdfs:label "Out Of Hours Access"@en ;
+    rdfs:comment "Limited access outside general hours, e.g. by badge."@en ;
+    skos:inScheme sai:AccessTimeWindowTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindowTypeCode-RESTRICTED_PERIOD a sai:AccessTimeWindowTypeCode , skos:Concept ;
+    rdfs:label "Restricted Period"@en ;
+    rdfs:comment "Access only for some roles/vehicles or with extra conditions."@en ;
+    skos:inScheme sai:AccessTimeWindowTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindowTypeCode-CLOSED_PERIOD a sai:AccessTimeWindowTypeCode , skos:Concept ;
+    rdfs:label "Closed Period"@en ;
+    rdfs:comment "Closed, e.g. public holidays, stock-take."@en ;
+    skos:inScheme sai:AccessTimeWindowTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:AccessTimeWindowTypeCode-BREAK_PERIOD a sai:AccessTimeWindowTypeCode , skos:Concept ;
+    rdfs:label "Break Period"@en ;
+    rdfs:comment "Break in which goods are not accepted or nobody is at goods-in, e.g. lunch break."@en ;
+    skos:inScheme sai:AccessTimeWindowTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCode a owl:Class ;
+    rdfs:label "Registration Method Code"@en ;
+    rdfs:comment "How registration, booking or announcement is done. Code list in WebVoc style: members are sai:RegistrationMethodCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Registration Method Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:RegistrationMethodCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCode-ONLINE_FORM a sai:RegistrationMethodCode , skos:Concept ;
+    rdfs:label "Online Form"@en ;
+    rdfs:comment "Web form."@en ;
+    skos:inScheme sai:RegistrationMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCode-SLOT_BOOKING_PLATFORM a sai:RegistrationMethodCode , skos:Concept ;
+    rdfs:label "Slot Booking Platform"@en ;
+    rdfs:comment "Dock/slot booking or transport-management platform."@en ;
+    skos:inScheme sai:RegistrationMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCode-MOBILE_APP a sai:RegistrationMethodCode , skos:Concept ;
+    rdfs:label "Mobile App"@en ;
+    rdfs:comment "Mobile application."@en ;
+    skos:inScheme sai:RegistrationMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCode-PHONE a sai:RegistrationMethodCode , skos:Concept ;
+    rdfs:label "Phone"@en ;
+    rdfs:comment "By telephone."@en ;
+    skos:inScheme sai:RegistrationMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCode-EMAIL a sai:RegistrationMethodCode , skos:Concept ;
+    rdfs:label "Email"@en ;
+    rdfs:comment "By e-mail."@en ;
+    skos:inScheme sai:RegistrationMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCode-ON_ARRIVAL a sai:RegistrationMethodCode , skos:Concept ;
+    rdfs:label "On Arrival"@en ;
+    rdfs:comment "At the gate or reception on arrival."@en ;
+    skos:inScheme sai:RegistrationMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCode-KIOSK a sai:RegistrationMethodCode , skos:Concept ;
+    rdfs:label "Kiosk"@en ;
+    rdfs:comment "Self-service terminal on site."@en ;
+    skos:inScheme sai:RegistrationMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCode-THROUGH_HOST a sai:RegistrationMethodCode , skos:Concept ;
+    rdfs:label "Through Host"@en ;
+    rdfs:comment "Registered by the host inside the organisation."@en ;
+    skos:inScheme sai:RegistrationMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationMethodCode-NO_REGISTRATION a sai:RegistrationMethodCode , skos:Concept ;
+    rdfs:label "No Registration"@en ;
+    rdfs:comment "No registration needed."@en ;
+    skos:inScheme sai:RegistrationMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode a owl:Class ;
+    rdfs:label "Registration Credential Type Code"@en ;
+    rdfs:comment "Information or document to be presented. Code list in WebVoc style: members are sai:RegistrationCredentialTypeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Registration Credential Type Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:RegistrationCredentialTypeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-PHOTO_ID a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Photo Id"@en ;
+    rdfs:comment "Government photo identification."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-DRIVER_LICENCE a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Driver Licence"@en ;
+    rdfs:comment "Driving licence."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-VEHICLE_PLATE a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Vehicle Plate"@en ;
+    rdfs:comment "Vehicle and trailer registration number."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-COMPANY_NAME a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Company Name"@en ;
+    rdfs:comment "Name of employing or sending company."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-PURCHASE_ORDER_NUMBER a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Purchase Order Number"@en ;
+    rdfs:comment "Purchase order reference."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-DELIVERY_NOTE_NUMBER a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Delivery Note Number"@en ;
+    rdfs:comment "Delivery note or despatch advice reference."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-SHIPMENT_IDENTIFIER_SSCC a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Shipment Identifier SSCC"@en ;
+    rdfs:comment "SSCC (GS1 AI 00) of the logistic units delivered."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-BOOKING_REFERENCE a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Booking Reference"@en ;
+    rdfs:comment "Slot or appointment confirmation."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-HOST_NAME a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Host Name"@en ;
+    rdfs:comment "Name of the person being visited."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-VISITOR_INVITATION a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Visitor Invitation"@en ;
+    rdfs:comment "Invitation or pre-registration confirmation."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-SAFETY_INDUCTION a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Safety Induction"@en ;
+    rdfs:comment "Proof of completed site induction."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-PROOF_OF_INSURANCE a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Proof Of Insurance"@en ;
+    rdfs:comment "Insurance certificate."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-NON_DISCLOSURE_AGREEMENT a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Non Disclosure Agreement"@en ;
+    rdfs:comment "Signed confidentiality agreement."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-PERMIT_TO_WORK a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Permit To Work"@en ;
+    rdfs:comment "Work authorisation / permit to work (contractors)."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-ACCESS_BADGE a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Access Badge"@en ;
+    rdfs:comment "Employee or contractor access badge or card."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-SITE_PASS_IN_ADVANCE a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Site Pass In Advance"@en ;
+    rdfs:comment "Site pass or permit that must be applied for before arrival."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RegistrationCredentialTypeCode-DRIVER_NAME_ANNOUNCED a sai:RegistrationCredentialTypeCode , skos:Concept ;
+    rdfs:label "Driver Name Announced"@en ;
+    rdfs:comment "Name of the driver announced to the site in advance."@en ;
+    skos:inScheme sai:RegistrationCredentialTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteFacilityTypeCode a owl:Class ;
+    rdfs:label "Site Facility Type Code"@en ;
+    rdfs:comment "Driver- and visitor-relevant facility at the site. Code list in WebVoc style: members are sai:SiteFacilityTypeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteFacilityTypeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Site Facility Type Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:SiteFacilityTypeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteFacilityTypeCode-DRIVER_WAITING_AREA a sai:SiteFacilityTypeCode , skos:Concept ;
+    rdfs:label "Driver Waiting Area"@en ;
+    rdfs:comment "Waiting room for drivers."@en ;
+    skos:inScheme sai:SiteFacilityTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteFacilityTypeCode-DRIVER_TOILETS a sai:SiteFacilityTypeCode , skos:Concept ;
+    rdfs:label "Driver Toilets"@en ;
+    rdfs:comment "Toilets for drivers."@en ;
+    skos:inScheme sai:SiteFacilityTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteFacilityTypeCode-DRIVER_CANTEEN a sai:SiteFacilityTypeCode , skos:Concept ;
+    rdfs:label "Driver Canteen"@en ;
+    rdfs:comment "Canteen or catering."@en ;
+    skos:inScheme sai:SiteFacilityTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteFacilityTypeCode-TRUCK_PARKING a sai:SiteFacilityTypeCode , skos:Concept ;
+    rdfs:label "Truck Parking"@en ;
+    rdfs:comment "Parking for trucks."@en ;
+    skos:inScheme sai:SiteFacilityTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteFacilityTypeCode-VISITOR_PARKING a sai:SiteFacilityTypeCode , skos:Concept ;
+    rdfs:label "Visitor Parking"@en ;
+    rdfs:comment "Parking for visitors."@en ;
+    skos:inScheme sai:SiteFacilityTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteFacilityTypeCode-EV_CHARGING_POINT a sai:SiteFacilityTypeCode , skos:Concept ;
+    rdfs:label "EV Charging Point"@en ;
+    rdfs:comment "Electric vehicle charging."@en ;
+    skos:inScheme sai:SiteFacilityTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteFacilityTypeCode-TRUCK_WASH a sai:SiteFacilityTypeCode , skos:Concept ;
+    rdfs:label "Truck Wash"@en ;
+    rdfs:comment "Vehicle washing."@en ;
+    skos:inScheme sai:SiteFacilityTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SiteFacilityTypeCode-WIFI_ACCESS a sai:SiteFacilityTypeCode , skos:Concept ;
+    rdfs:label "Wifi Access"@en ;
+    rdfs:comment "Guest wireless network."@en ;
+    skos:inScheme sai:SiteFacilityTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+
+# ======================================================================
+# 2b. CODE LISTS ADDED IN 0.3.0 (delivery-driver challenges)
+# ======================================================================
+
+sai:GoodsTypeCode a owl:Class ;
+    rdfs:label "Goods Type Code"@en ;
+    rdfs:comment "The kind of goods a time window, rule or handover condition applies to. Code list in WebVoc style: members are sai:GoodsTypeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:GoodsTypeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Goods Type Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:GoodsTypeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:GoodsTypeCode-PARCEL a sai:GoodsTypeCode , skos:Concept ;
+    rdfs:label "Parcel"@en ;
+    rdfs:comment "Parcels and small packages handled by hand."@en ;
+    skos:inScheme sai:GoodsTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:GoodsTypeCode-PALLET a sai:GoodsTypeCode , skos:Concept ;
+    rdfs:label "Pallet"@en ;
+    rdfs:comment "Palletised goods."@en ;
+    skos:inScheme sai:GoodsTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:GoodsTypeCode-FULL_TRUCKLOAD a sai:GoodsTypeCode , skos:Concept ;
+    rdfs:label "Full Truckload"@en ;
+    rdfs:comment "Full-truck-load or groupage consignments."@en ;
+    skos:inScheme sai:GoodsTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:GoodsTypeCode-TEMPERATURE_CONTROLLED a sai:GoodsTypeCode , skos:Concept ;
+    rdfs:label "Temperature Controlled"@en ;
+    rdfs:comment "Chilled, frozen or otherwise temperature-controlled goods."@en ;
+    skos:inScheme sai:GoodsTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:GoodsTypeCode-DANGEROUS_GOODS a sai:GoodsTypeCode , skos:Concept ;
+    rdfs:label "Dangerous Goods"@en ;
+    rdfs:comment "Dangerous goods (ADR)."@en ;
+    skos:inScheme sai:GoodsTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:GoodsTypeCode-OVERSIZE_OR_HEAVY a sai:GoodsTypeCode , skos:Concept ;
+    rdfs:label "Oversize Or Heavy"@en ;
+    rdfs:comment "Oversize, heavy or special-handling loads."@en ;
+    skos:inScheme sai:GoodsTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactUseCaseCode a owl:Class ;
+    rdfs:label "Contact Use Case Code"@en ;
+    rdfs:comment "The situation in which a contact should be used. Code list in WebVoc style: members are sai:ContactUseCaseCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactUseCaseCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Contact Use Case Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:ContactUseCaseCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactUseCaseCode-GATE_CLOSED a sai:ContactUseCaseCode , skos:Concept ;
+    rdfs:label "Gate Closed"@en ;
+    rdfs:comment "Use when the gate, barrier or roller door is closed or nobody answers."@en ;
+    skos:inScheme sai:ContactUseCaseCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactUseCaseCode-SITE_NOT_FOUND a sai:ContactUseCaseCode , skos:Concept ;
+    rdfs:label "Site Not Found"@en ;
+    rdfs:comment "Use when the entrance cannot be found or the address is unclear, e.g. a building site without a house number."@en ;
+    skos:inScheme sai:ContactUseCaseCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactUseCaseCode-RUNNING_LATE a sai:ContactUseCaseCode , skos:Concept ;
+    rdfs:label "Running Late"@en ;
+    rdfs:comment "Use when arriving late or outside the booked slot."@en ;
+    skos:inScheme sai:ContactUseCaseCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactUseCaseCode-DELIVERY_PROBLEM a sai:ContactUseCaseCode , skos:Concept ;
+    rdfs:label "Delivery Problem"@en ;
+    rdfs:comment "Use for problems during unloading or handover."@en ;
+    skos:inScheme sai:ContactUseCaseCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactUseCaseCode-ACCESS_PROBLEM a sai:ContactUseCaseCode , skos:Concept ;
+    rdfs:label "Access Problem"@en ;
+    rdfs:comment "Use when access is refused or credentials are not accepted."@en ;
+    skos:inScheme sai:ContactUseCaseCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactUseCaseCode-EMERGENCY a sai:ContactUseCaseCode , skos:Concept ;
+    rdfs:label "Emergency"@en ;
+    rdfs:comment "Use in an emergency."@en ;
+    skos:inScheme sai:ContactUseCaseCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactUseCaseCode-CHANGE_OR_CANCEL_SLOT a sai:ContactUseCaseCode , skos:Concept ;
+    rdfs:label "Change Or Cancel Slot"@en ;
+    rdfs:comment "Use to change or cancel a booked slot."@en ;
+    skos:inScheme sai:ContactUseCaseCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactUseCaseCode-GENERAL_ENQUIRY a sai:ContactUseCaseCode , skos:Concept ;
+    rdfs:label "General Enquiry"@en ;
+    rdfs:comment "General questions before or after the visit."@en ;
+    skos:inScheme sai:ContactUseCaseCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:TelephoneTypeCode a owl:Class ;
+    rdfs:label "Telephone Type Code"@en ;
+    rdfs:comment "The kind of telephone number. Code list in WebVoc style: members are sai:TelephoneTypeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:TelephoneTypeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Telephone Type Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:TelephoneTypeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:TelephoneTypeCode-SWITCHBOARD a sai:TelephoneTypeCode , skos:Concept ;
+    rdfs:label "Switchboard"@en ;
+    rdfs:comment "Central switchboard; not necessarily answered at the point of delivery."@en ;
+    skos:inScheme sai:TelephoneTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:TelephoneTypeCode-DIRECT_DIAL a sai:TelephoneTypeCode , skos:Concept ;
+    rdfs:label "Direct Dial"@en ;
+    rdfs:comment "Direct line or extension of the person or desk."@en ;
+    skos:inScheme sai:TelephoneTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:TelephoneTypeCode-MOBILE a sai:TelephoneTypeCode , skos:Concept ;
+    rdfs:label "Mobile"@en ;
+    rdfs:comment "Mobile phone of the person on duty, reachable at the gate or dock."@en ;
+    skos:inScheme sai:TelephoneTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:HandoverMethodCode a owl:Class ;
+    rdfs:label "Handover Method Code"@en ;
+    rdfs:comment "How and to whom the goods are handed over. Code list in WebVoc style: members are sai:HandoverMethodCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:HandoverMethodCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Handover Method Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:HandoverMethodCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:HandoverMethodCode-TO_PERSON_AT_GOODS_IN a sai:HandoverMethodCode , skos:Concept ;
+    rdfs:label "To Person At Goods In"@en ;
+    rdfs:comment "Hand over to a person at goods-in or the dock."@en ;
+    skos:inScheme sai:HandoverMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:HandoverMethodCode-AT_RECEPTION a sai:HandoverMethodCode , skos:Concept ;
+    rdfs:label "At Reception"@en ;
+    rdfs:comment "Hand over at the reception desk."@en ;
+    skos:inScheme sai:HandoverMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:HandoverMethodCode-TO_NAMED_RECIPIENT a sai:HandoverMethodCode , skos:Concept ;
+    rdfs:label "To Named Recipient"@en ;
+    rdfs:comment "Hand over only to a named recipient or department."@en ;
+    skos:inScheme sai:HandoverMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:HandoverMethodCode-SAFE_PLACE_ON_SITE a sai:HandoverMethodCode , skos:Concept ;
+    rdfs:label "Safe Place On Site"@en ;
+    rdfs:comment "Leave in an agreed safe place on site."@en ;
+    skos:inScheme sai:HandoverMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:HandoverMethodCode-PARCEL_LOCKER a sai:HandoverMethodCode , skos:Concept ;
+    rdfs:label "Parcel Locker"@en ;
+    rdfs:comment "Place in a parcel locker."@en ;
+    skos:inScheme sai:HandoverMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:HandoverMethodCode-MAIL_ROOM a sai:HandoverMethodCode , skos:Concept ;
+    rdfs:label "Mail Room"@en ;
+    rdfs:comment "Deliver to the mail room or post room."@en ;
+    skos:inScheme sai:HandoverMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:HandoverMethodCode-TO_FLOOR_OR_UNIT a sai:HandoverMethodCode , skos:Concept ;
+    rdfs:label "To Floor Or Unit"@en ;
+    rdfs:comment "Deliver to the floor, unit or room of the recipient inside the building."@en ;
+    skos:inScheme sai:HandoverMethodCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:UnloadingEquipmentCode a owl:Class ;
+    rdfs:label "Unloading Equipment Code"@en ;
+    rdfs:comment "Equipment the site offers for unloading. Code list in WebVoc style: members are sai:UnloadingEquipmentCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:UnloadingEquipmentCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Unloading Equipment Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:UnloadingEquipmentCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:UnloadingEquipmentCode-LOADING_RAMP a sai:UnloadingEquipmentCode , skos:Concept ;
+    rdfs:label "Loading Ramp"@en ;
+    rdfs:comment "Loading ramp or dock."@en ;
+    skos:inScheme sai:UnloadingEquipmentCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:UnloadingEquipmentCode-DOCK_LEVELLER a sai:UnloadingEquipmentCode , skos:Concept ;
+    rdfs:label "Dock Leveller"@en ;
+    rdfs:comment "Dock leveller."@en ;
+    skos:inScheme sai:UnloadingEquipmentCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:UnloadingEquipmentCode-FORKLIFT a sai:UnloadingEquipmentCode , skos:Concept ;
+    rdfs:label "Forklift"@en ;
+    rdfs:comment "Forklift available for unloading."@en ;
+    skos:inScheme sai:UnloadingEquipmentCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:UnloadingEquipmentCode-PALLET_JACK a sai:UnloadingEquipmentCode , skos:Concept ;
+    rdfs:label "Pallet Jack"@en ;
+    rdfs:comment "Pallet jack available."@en ;
+    skos:inScheme sai:UnloadingEquipmentCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:UnloadingEquipmentCode-GOODS_LIFT a sai:UnloadingEquipmentCode , skos:Concept ;
+    rdfs:label "Goods Lift"@en ;
+    rdfs:comment "Goods lift or freight elevator."@en ;
+    skos:inScheme sai:UnloadingEquipmentCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:UnloadingEquipmentCode-CRANE a sai:UnloadingEquipmentCode , skos:Concept ;
+    rdfs:label "Crane"@en ;
+    rdfs:comment "Crane or hoist."@en ;
+    skos:inScheme sai:UnloadingEquipmentCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:UnloadingEquipmentCode-HAND_TROLLEY a sai:UnloadingEquipmentCode , skos:Concept ;
+    rdfs:label "Hand Trolley"@en ;
+    rdfs:comment "Hand trolley available."@en ;
+    skos:inScheme sai:UnloadingEquipmentCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:UnloadingEquipmentCode-NO_UNLOADING_AIDS a sai:UnloadingEquipmentCode , skos:Concept ;
+    rdfs:label "No Unloading Aids"@en ;
+    rdfs:comment "No ramp or unloading aids: the vehicle must unload by itself."@en ;
+    skos:inScheme sai:UnloadingEquipmentCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ProofOfDeliveryCode a owl:Class ;
+    rdfs:label "Proof Of Delivery Code"@en ;
+    rdfs:comment "Evidence of delivery the driver must capture. Code list in WebVoc style: members are sai:ProofOfDeliveryCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ProofOfDeliveryCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Proof Of Delivery Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:ProofOfDeliveryCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ProofOfDeliveryCode-RECEIVER_NAME a sai:ProofOfDeliveryCode , skos:Concept ;
+    rdfs:label "Receiver Name"@en ;
+    rdfs:comment "Name of the person who received the goods."@en ;
+    skos:inScheme sai:ProofOfDeliveryCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ProofOfDeliveryCode-SIGNATURE a sai:ProofOfDeliveryCode , skos:Concept ;
+    rdfs:label "Signature"@en ;
+    rdfs:comment "Signature of the receiver."@en ;
+    skos:inScheme sai:ProofOfDeliveryCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ProofOfDeliveryCode-TIMESTAMP a sai:ProofOfDeliveryCode , skos:Concept ;
+    rdfs:label "Timestamp"@en ;
+    rdfs:comment "Date and time of handover."@en ;
+    skos:inScheme sai:ProofOfDeliveryCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ProofOfDeliveryCode-PHOTO a sai:ProofOfDeliveryCode , skos:Concept ;
+    rdfs:label "Photo"@en ;
+    rdfs:comment "Photo of the delivered goods or location."@en ;
+    skos:inScheme sai:ProofOfDeliveryCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ProofOfDeliveryCode-STAMPED_DELIVERY_NOTE a sai:ProofOfDeliveryCode , skos:Concept ;
+    rdfs:label "Stamped Delivery Note"@en ;
+    rdfs:comment "Delivery note stamped or signed by the site."@en ;
+    skos:inScheme sai:ProofOfDeliveryCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ProofOfDeliveryCode-SSCC_SCAN a sai:ProofOfDeliveryCode , skos:Concept ;
+    rdfs:label "Sscc Scan"@en ;
+    rdfs:comment "Scan of the SSCC of each logistic unit."@en ;
+    skos:inScheme sai:ProofOfDeliveryCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ProofOfDeliveryCode-ID_CHECK a sai:ProofOfDeliveryCode , skos:Concept ;
+    rdfs:label "Id Check"@en ;
+    rdfs:comment "Check of the receiver's identity."@en ;
+    skos:inScheme sai:ProofOfDeliveryCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ProofOfDeliveryCode-ACCESS_CODE a sai:ProofOfDeliveryCode , skos:Concept ;
+    rdfs:label "Access Code"@en ;
+    rdfs:comment "PIN or code issued by the recipient."@en ;
+    skos:inScheme sai:ProofOfDeliveryCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:IdDocumentHandlingCode a owl:Class ;
+    rdfs:label "Id Document Handling Code"@en ;
+    rdfs:comment "What happens to an identity document at sign-in. Code list in WebVoc style: members are sai:IdDocumentHandlingCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:IdDocumentHandlingCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Id Document Handling Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:IdDocumentHandlingCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:IdDocumentHandlingCode-SHOWN_ONLY a sai:IdDocumentHandlingCode , skos:Concept ;
+    rdfs:label "Shown Only"@en ;
+    rdfs:comment "The identity document is only shown."@en ;
+    skos:inScheme sai:IdDocumentHandlingCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:IdDocumentHandlingCode-SCANNED_OR_COPIED a sai:IdDocumentHandlingCode , skos:Concept ;
+    rdfs:label "Scanned Or Copied"@en ;
+    rdfs:comment "The identity document is scanned or copied."@en ;
+    skos:inScheme sai:IdDocumentHandlingCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:IdDocumentHandlingCode-DEPOSITED_UNTIL_EXIT a sai:IdDocumentHandlingCode , skos:Concept ;
+    rdfs:label "Deposited Until Exit"@en ;
+    rdfs:comment "The identity document is kept at the gate until the person leaves."@en ;
+    skos:inScheme sai:IdDocumentHandlingCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SafetyInductionModeCode a owl:Class ;
+    rdfs:label "Safety Induction Mode Code"@en ;
+    rdfs:comment "How the safety induction is done. Code list in WebVoc style: members are sai:SafetyInductionModeCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SafetyInductionModeCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Safety Induction Mode Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:SafetyInductionModeCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SafetyInductionModeCode-ONLINE_BEFORE_ARRIVAL a sai:SafetyInductionModeCode , skos:Concept ;
+    rdfs:label "Online Before Arrival"@en ;
+    rdfs:comment "Induction can or must be completed online before arrival."@en ;
+    skos:inScheme sai:SafetyInductionModeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SafetyInductionModeCode-ON_SITE_AT_ARRIVAL a sai:SafetyInductionModeCode , skos:Concept ;
+    rdfs:label "On Site At Arrival"@en ;
+    rdfs:comment "Induction takes place on site on arrival."@en ;
+    skos:inScheme sai:SafetyInductionModeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SafetyInductionModeCode-VIDEO_AT_GATE a sai:SafetyInductionModeCode , skos:Concept ;
+    rdfs:label "Video At Gate"@en ;
+    rdfs:comment "Induction by video at the gate."@en ;
+    skos:inScheme sai:SafetyInductionModeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:SafetyInductionModeCode-NOT_REQUIRED a sai:SafetyInductionModeCode , skos:Concept ;
+    rdfs:label "Not Required"@en ;
+    rdfs:comment "No induction needed."@en ;
+    skos:inScheme sai:SafetyInductionModeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ClosureReasonCode a owl:Class ;
+    rdfs:label "Closure Reason Code"@en ;
+    rdfs:comment "Why a site or goods-in is closed. Code list in WebVoc style: members are sai:ClosureReasonCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ClosureReasonCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Closure Reason Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:ClosureReasonCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ClosureReasonCode-PUBLIC_HOLIDAY a sai:ClosureReasonCode , skos:Concept ;
+    rdfs:label "Public Holiday"@en ;
+    rdfs:comment "Public or bank holiday."@en ;
+    skos:inScheme sai:ClosureReasonCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ClosureReasonCode-FACTORY_SHUTDOWN a sai:ClosureReasonCode , skos:Concept ;
+    rdfs:label "Factory Shutdown"@en ;
+    rdfs:comment "Planned shutdown of the plant or site."@en ;
+    skos:inScheme sai:ClosureReasonCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ClosureReasonCode-SCHOOL_HOLIDAY a sai:ClosureReasonCode , skos:Concept ;
+    rdfs:label "School Holiday"@en ;
+    rdfs:comment "School or term holiday."@en ;
+    skos:inScheme sai:ClosureReasonCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ClosureReasonCode-STOCKTAKING a sai:ClosureReasonCode , skos:Concept ;
+    rdfs:label "Stocktaking"@en ;
+    rdfs:comment "Stock-take or inventory."@en ;
+    skos:inScheme sai:ClosureReasonCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ClosureReasonCode-MAINTENANCE_OR_CONSTRUCTION a sai:ClosureReasonCode , skos:Concept ;
+    rdfs:label "Maintenance Or Construction"@en ;
+    rdfs:comment "Maintenance or construction work."@en ;
+    skos:inScheme sai:ClosureReasonCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ClosureReasonCode-SPECIAL_EVENT a sai:ClosureReasonCode , skos:Concept ;
+    rdfs:label "Special Event"@en ;
+    rdfs:comment "Special event."@en ;
+    skos:inScheme sai:ClosureReasonCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ClosureReasonCode-SEASONAL_CLOSURE a sai:ClosureReasonCode , skos:Concept ;
+    rdfs:label "Seasonal Closure"@en ;
+    rdfs:comment "Seasonal closure."@en ;
+    skos:inScheme sai:ClosureReasonCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RecurrenceCode a owl:Class ;
+    rdfs:label "Recurrence Code"@en ;
+    rdfs:comment "Whether a dated time window repeats. Code list in WebVoc style: members are sai:RecurrenceCode-MEMBER_NAME and skos:Concepts."@en ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RecurrenceCodeScheme a skos:ConceptScheme ;
+    rdfs:label "Recurrence Code Scheme"@en ;
+    rdfs:comment "Concept scheme of sai:RecurrenceCode."@en ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RecurrenceCode-ONCE a sai:RecurrenceCode , skos:Concept ;
+    rdfs:label "Once"@en ;
+    rdfs:comment "Applies once, for the stated dates only."@en ;
+    skos:inScheme sai:RecurrenceCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:RecurrenceCode-ANNUALLY a sai:RecurrenceCode , skos:Concept ;
+    rdfs:label "Annually"@en ;
+    rdfs:comment "Repeats every year on the same calendar dates (month and day)."@en ;
+    skos:inScheme sai:RecurrenceCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+
+# ======================================================================
+# 3. NEW MEMBERS FOR EXISTING WEBVOC CODE LISTS (gaps found when mapping to gs1:locationRole / gs1:contactRoleCode / gs1:referencedFileType)
+# ======================================================================
+
+sai:LocationRoleType-WEIGHBRIDGE a gs1:LocationRoleType , skos:Concept ;
+    rdfs:label "Weighbridge"@en ;
+    rdfs:comment "Weighbridge or vehicle scale."@en ;
+    skos:inScheme gs1:LocationRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:LocationRoleType-PARKING_AREA a gs1:LocationRoleType , skos:Concept ;
+    rdfs:label "Parking Area"@en ;
+    rdfs:comment "Parking area for cars and/or trucks."@en ;
+    skos:inScheme gs1:LocationRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:LocationRoleType-TRUCK_WAITING_AREA a gs1:LocationRoleType , skos:Concept ;
+    rdfs:label "Truck Waiting Area"@en ;
+    rdfs:comment "Marshalling or waiting area for vehicles before being called to a dock."@en ;
+    skos:inScheme gs1:LocationRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:LocationRoleType-EMERGENCY_ACCESS a gs1:LocationRoleType , skos:Concept ;
+    rdfs:label "Emergency Access"@en ;
+    rdfs:comment "Access reserved for emergency services."@en ;
+    skos:inScheme gs1:LocationRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:LocationRoleType-PEDESTRIAN_GATE a gs1:LocationRoleType , skos:Concept ;
+    rdfs:label "Pedestrian Gate"@en ;
+    rdfs:comment "Gate for pedestrians only."@en ;
+    skos:inScheme gs1:LocationRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:LocationRoleType-DELIVERY_POINT a gs1:LocationRoleType , skos:Concept ;
+    rdfs:label "Delivery Point"@en ;
+    rdfs:comment "Exact point of handover: unit, floor, room or desk where the goods are delivered."@en ;
+    skos:inScheme gs1:LocationRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:LocationRoleType-BUILDING_ENTRANCE a gs1:LocationRoleType , skos:Concept ;
+    rdfs:label "Building Entrance"@en ;
+    rdfs:comment "Entrance of one building within a multi-building site or business park."@en ;
+    skos:inScheme gs1:LocationRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:LocationRoleType-GOODS_LIFT a gs1:LocationRoleType , skos:Concept ;
+    rdfs:label "Goods Lift"@en ;
+    rdfs:comment "Goods lift or freight elevator."@en ;
+    skos:inScheme gs1:LocationRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:LocationRoleType-PARCEL_LOCKER a gs1:LocationRoleType , skos:Concept ;
+    rdfs:label "Parcel Locker"@en ;
+    rdfs:comment "Parcel locker or collection box."@en ;
+    skos:inScheme gs1:LocationRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:LocationRoleType-MAIL_ROOM a gs1:LocationRoleType , skos:Concept ;
+    rdfs:label "Mail Room"@en ;
+    rdfs:comment "Mail room or post room."@en ;
+    skos:inScheme gs1:LocationRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactRoleType-GATE_SECURITY_CONTACT a gs1:ContactRoleType , skos:Concept ;
+    rdfs:label "Gate Security Contact"@en ;
+    rdfs:comment "Gate or security control."@en ;
+    skos:inScheme gs1:ContactRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactRoleType-RECEPTION_CONTACT a gs1:ContactRoleType , skos:Concept ;
+    rdfs:label "Reception Contact"@en ;
+    rdfs:comment "Reception or front desk."@en ;
+    skos:inScheme gs1:ContactRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactRoleType-VISITOR_HOST_CONTACT a gs1:ContactRoleType , skos:Concept ;
+    rdfs:label "Visitor Host Contact"@en ;
+    rdfs:comment "Host or sponsor of visitors."@en ;
+    skos:inScheme gs1:ContactRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactRoleType-SLOT_BOOKING_CONTACT a gs1:ContactRoleType , skos:Concept ;
+    rdfs:label "Slot Booking Contact"@en ;
+    rdfs:comment "Dock/slot booking and delivery scheduling."@en ;
+    skos:inScheme gs1:ContactRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactRoleType-EMERGENCY_CONTACT a gs1:ContactRoleType , skos:Concept ;
+    rdfs:label "Emergency Contact"@en ;
+    rdfs:comment "General emergencies and incidents (WebVoc has only EMERGENCY_DANGEROUS_GOODS_CONTACT)."@en ;
+    skos:inScheme gs1:ContactRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ContactRoleType-WAREHOUSE_MANAGER_CONTACT a gs1:ContactRoleType , skos:Concept ;
+    rdfs:label "Warehouse Manager Contact"@en ;
+    rdfs:comment "Warehouse or shift manager who can decide on the spot."@en ;
+    skos:inScheme gs1:ContactRoleTypeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:ReferencedFileTypeCode-SITE_PLAN a gs1:ReferencedFileTypeCode , skos:Concept ;
+    rdfs:label "Site Plan"@en ;
+    rdfs:comment "Site plan or map showing gates, docks and routes."@en ;
+    skos:inScheme gs1:ReferencedFileTypeCodeScheme ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+
+# ======================================================================
+# 4. NEW PROPERTIES
+# ======================================================================
+
+sai:describesSite a owl:ObjectProperty ;
+    rdfs:label "describes site"@en ;
+    rdfs:comment "The site (a gs1:Place, typically with a GLN) described by the document. If WebVoc gs1:location is confirmed to fit this domain it can replace this term."@en ;
+    rdfs:domain sai:SiteAccessInformation ;
+    rdfs:range gs1:Place ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:hasAccessInstruction a owl:ObjectProperty ;
+    rdfs:label "has access instruction"@en ;
+    rdfs:comment "An access instruction."@en ;
+    rdfs:domain sai:SiteAccessInformation ;
+    rdfs:range sai:AccessInstruction ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:hasAccessRestriction a owl:ObjectProperty ;
+    rdfs:label "has access restriction"@en ;
+    rdfs:comment "An access restriction."@en ;
+    rdfs:domain sai:SiteAccessInformation ;
+    rdfs:range sai:AccessRestriction ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:hasAccessTime a owl:ObjectProperty ;
+    rdfs:label "has access time"@en ;
+    rdfs:comment "An access time window."@en ;
+    rdfs:domain sai:SiteAccessInformation ;
+    rdfs:range sai:AccessTimeWindow ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:hasRegistrationRequirement a owl:ObjectProperty ;
+    rdfs:label "has registration requirement"@en ;
+    rdfs:comment "A registration requirement."@en ;
+    rdfs:domain sai:SiteAccessInformation ;
+    rdfs:range sai:RegistrationRequirement ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:hasLocationGuidance a owl:ObjectProperty ;
+    rdfs:label "has location guidance"@en ;
+    rdfs:comment "A piece of location guidance."@en ;
+    rdfs:domain sai:SiteAccessInformation ;
+    rdfs:range sai:LocationGuidance ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:hasSiteFacility a owl:ObjectProperty ;
+    rdfs:label "has site facility"@en ;
+    rdfs:comment "A facility available at the place or access point."@en ;
+    rdfs:domain gs1:Place ;
+    rdfs:range sai:SiteFacilityTypeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:addressedTo a owl:ObjectProperty ;
+    rdfs:label "addressed to"@en ;
+    rdfs:comment "Role(s) for which a statement is relevant. Use on any sai:SiteAccessElement, on a gs1:Place used as access point, or on a gs1:ContactPoint. Absence means sai:SiteAccessRoleCode-ANY."@en ;
+    rdfs:range sai:SiteAccessRoleCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:appliesToAccessPoint a owl:ObjectProperty ;
+    rdfs:label "applies to access point"@en ;
+    rdfs:comment "Restricts the statement to a specific access point (a gs1:Place). Absence means the whole site."@en ;
+    rdfs:range gs1:Place ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:applicableVehicleType a owl:ObjectProperty ;
+    rdfs:label "applicable vehicle type"@en ;
+    rdfs:comment "Vehicle type(s) for which the statement is relevant."@en ;
+    rdfs:range sai:VehicleTypeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:isMandatory a owl:DatatypeProperty ;
+    rdfs:label "is mandatory"@en ;
+    rdfs:comment "True if compliance is compulsory."@en ;
+    rdfs:range xsd:boolean ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:timeZone a owl:DatatypeProperty ;
+    rdfs:label "time zone"@en ;
+    rdfs:comment "IANA time zone (e.g. Europe/Berlin) in which schema:opens/closes and dates are interpreted. On sai:SiteAccessInformation (document default) or sai:AccessTimeWindow (override)."@en ;
+    rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:instructionText a owl:DatatypeProperty ;
+    rdfs:label "instruction text"@en ;
+    rdfs:comment "Instruction text; language map in JSON-LD."@en ;
+    rdfs:domain sai:AccessInstruction ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:instructionType a owl:ObjectProperty ;
+    rdfs:label "instruction type"@en ;
+    rdfs:comment "Kind of procedure."@en ;
+    rdfs:domain sai:AccessInstruction ;
+    rdfs:range sai:SiteInstructionTypeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:restrictionType a owl:ObjectProperty ;
+    rdfs:label "restriction type"@en ;
+    rdfs:comment "Subject of the restriction."@en ;
+    rdfs:domain sai:AccessRestriction ;
+    rdfs:range sai:AccessRestrictionTypeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:restrictionMode a owl:ObjectProperty ;
+    rdfs:label "restriction mode"@en ;
+    rdfs:comment "Prohibited, required, limited or advisory."@en ;
+    rdfs:domain sai:AccessRestriction ;
+    rdfs:range sai:AccessRestrictionModeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:restrictionValue a owl:ObjectProperty ;
+    rdfs:label "restriction value"@en ;
+    rdfs:comment "Numeric limit as gs1:QuantitativeValue (gs1:value + gs1:unitCode, UN/CEFACT), e.g. 4.0 MTR. With mode Limited the value is a maximum."@en ;
+    rdfs:domain sai:AccessRestriction ;
+    rdfs:range gs1:QuantitativeValue ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:restrictionText a owl:DatatypeProperty ;
+    rdfs:label "restriction text"@en ;
+    rdfs:comment "Human-readable statement of the restriction."@en ;
+    rdfs:domain sai:AccessRestriction ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:requiredEquipment a owl:ObjectProperty ;
+    rdfs:label "required equipment"@en ;
+    rdfs:comment "Equipment required. On a sai:AccessRestriction: what people must wear or carry. On a sai:HandoverRequirement: what the vehicle or driver must bring (tail lift, pallet jack)."@en ;
+    rdfs:range sai:RequiredEquipmentTypeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:timeWindowType a owl:ObjectProperty ;
+    rdfs:label "time window type"@en ;
+    rdfs:comment "Purpose of the window."@en ;
+    rdfs:domain sai:AccessTimeWindow ;
+    rdfs:range sai:AccessTimeWindowTypeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:timeWindowDescription a owl:DatatypeProperty ;
+    rdfs:label "time window description"@en ;
+    rdfs:comment "Explanation, e.g. reason for a closure."@en ;
+    rdfs:domain sai:AccessTimeWindow ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:requiresAppointment a owl:DatatypeProperty ;
+    rdfs:label "requires appointment"@en ;
+    rdfs:comment "Access in this window needs a booked appointment or slot."@en ;
+    rdfs:domain sai:AccessTimeWindow ;
+    rdfs:range xsd:boolean ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:slotDuration a owl:DatatypeProperty ;
+    rdfs:label "slot duration"@en ;
+    rdfs:comment "Length of one bookable slot, ISO 8601 (PT30M)."@en ;
+    rdfs:domain sai:AccessTimeWindow ;
+    rdfs:range xsd:duration ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:arrivalTolerance a owl:DatatypeProperty ;
+    rdfs:label "arrival tolerance"@en ;
+    rdfs:comment "Accepted deviation from slot start, ISO 8601 (PT15M)."@en ;
+    rdfs:domain sai:AccessTimeWindow ;
+    rdfs:range xsd:duration ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:maxVehiclesPerSlot a owl:DatatypeProperty ;
+    rdfs:label "max vehicles per slot"@en ;
+    rdfs:comment "Maximum vehicles per slot."@en ;
+    rdfs:domain sai:AccessTimeWindow ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:registrationMethod a owl:ObjectProperty ;
+    rdfs:label "registration method"@en ;
+    rdfs:comment "How registration or booking is done."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range sai:RegistrationMethodCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:registrationUrl a owl:DatatypeProperty ;
+    rdfs:label "registration url"@en ;
+    rdfs:comment "Web address of the registration or booking facility."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range xsd:anyURI ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:registrationText a owl:DatatypeProperty ;
+    rdfs:label "registration text"@en ;
+    rdfs:comment "Explanation of the registration process."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:advanceNotice a owl:DatatypeProperty ;
+    rdfs:label "advance notice"@en ;
+    rdfs:comment "Minimum lead time before arrival, ISO 8601 (PT24H)."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range xsd:duration ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:requiredCredential a owl:ObjectProperty ;
+    rdfs:label "required credential"@en ;
+    rdfs:comment "Information or document to present."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range sai:RegistrationCredentialTypeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:inductionValidity a owl:DatatypeProperty ;
+    rdfs:label "induction validity"@en ;
+    rdfs:comment "How long a completed induction or registration stays valid (P365D)."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range xsd:duration ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:registrationContact a owl:ObjectProperty ;
+    rdfs:label "registration contact"@en ;
+    rdfs:comment "Contact for registration questions."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range gs1:ContactPoint ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:navigationAddress a owl:ObjectProperty ;
+    rdfs:label "navigation address"@en ;
+    rdfs:comment "Address to enter in a navigation system when it differs from the registered address."@en ;
+    rdfs:domain sai:LocationGuidance ;
+    rdfs:range gs1:PostalAddress ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:routeDescription a owl:DatatypeProperty ;
+    rdfs:label "route description"@en ;
+    rdfs:comment "Route from the nearest major road or reference point."@en ;
+    rdfs:domain sai:LocationGuidance ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:signageDescription a owl:DatatypeProperty ;
+    rdfs:label "signage description"@en ;
+    rdfs:comment "Signs, colours or numbers to follow."@en ;
+    rdfs:domain sai:LocationGuidance ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:navigationWarning a owl:DatatypeProperty ;
+    rdfs:label "navigation warning"@en ;
+    rdfs:comment "Known pitfall, e.g. satnav sends trucks to the wrong gate, low bridge."@en ;
+    rdfs:domain sai:LocationGuidance ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+
+# ======================================================================
+# 4b. PROPERTIES ADDED IN 0.3.0
+# ======================================================================
+
+sai:buildingName a owl:DatatypeProperty ;
+    rdfs:label "building name"@en ;
+    rdfs:comment "Name or number of the building (for multi-building sites and business parks)."@en ;
+    rdfs:domain gs1:Place ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:floorLevel a owl:DatatypeProperty ;
+    rdfs:label "floor level"@en ;
+    rdfs:comment "Floor or level as shown in the building, e.g. 3, EG, -1."@en ;
+    rdfs:domain gs1:Place ;
+    rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:unitIdentifier a owl:DatatypeProperty ;
+    rdfs:label "unit identifier"@en ;
+    rdfs:comment "Unit, suite, office or room number of the recipient within the site."@en ;
+    rdfs:domain gs1:Place ;
+    rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:signLabel a owl:DatatypeProperty ;
+    rdfs:label "sign label"@en ;
+    rdfs:comment "Text exactly as shown on signs at this place, e.g. Tor 4, Rampe West."@en ;
+    rdfs:domain gs1:Place ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:basedOn a owl:ObjectProperty ;
+    rdfs:label "based on"@en ;
+    rdfs:comment "Company-wide default document this site document builds on. Categories the site document leaves empty are taken from the base document."@en ;
+    rdfs:domain sai:SiteAccessInformation ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:hasHandoverRequirement a owl:ObjectProperty ;
+    rdfs:label "has handover requirement"@en ;
+    rdfs:comment "A handover requirement."@en ;
+    rdfs:domain sai:SiteAccessInformation ;
+    rdfs:range sai:HandoverRequirement ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:appliesToGoodsType a owl:ObjectProperty ;
+    rdfs:label "applies to goods type"@en ;
+    rdfs:comment "Restricts the statement to a kind of goods, e.g. parcels accepted only until 12:00."@en ;
+    rdfs:range sai:GoodsTypeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:closureReason a owl:ObjectProperty ;
+    rdfs:label "closure reason"@en ;
+    rdfs:comment "Why the site or goods-in is closed in this window."@en ;
+    rdfs:domain sai:AccessTimeWindow ;
+    rdfs:range sai:ClosureReasonCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:recurrence a owl:ObjectProperty ;
+    rdfs:label "recurrence"@en ;
+    rdfs:comment "Whether a dated window repeats every year (Annually) or applies once."@en ;
+    rdfs:domain sai:AccessTimeWindow ;
+    rdfs:range sai:RecurrenceCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:useWhen a owl:ObjectProperty ;
+    rdfs:label "use when"@en ;
+    rdfs:comment "Situation in which this contact should be used."@en ;
+    rdfs:domain gs1:ContactPoint ;
+    rdfs:range sai:ContactUseCaseCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:telephoneType a owl:ObjectProperty ;
+    rdfs:label "telephone type"@en ;
+    rdfs:comment "Kind of number given in gs1:telephone: switchboard, direct dial or mobile."@en ;
+    rdfs:domain gs1:ContactPoint ;
+    rdfs:range sai:TelephoneTypeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:contactPriority a owl:DatatypeProperty ;
+    rdfs:label "contact priority"@en ;
+    rdfs:comment "Order in which to try contacts for the same situation; 1 = first."@en ;
+    rdfs:domain gs1:ContactPoint ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:registrationPoint a owl:ObjectProperty ;
+    rdfs:label "registration point"@en ;
+    rdfs:comment "The access point (gate, gatehouse, reception) where registration or sign-in takes place."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range gs1:Place ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:idDocumentHandling a owl:ObjectProperty ;
+    rdfs:label "id document handling"@en ;
+    rdfs:comment "Whether an identity document is shown, copied or deposited at sign-in."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range sai:IdDocumentHandlingCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:inductionMode a owl:ObjectProperty ;
+    rdfs:label "induction mode"@en ;
+    rdfs:comment "How the safety induction is done, e.g. online before arrival."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range sai:SafetyInductionModeCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:inductionUrl a owl:DatatypeProperty ;
+    rdfs:label "induction url"@en ;
+    rdfs:comment "Web address of the online safety induction."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range xsd:anyURI ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:inductionDuration a owl:DatatypeProperty ;
+    rdfs:label "induction duration"@en ;
+    rdfs:comment "How long the induction takes, ISO 8601 (PT10M)."@en ;
+    rdfs:domain sai:RegistrationRequirement ;
+    rdfs:range xsd:duration ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:handoverMethod a owl:ObjectProperty ;
+    rdfs:label "handover method"@en ;
+    rdfs:comment "How and to whom the goods are handed over."@en ;
+    rdfs:domain sai:HandoverRequirement ;
+    rdfs:range sai:HandoverMethodCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:handoverPoint a owl:ObjectProperty ;
+    rdfs:label "handover point"@en ;
+    rdfs:comment "The place of handover (a gs1:Place with building, floor, unit and role DELIVERY_POINT)."@en ;
+    rdfs:domain sai:HandoverRequirement ;
+    rdfs:range gs1:Place ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:personsRequired a owl:DatatypeProperty ;
+    rdfs:label "persons required"@en ;
+    rdfs:comment "Number of people needed for delivery, e.g. 2 for two-person delivery."@en ;
+    rdfs:domain sai:HandoverRequirement ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:siteUnloadingEquipment a owl:ObjectProperty ;
+    rdfs:label "site unloading equipment"@en ;
+    rdfs:comment "Equipment the site offers for unloading (ramp, forklift, goods lift) or NoUnloadingAids."@en ;
+    rdfs:domain sai:HandoverRequirement ;
+    rdfs:range sai:UnloadingEquipmentCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:requiredProofOfDelivery a owl:ObjectProperty ;
+    rdfs:label "required proof of delivery"@en ;
+    rdfs:comment "Evidence of delivery the driver must capture."@en ;
+    rdfs:domain sai:HandoverRequirement ;
+    rdfs:range sai:ProofOfDeliveryCode ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:handoverText a owl:DatatypeProperty ;
+    rdfs:label "handover text"@en ;
+    rdfs:comment "Explanation of the handover in words."@en ;
+    rdfs:domain sai:HandoverRequirement ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .
+
+sai:glnExtension a owl:DatatypeProperty ;
+    rdfs:label "gln extension"@en ;
+    rdfs:comment "GLN extension component (GS1 Application Identifier 254): up to 20 characters that identify a sub-location (dock door, floor, room, bay) together with the GLN of the site, or of the building above it, that carries the extension. GS1 Digital Link form: /414/{GLN}/254/{extension}. Extension plus GLN identify the place; the extension alone does not."@en ;
+    rdfs:domain gs1:Place ;
+    rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://ref.gs1.org/sai/> ;
+    sw:term_status "unstable" .

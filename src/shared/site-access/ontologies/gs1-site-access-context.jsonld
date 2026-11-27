@@ -3,19 +3,22 @@
     "https://ref.gs1.org/voc/data/GS1-core-context.jsonld",
     {
       "@version": 1.1,
+      "@protected": true,
       "gs1": "https://ref.gs1.org/voc/",
+      "sai": "https://ref.gs1.org/sai/",
       "schema": "http://schema.org/",
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "id": "@id",
       "type": "@type",
-      "SiteAccessInformation": "gs1:SiteAccessInformation",
-      "SiteAccessElement": "gs1:SiteAccessElement",
-      "AccessInstruction": "gs1:AccessInstruction",
-      "AccessRestriction": "gs1:AccessRestriction",
-      "AccessTimeWindow": "gs1:AccessTimeWindow",
-      "RegistrationRequirement": "gs1:RegistrationRequirement",
-      "LocationGuidance": "gs1:LocationGuidance",
+      "SiteAccessInformation": "sai:SiteAccessInformation",
+      "SiteAccessElement": "sai:SiteAccessElement",
+      "AccessInstruction": "sai:AccessInstruction",
+      "AccessRestriction": "sai:AccessRestriction",
+      "AccessTimeWindow": "sai:AccessTimeWindow",
+      "RegistrationRequirement": "sai:RegistrationRequirement",
+      "LocationGuidance": "sai:LocationGuidance",
+      "HandoverRequirement": "sai:HandoverRequirement",
       "inLanguage": "schema:inLanguage",
       "version": "schema:version",
       "dateModified": {
@@ -43,274 +46,462 @@
       },
       "hoursAvailable": "schema:hoursAvailable",
       "describesSite": {
-        "@id": "gs1:describesSite",
+        "@id": "sai:describesSite",
         "@type": "@id"
       },
       "hasAccessInstruction": {
-        "@id": "gs1:hasAccessInstruction",
+        "@id": "sai:hasAccessInstruction",
         "@type": "@id"
       },
       "hasAccessRestriction": {
-        "@id": "gs1:hasAccessRestriction",
+        "@id": "sai:hasAccessRestriction",
         "@type": "@id"
       },
       "hasAccessTime": {
-        "@id": "gs1:hasAccessTime",
+        "@id": "sai:hasAccessTime",
         "@type": "@id"
       },
       "hasRegistrationRequirement": {
-        "@id": "gs1:hasRegistrationRequirement",
+        "@id": "sai:hasRegistrationRequirement",
         "@type": "@id"
       },
       "hasLocationGuidance": {
-        "@id": "gs1:hasLocationGuidance",
+        "@id": "sai:hasLocationGuidance",
         "@type": "@id"
       },
       "hasSiteFacility": {
-        "@id": "gs1:hasSiteFacility",
+        "@id": "sai:hasSiteFacility",
         "@type": "@vocab",
         "@context": {
-          "DRIVER_WAITING_AREA": "gs1:SiteFacilityTypeCode-DRIVER_WAITING_AREA",
-          "DRIVER_TOILETS": "gs1:SiteFacilityTypeCode-DRIVER_TOILETS",
-          "DRIVER_CANTEEN": "gs1:SiteFacilityTypeCode-DRIVER_CANTEEN",
-          "TRUCK_PARKING": "gs1:SiteFacilityTypeCode-TRUCK_PARKING",
-          "VISITOR_PARKING": "gs1:SiteFacilityTypeCode-VISITOR_PARKING",
-          "EV_CHARGING_POINT": "gs1:SiteFacilityTypeCode-EV_CHARGING_POINT",
-          "TRUCK_WASH": "gs1:SiteFacilityTypeCode-TRUCK_WASH",
-          "WIFI_ACCESS": "gs1:SiteFacilityTypeCode-WIFI_ACCESS",
+          "DRIVER_WAITING_AREA": "sai:SiteFacilityTypeCode-DRIVER_WAITING_AREA",
+          "DRIVER_TOILETS": "sai:SiteFacilityTypeCode-DRIVER_TOILETS",
+          "DRIVER_CANTEEN": "sai:SiteFacilityTypeCode-DRIVER_CANTEEN",
+          "TRUCK_PARKING": "sai:SiteFacilityTypeCode-TRUCK_PARKING",
+          "VISITOR_PARKING": "sai:SiteFacilityTypeCode-VISITOR_PARKING",
+          "EV_CHARGING_POINT": "sai:SiteFacilityTypeCode-EV_CHARGING_POINT",
+          "TRUCK_WASH": "sai:SiteFacilityTypeCode-TRUCK_WASH",
+          "WIFI_ACCESS": "sai:SiteFacilityTypeCode-WIFI_ACCESS",
           "@protected": true
         }
       },
       "addressedTo": {
-        "@id": "gs1:addressedTo",
+        "@id": "sai:addressedTo",
         "@type": "@vocab",
         "@context": {
-          "VISITOR": "gs1:SiteAccessRoleCode-VISITOR",
-          "DELIVERY_DRIVER": "gs1:SiteAccessRoleCode-DELIVERY_DRIVER",
-          "SUPPLIER": "gs1:SiteAccessRoleCode-SUPPLIER",
-          "CONTRACTOR": "gs1:SiteAccessRoleCode-CONTRACTOR",
-          "EMPLOYEE": "gs1:SiteAccessRoleCode-EMPLOYEE",
-          "ANY": "gs1:SiteAccessRoleCode-ANY",
+          "VISITOR": "sai:SiteAccessRoleCode-VISITOR",
+          "DELIVERY_DRIVER": "sai:SiteAccessRoleCode-DELIVERY_DRIVER",
+          "SUPPLIER": "sai:SiteAccessRoleCode-SUPPLIER",
+          "CONTRACTOR": "sai:SiteAccessRoleCode-CONTRACTOR",
+          "EMPLOYEE": "sai:SiteAccessRoleCode-EMPLOYEE",
+          "ANY": "sai:SiteAccessRoleCode-ANY",
           "@protected": true
         }
       },
       "appliesToAccessPoint": {
-        "@id": "gs1:appliesToAccessPoint",
+        "@id": "sai:appliesToAccessPoint",
         "@type": "@id"
       },
       "applicableVehicleType": {
-        "@id": "gs1:applicableVehicleType",
+        "@id": "sai:applicableVehicleType",
         "@type": "@vocab",
         "@context": {
-          "ON_FOOT": "gs1:VehicleTypeCode-ON_FOOT",
-          "BICYCLE": "gs1:VehicleTypeCode-BICYCLE",
-          "MOTORCYCLE": "gs1:VehicleTypeCode-MOTORCYCLE",
-          "PASSENGER_CAR": "gs1:VehicleTypeCode-PASSENGER_CAR",
-          "VAN": "gs1:VehicleTypeCode-VAN",
-          "RIGID_TRUCK": "gs1:VehicleTypeCode-RIGID_TRUCK",
-          "ARTICULATED_TRUCK": "gs1:VehicleTypeCode-ARTICULATED_TRUCK",
-          "DRAWBAR_COMBINATION": "gs1:VehicleTypeCode-DRAWBAR_COMBINATION",
-          "REFRIGERATED_TRUCK": "gs1:VehicleTypeCode-REFRIGERATED_TRUCK",
-          "TANKER_TRUCK": "gs1:VehicleTypeCode-TANKER_TRUCK",
+          "ON_FOOT": "sai:VehicleTypeCode-ON_FOOT",
+          "BICYCLE": "sai:VehicleTypeCode-BICYCLE",
+          "MOTORCYCLE": "sai:VehicleTypeCode-MOTORCYCLE",
+          "PASSENGER_CAR": "sai:VehicleTypeCode-PASSENGER_CAR",
+          "VAN": "sai:VehicleTypeCode-VAN",
+          "RIGID_TRUCK": "sai:VehicleTypeCode-RIGID_TRUCK",
+          "ARTICULATED_TRUCK": "sai:VehicleTypeCode-ARTICULATED_TRUCK",
+          "DRAWBAR_COMBINATION": "sai:VehicleTypeCode-DRAWBAR_COMBINATION",
+          "REFRIGERATED_TRUCK": "sai:VehicleTypeCode-REFRIGERATED_TRUCK",
+          "TANKER_TRUCK": "sai:VehicleTypeCode-TANKER_TRUCK",
           "@protected": true
         }
       },
       "isMandatory": {
-        "@id": "gs1:isMandatory",
+        "@id": "sai:isMandatory",
         "@type": "xsd:boolean"
       },
       "timeZone": {
-        "@id": "gs1:timeZone"
+        "@id": "sai:timeZone"
       },
       "instructionText": {
-        "@id": "gs1:instructionText",
+        "@id": "sai:instructionText",
         "@container": "@language"
       },
       "instructionType": {
-        "@id": "gs1:instructionType",
+        "@id": "sai:instructionType",
         "@type": "@vocab",
         "@context": {
-          "ARRIVAL_PROCEDURE": "gs1:SiteInstructionTypeCode-ARRIVAL_PROCEDURE",
-          "CHECK_IN_PROCEDURE": "gs1:SiteInstructionTypeCode-CHECK_IN_PROCEDURE",
-          "PARKING_PROCEDURE": "gs1:SiteInstructionTypeCode-PARKING_PROCEDURE",
-          "UNLOADING_PROCEDURE": "gs1:SiteInstructionTypeCode-UNLOADING_PROCEDURE",
-          "LOADING_PROCEDURE": "gs1:SiteInstructionTypeCode-LOADING_PROCEDURE",
-          "DEPARTURE_PROCEDURE": "gs1:SiteInstructionTypeCode-DEPARTURE_PROCEDURE",
-          "SAFETY_BRIEFING": "gs1:SiteInstructionTypeCode-SAFETY_BRIEFING",
-          "EMERGENCY_PROCEDURE": "gs1:SiteInstructionTypeCode-EMERGENCY_PROCEDURE",
-          "OUT_OF_HOURS_PROCEDURE": "gs1:SiteInstructionTypeCode-OUT_OF_HOURS_PROCEDURE",
+          "ARRIVAL_PROCEDURE": "sai:SiteInstructionTypeCode-ARRIVAL_PROCEDURE",
+          "CHECK_IN_PROCEDURE": "sai:SiteInstructionTypeCode-CHECK_IN_PROCEDURE",
+          "PARKING_PROCEDURE": "sai:SiteInstructionTypeCode-PARKING_PROCEDURE",
+          "UNLOADING_PROCEDURE": "sai:SiteInstructionTypeCode-UNLOADING_PROCEDURE",
+          "LOADING_PROCEDURE": "sai:SiteInstructionTypeCode-LOADING_PROCEDURE",
+          "DEPARTURE_PROCEDURE": "sai:SiteInstructionTypeCode-DEPARTURE_PROCEDURE",
+          "SAFETY_BRIEFING": "sai:SiteInstructionTypeCode-SAFETY_BRIEFING",
+          "EMERGENCY_PROCEDURE": "sai:SiteInstructionTypeCode-EMERGENCY_PROCEDURE",
+          "OUT_OF_HOURS_PROCEDURE": "sai:SiteInstructionTypeCode-OUT_OF_HOURS_PROCEDURE",
+          "HANDOVER_PROCEDURE": "sai:SiteInstructionTypeCode-HANDOVER_PROCEDURE",
           "@protected": true
         }
       },
       "restrictionType": {
-        "@id": "gs1:restrictionType",
+        "@id": "sai:restrictionType",
         "@type": "@vocab",
         "@context": {
-          "VEHICLE_HEIGHT_LIMIT": "gs1:AccessRestrictionTypeCode-VEHICLE_HEIGHT_LIMIT",
-          "VEHICLE_WIDTH_LIMIT": "gs1:AccessRestrictionTypeCode-VEHICLE_WIDTH_LIMIT",
-          "VEHICLE_LENGTH_LIMIT": "gs1:AccessRestrictionTypeCode-VEHICLE_LENGTH_LIMIT",
-          "VEHICLE_WEIGHT_LIMIT": "gs1:AccessRestrictionTypeCode-VEHICLE_WEIGHT_LIMIT",
-          "AXLE_LOAD_LIMIT": "gs1:AccessRestrictionTypeCode-AXLE_LOAD_LIMIT",
-          "VEHICLE_TYPE_RESTRICTION": "gs1:AccessRestrictionTypeCode-VEHICLE_TYPE_RESTRICTION",
-          "EMISSION_ZONE_RESTRICTION": "gs1:AccessRestrictionTypeCode-EMISSION_ZONE_RESTRICTION",
-          "SPEED_LIMIT": "gs1:AccessRestrictionTypeCode-SPEED_LIMIT",
-          "PPE_REQUIREMENT": "gs1:AccessRestrictionTypeCode-PPE_REQUIREMENT",
-          "PROHIBITED_ITEMS": "gs1:AccessRestrictionTypeCode-PROHIBITED_ITEMS",
-          "SECURITY_SCREENING": "gs1:AccessRestrictionTypeCode-SECURITY_SCREENING",
-          "ESCORT_REQUIRED": "gs1:AccessRestrictionTypeCode-ESCORT_REQUIRED",
-          "PHOTOGRAPHY_RESTRICTION": "gs1:AccessRestrictionTypeCode-PHOTOGRAPHY_RESTRICTION",
-          "MOBILE_DEVICE_RESTRICTION": "gs1:AccessRestrictionTypeCode-MOBILE_DEVICE_RESTRICTION",
-          "HAZARDOUS_GOODS_RESTRICTION": "gs1:AccessRestrictionTypeCode-HAZARDOUS_GOODS_RESTRICTION",
-          "AGE_RESTRICTION": "gs1:AccessRestrictionTypeCode-AGE_RESTRICTION",
-          "HYGIENE_REQUIREMENT": "gs1:AccessRestrictionTypeCode-HYGIENE_REQUIREMENT",
-          "NO_IDLING_RESTRICTION": "gs1:AccessRestrictionTypeCode-NO_IDLING_RESTRICTION",
-          "CAPACITY_LIMIT": "gs1:AccessRestrictionTypeCode-CAPACITY_LIMIT",
-          "OTHER_RESTRICTION": "gs1:AccessRestrictionTypeCode-OTHER_RESTRICTION",
+          "VEHICLE_HEIGHT_LIMIT": "sai:AccessRestrictionTypeCode-VEHICLE_HEIGHT_LIMIT",
+          "VEHICLE_WIDTH_LIMIT": "sai:AccessRestrictionTypeCode-VEHICLE_WIDTH_LIMIT",
+          "VEHICLE_LENGTH_LIMIT": "sai:AccessRestrictionTypeCode-VEHICLE_LENGTH_LIMIT",
+          "VEHICLE_WEIGHT_LIMIT": "sai:AccessRestrictionTypeCode-VEHICLE_WEIGHT_LIMIT",
+          "AXLE_LOAD_LIMIT": "sai:AccessRestrictionTypeCode-AXLE_LOAD_LIMIT",
+          "VEHICLE_TYPE_RESTRICTION": "sai:AccessRestrictionTypeCode-VEHICLE_TYPE_RESTRICTION",
+          "EMISSION_ZONE_RESTRICTION": "sai:AccessRestrictionTypeCode-EMISSION_ZONE_RESTRICTION",
+          "SPEED_LIMIT": "sai:AccessRestrictionTypeCode-SPEED_LIMIT",
+          "PPE_REQUIREMENT": "sai:AccessRestrictionTypeCode-PPE_REQUIREMENT",
+          "PROHIBITED_ITEMS": "sai:AccessRestrictionTypeCode-PROHIBITED_ITEMS",
+          "SECURITY_SCREENING": "sai:AccessRestrictionTypeCode-SECURITY_SCREENING",
+          "ESCORT_REQUIRED": "sai:AccessRestrictionTypeCode-ESCORT_REQUIRED",
+          "PHOTOGRAPHY_RESTRICTION": "sai:AccessRestrictionTypeCode-PHOTOGRAPHY_RESTRICTION",
+          "MOBILE_DEVICE_RESTRICTION": "sai:AccessRestrictionTypeCode-MOBILE_DEVICE_RESTRICTION",
+          "HAZARDOUS_GOODS_RESTRICTION": "sai:AccessRestrictionTypeCode-HAZARDOUS_GOODS_RESTRICTION",
+          "AGE_RESTRICTION": "sai:AccessRestrictionTypeCode-AGE_RESTRICTION",
+          "HYGIENE_REQUIREMENT": "sai:AccessRestrictionTypeCode-HYGIENE_REQUIREMENT",
+          "NO_IDLING_RESTRICTION": "sai:AccessRestrictionTypeCode-NO_IDLING_RESTRICTION",
+          "CAPACITY_LIMIT": "sai:AccessRestrictionTypeCode-CAPACITY_LIMIT",
+          "PALLET_HEIGHT_LIMIT": "sai:AccessRestrictionTypeCode-PALLET_HEIGHT_LIMIT",
+          "PACKAGE_WEIGHT_LIMIT": "sai:AccessRestrictionTypeCode-PACKAGE_WEIGHT_LIMIT",
+          "OTHER_RESTRICTION": "sai:AccessRestrictionTypeCode-OTHER_RESTRICTION",
           "@protected": true
         }
       },
       "restrictionMode": {
-        "@id": "gs1:restrictionMode",
+        "@id": "sai:restrictionMode",
         "@type": "@vocab",
         "@context": {
-          "PROHIBITED": "gs1:AccessRestrictionModeCode-PROHIBITED",
-          "REQUIRED": "gs1:AccessRestrictionModeCode-REQUIRED",
-          "LIMITED": "gs1:AccessRestrictionModeCode-LIMITED",
-          "ADVISORY": "gs1:AccessRestrictionModeCode-ADVISORY",
+          "PROHIBITED": "sai:AccessRestrictionModeCode-PROHIBITED",
+          "REQUIRED": "sai:AccessRestrictionModeCode-REQUIRED",
+          "LIMITED": "sai:AccessRestrictionModeCode-LIMITED",
+          "ADVISORY": "sai:AccessRestrictionModeCode-ADVISORY",
           "@protected": true
         }
       },
       "restrictionValue": {
-        "@id": "gs1:restrictionValue",
+        "@id": "sai:restrictionValue",
         "@type": "@id"
       },
       "restrictionText": {
-        "@id": "gs1:restrictionText",
+        "@id": "sai:restrictionText",
         "@container": "@language"
       },
       "requiredEquipment": {
-        "@id": "gs1:requiredEquipment",
+        "@id": "sai:requiredEquipment",
         "@type": "@vocab",
         "@context": {
-          "HIGH_VISIBILITY_CLOTHING": "gs1:RequiredEquipmentTypeCode-HIGH_VISIBILITY_CLOTHING",
-          "SAFETY_FOOTWEAR": "gs1:RequiredEquipmentTypeCode-SAFETY_FOOTWEAR",
-          "HARD_HAT": "gs1:RequiredEquipmentTypeCode-HARD_HAT",
-          "SAFETY_GLASSES": "gs1:RequiredEquipmentTypeCode-SAFETY_GLASSES",
-          "PROTECTIVE_GLOVES": "gs1:RequiredEquipmentTypeCode-PROTECTIVE_GLOVES",
-          "HEARING_PROTECTION": "gs1:RequiredEquipmentTypeCode-HEARING_PROTECTION",
-          "HYGIENE_WEAR": "gs1:RequiredEquipmentTypeCode-HYGIENE_WEAR",
-          "WHEEL_CHOCKS": "gs1:RequiredEquipmentTypeCode-WHEEL_CHOCKS",
-          "LOAD_SECURING_EQUIPMENT": "gs1:RequiredEquipmentTypeCode-LOAD_SECURING_EQUIPMENT",
+          "HIGH_VISIBILITY_CLOTHING": "sai:RequiredEquipmentTypeCode-HIGH_VISIBILITY_CLOTHING",
+          "SAFETY_FOOTWEAR": "sai:RequiredEquipmentTypeCode-SAFETY_FOOTWEAR",
+          "HARD_HAT": "sai:RequiredEquipmentTypeCode-HARD_HAT",
+          "SAFETY_GLASSES": "sai:RequiredEquipmentTypeCode-SAFETY_GLASSES",
+          "PROTECTIVE_GLOVES": "sai:RequiredEquipmentTypeCode-PROTECTIVE_GLOVES",
+          "HEARING_PROTECTION": "sai:RequiredEquipmentTypeCode-HEARING_PROTECTION",
+          "HYGIENE_WEAR": "sai:RequiredEquipmentTypeCode-HYGIENE_WEAR",
+          "WHEEL_CHOCKS": "sai:RequiredEquipmentTypeCode-WHEEL_CHOCKS",
+          "LOAD_SECURING_EQUIPMENT": "sai:RequiredEquipmentTypeCode-LOAD_SECURING_EQUIPMENT",
+          "TAIL_LIFT": "sai:RequiredEquipmentTypeCode-TAIL_LIFT",
+          "PALLET_JACK": "sai:RequiredEquipmentTypeCode-PALLET_JACK",
+          "HAND_TROLLEY": "sai:RequiredEquipmentTypeCode-HAND_TROLLEY",
           "@protected": true
         }
       },
       "timeWindowType": {
-        "@id": "gs1:timeWindowType",
+        "@id": "sai:timeWindowType",
         "@type": "@vocab",
         "@context": {
-          "GENERAL_ACCESS_HOURS": "gs1:AccessTimeWindowTypeCode-GENERAL_ACCESS_HOURS",
-          "VISITING_HOURS": "gs1:AccessTimeWindowTypeCode-VISITING_HOURS",
-          "DELIVERY_WINDOW": "gs1:AccessTimeWindowTypeCode-DELIVERY_WINDOW",
-          "COLLECTION_WINDOW": "gs1:AccessTimeWindowTypeCode-COLLECTION_WINDOW",
-          "OUT_OF_HOURS_ACCESS": "gs1:AccessTimeWindowTypeCode-OUT_OF_HOURS_ACCESS",
-          "RESTRICTED_PERIOD": "gs1:AccessTimeWindowTypeCode-RESTRICTED_PERIOD",
-          "CLOSED_PERIOD": "gs1:AccessTimeWindowTypeCode-CLOSED_PERIOD",
+          "GENERAL_ACCESS_HOURS": "sai:AccessTimeWindowTypeCode-GENERAL_ACCESS_HOURS",
+          "VISITING_HOURS": "sai:AccessTimeWindowTypeCode-VISITING_HOURS",
+          "DELIVERY_WINDOW": "sai:AccessTimeWindowTypeCode-DELIVERY_WINDOW",
+          "COLLECTION_WINDOW": "sai:AccessTimeWindowTypeCode-COLLECTION_WINDOW",
+          "OUT_OF_HOURS_ACCESS": "sai:AccessTimeWindowTypeCode-OUT_OF_HOURS_ACCESS",
+          "RESTRICTED_PERIOD": "sai:AccessTimeWindowTypeCode-RESTRICTED_PERIOD",
+          "CLOSED_PERIOD": "sai:AccessTimeWindowTypeCode-CLOSED_PERIOD",
+          "BREAK_PERIOD": "sai:AccessTimeWindowTypeCode-BREAK_PERIOD",
           "@protected": true
         }
       },
       "timeWindowDescription": {
-        "@id": "gs1:timeWindowDescription",
+        "@id": "sai:timeWindowDescription",
         "@container": "@language"
       },
       "requiresAppointment": {
-        "@id": "gs1:requiresAppointment",
+        "@id": "sai:requiresAppointment",
         "@type": "xsd:boolean"
       },
       "slotDuration": {
-        "@id": "gs1:slotDuration",
+        "@id": "sai:slotDuration",
         "@type": "xsd:duration"
       },
       "arrivalTolerance": {
-        "@id": "gs1:arrivalTolerance",
+        "@id": "sai:arrivalTolerance",
         "@type": "xsd:duration"
       },
       "maxVehiclesPerSlot": {
-        "@id": "gs1:maxVehiclesPerSlot",
+        "@id": "sai:maxVehiclesPerSlot",
         "@type": "xsd:positiveInteger"
       },
       "registrationMethod": {
-        "@id": "gs1:registrationMethod",
+        "@id": "sai:registrationMethod",
         "@type": "@vocab",
         "@context": {
-          "ONLINE_FORM": "gs1:RegistrationMethodCode-ONLINE_FORM",
-          "SLOT_BOOKING_PLATFORM": "gs1:RegistrationMethodCode-SLOT_BOOKING_PLATFORM",
-          "MOBILE_APP": "gs1:RegistrationMethodCode-MOBILE_APP",
-          "PHONE": "gs1:RegistrationMethodCode-PHONE",
-          "EMAIL": "gs1:RegistrationMethodCode-EMAIL",
-          "ON_ARRIVAL": "gs1:RegistrationMethodCode-ON_ARRIVAL",
-          "KIOSK": "gs1:RegistrationMethodCode-KIOSK",
-          "THROUGH_HOST": "gs1:RegistrationMethodCode-THROUGH_HOST",
-          "NO_REGISTRATION": "gs1:RegistrationMethodCode-NO_REGISTRATION",
+          "ONLINE_FORM": "sai:RegistrationMethodCode-ONLINE_FORM",
+          "SLOT_BOOKING_PLATFORM": "sai:RegistrationMethodCode-SLOT_BOOKING_PLATFORM",
+          "MOBILE_APP": "sai:RegistrationMethodCode-MOBILE_APP",
+          "PHONE": "sai:RegistrationMethodCode-PHONE",
+          "EMAIL": "sai:RegistrationMethodCode-EMAIL",
+          "ON_ARRIVAL": "sai:RegistrationMethodCode-ON_ARRIVAL",
+          "KIOSK": "sai:RegistrationMethodCode-KIOSK",
+          "THROUGH_HOST": "sai:RegistrationMethodCode-THROUGH_HOST",
+          "NO_REGISTRATION": "sai:RegistrationMethodCode-NO_REGISTRATION",
           "@protected": true
         }
       },
       "registrationUrl": {
-        "@id": "gs1:registrationUrl",
+        "@id": "sai:registrationUrl",
         "@type": "xsd:anyURI"
       },
       "registrationText": {
-        "@id": "gs1:registrationText",
+        "@id": "sai:registrationText",
         "@container": "@language"
       },
       "advanceNotice": {
-        "@id": "gs1:advanceNotice",
+        "@id": "sai:advanceNotice",
         "@type": "xsd:duration"
       },
       "requiredCredential": {
-        "@id": "gs1:requiredCredential",
+        "@id": "sai:requiredCredential",
         "@type": "@vocab",
         "@context": {
-          "PHOTO_ID": "gs1:RegistrationCredentialTypeCode-PHOTO_ID",
-          "DRIVER_LICENCE": "gs1:RegistrationCredentialTypeCode-DRIVER_LICENCE",
-          "VEHICLE_PLATE": "gs1:RegistrationCredentialTypeCode-VEHICLE_PLATE",
-          "COMPANY_NAME": "gs1:RegistrationCredentialTypeCode-COMPANY_NAME",
-          "PURCHASE_ORDER_NUMBER": "gs1:RegistrationCredentialTypeCode-PURCHASE_ORDER_NUMBER",
-          "DELIVERY_NOTE_NUMBER": "gs1:RegistrationCredentialTypeCode-DELIVERY_NOTE_NUMBER",
-          "SHIPMENT_IDENTIFIER_SSCC": "gs1:RegistrationCredentialTypeCode-SHIPMENT_IDENTIFIER_SSCC",
-          "BOOKING_REFERENCE": "gs1:RegistrationCredentialTypeCode-BOOKING_REFERENCE",
-          "HOST_NAME": "gs1:RegistrationCredentialTypeCode-HOST_NAME",
-          "VISITOR_INVITATION": "gs1:RegistrationCredentialTypeCode-VISITOR_INVITATION",
-          "SAFETY_INDUCTION": "gs1:RegistrationCredentialTypeCode-SAFETY_INDUCTION",
-          "PROOF_OF_INSURANCE": "gs1:RegistrationCredentialTypeCode-PROOF_OF_INSURANCE",
-          "NON_DISCLOSURE_AGREEMENT": "gs1:RegistrationCredentialTypeCode-NON_DISCLOSURE_AGREEMENT",
-          "PERMIT_TO_WORK": "gs1:RegistrationCredentialTypeCode-PERMIT_TO_WORK",
-          "ACCESS_BADGE": "gs1:RegistrationCredentialTypeCode-ACCESS_BADGE",
+          "PHOTO_ID": "sai:RegistrationCredentialTypeCode-PHOTO_ID",
+          "DRIVER_LICENCE": "sai:RegistrationCredentialTypeCode-DRIVER_LICENCE",
+          "VEHICLE_PLATE": "sai:RegistrationCredentialTypeCode-VEHICLE_PLATE",
+          "COMPANY_NAME": "sai:RegistrationCredentialTypeCode-COMPANY_NAME",
+          "PURCHASE_ORDER_NUMBER": "sai:RegistrationCredentialTypeCode-PURCHASE_ORDER_NUMBER",
+          "DELIVERY_NOTE_NUMBER": "sai:RegistrationCredentialTypeCode-DELIVERY_NOTE_NUMBER",
+          "SHIPMENT_IDENTIFIER_SSCC": "sai:RegistrationCredentialTypeCode-SHIPMENT_IDENTIFIER_SSCC",
+          "BOOKING_REFERENCE": "sai:RegistrationCredentialTypeCode-BOOKING_REFERENCE",
+          "HOST_NAME": "sai:RegistrationCredentialTypeCode-HOST_NAME",
+          "VISITOR_INVITATION": "sai:RegistrationCredentialTypeCode-VISITOR_INVITATION",
+          "SAFETY_INDUCTION": "sai:RegistrationCredentialTypeCode-SAFETY_INDUCTION",
+          "PROOF_OF_INSURANCE": "sai:RegistrationCredentialTypeCode-PROOF_OF_INSURANCE",
+          "NON_DISCLOSURE_AGREEMENT": "sai:RegistrationCredentialTypeCode-NON_DISCLOSURE_AGREEMENT",
+          "PERMIT_TO_WORK": "sai:RegistrationCredentialTypeCode-PERMIT_TO_WORK",
+          "ACCESS_BADGE": "sai:RegistrationCredentialTypeCode-ACCESS_BADGE",
+          "SITE_PASS_IN_ADVANCE": "sai:RegistrationCredentialTypeCode-SITE_PASS_IN_ADVANCE",
+          "DRIVER_NAME_ANNOUNCED": "sai:RegistrationCredentialTypeCode-DRIVER_NAME_ANNOUNCED",
           "@protected": true
         }
       },
       "inductionValidity": {
-        "@id": "gs1:inductionValidity",
+        "@id": "sai:inductionValidity",
         "@type": "xsd:duration"
       },
       "registrationContact": {
-        "@id": "gs1:registrationContact",
+        "@id": "sai:registrationContact",
         "@type": "@id"
       },
       "navigationAddress": {
-        "@id": "gs1:navigationAddress",
+        "@id": "sai:navigationAddress",
         "@type": "@id"
       },
       "routeDescription": {
-        "@id": "gs1:routeDescription",
+        "@id": "sai:routeDescription",
         "@container": "@language"
       },
       "signageDescription": {
-        "@id": "gs1:signageDescription",
+        "@id": "sai:signageDescription",
         "@container": "@language"
       },
       "navigationWarning": {
-        "@id": "gs1:navigationWarning",
+        "@id": "sai:navigationWarning",
         "@container": "@language"
+      },
+      "buildingName": {
+        "@id": "sai:buildingName",
+        "@container": "@language"
+      },
+      "floorLevel": {
+        "@id": "sai:floorLevel"
+      },
+      "unitIdentifier": {
+        "@id": "sai:unitIdentifier"
+      },
+      "signLabel": {
+        "@id": "sai:signLabel",
+        "@container": "@language"
+      },
+      "basedOn": {
+        "@id": "sai:basedOn",
+        "@type": "@id"
+      },
+      "hasHandoverRequirement": {
+        "@id": "sai:hasHandoverRequirement",
+        "@type": "@id"
+      },
+      "appliesToGoodsType": {
+        "@id": "sai:appliesToGoodsType",
+        "@type": "@vocab",
+        "@context": {
+          "PARCEL": "sai:GoodsTypeCode-PARCEL",
+          "PALLET": "sai:GoodsTypeCode-PALLET",
+          "FULL_TRUCKLOAD": "sai:GoodsTypeCode-FULL_TRUCKLOAD",
+          "TEMPERATURE_CONTROLLED": "sai:GoodsTypeCode-TEMPERATURE_CONTROLLED",
+          "DANGEROUS_GOODS": "sai:GoodsTypeCode-DANGEROUS_GOODS",
+          "OVERSIZE_OR_HEAVY": "sai:GoodsTypeCode-OVERSIZE_OR_HEAVY",
+          "@protected": true
+        }
+      },
+      "closureReason": {
+        "@id": "sai:closureReason",
+        "@type": "@vocab",
+        "@context": {
+          "PUBLIC_HOLIDAY": "sai:ClosureReasonCode-PUBLIC_HOLIDAY",
+          "FACTORY_SHUTDOWN": "sai:ClosureReasonCode-FACTORY_SHUTDOWN",
+          "SCHOOL_HOLIDAY": "sai:ClosureReasonCode-SCHOOL_HOLIDAY",
+          "STOCKTAKING": "sai:ClosureReasonCode-STOCKTAKING",
+          "MAINTENANCE_OR_CONSTRUCTION": "sai:ClosureReasonCode-MAINTENANCE_OR_CONSTRUCTION",
+          "SPECIAL_EVENT": "sai:ClosureReasonCode-SPECIAL_EVENT",
+          "SEASONAL_CLOSURE": "sai:ClosureReasonCode-SEASONAL_CLOSURE",
+          "@protected": true
+        }
+      },
+      "recurrence": {
+        "@id": "sai:recurrence",
+        "@type": "@vocab",
+        "@context": {
+          "ONCE": "sai:RecurrenceCode-ONCE",
+          "ANNUALLY": "sai:RecurrenceCode-ANNUALLY",
+          "@protected": true
+        }
+      },
+      "useWhen": {
+        "@id": "sai:useWhen",
+        "@type": "@vocab",
+        "@context": {
+          "GATE_CLOSED": "sai:ContactUseCaseCode-GATE_CLOSED",
+          "SITE_NOT_FOUND": "sai:ContactUseCaseCode-SITE_NOT_FOUND",
+          "RUNNING_LATE": "sai:ContactUseCaseCode-RUNNING_LATE",
+          "DELIVERY_PROBLEM": "sai:ContactUseCaseCode-DELIVERY_PROBLEM",
+          "ACCESS_PROBLEM": "sai:ContactUseCaseCode-ACCESS_PROBLEM",
+          "EMERGENCY": "sai:ContactUseCaseCode-EMERGENCY",
+          "CHANGE_OR_CANCEL_SLOT": "sai:ContactUseCaseCode-CHANGE_OR_CANCEL_SLOT",
+          "GENERAL_ENQUIRY": "sai:ContactUseCaseCode-GENERAL_ENQUIRY",
+          "@protected": true
+        }
+      },
+      "telephoneType": {
+        "@id": "sai:telephoneType",
+        "@type": "@vocab",
+        "@context": {
+          "SWITCHBOARD": "sai:TelephoneTypeCode-SWITCHBOARD",
+          "DIRECT_DIAL": "sai:TelephoneTypeCode-DIRECT_DIAL",
+          "MOBILE": "sai:TelephoneTypeCode-MOBILE",
+          "@protected": true
+        }
+      },
+      "contactPriority": {
+        "@id": "sai:contactPriority",
+        "@type": "xsd:positiveInteger"
+      },
+      "registrationPoint": {
+        "@id": "sai:registrationPoint",
+        "@type": "@id"
+      },
+      "idDocumentHandling": {
+        "@id": "sai:idDocumentHandling",
+        "@type": "@vocab",
+        "@context": {
+          "SHOWN_ONLY": "sai:IdDocumentHandlingCode-SHOWN_ONLY",
+          "SCANNED_OR_COPIED": "sai:IdDocumentHandlingCode-SCANNED_OR_COPIED",
+          "DEPOSITED_UNTIL_EXIT": "sai:IdDocumentHandlingCode-DEPOSITED_UNTIL_EXIT",
+          "@protected": true
+        }
+      },
+      "inductionMode": {
+        "@id": "sai:inductionMode",
+        "@type": "@vocab",
+        "@context": {
+          "ONLINE_BEFORE_ARRIVAL": "sai:SafetyInductionModeCode-ONLINE_BEFORE_ARRIVAL",
+          "ON_SITE_AT_ARRIVAL": "sai:SafetyInductionModeCode-ON_SITE_AT_ARRIVAL",
+          "VIDEO_AT_GATE": "sai:SafetyInductionModeCode-VIDEO_AT_GATE",
+          "NOT_REQUIRED": "sai:SafetyInductionModeCode-NOT_REQUIRED",
+          "@protected": true
+        }
+      },
+      "inductionUrl": {
+        "@id": "sai:inductionUrl",
+        "@type": "xsd:anyURI"
+      },
+      "inductionDuration": {
+        "@id": "sai:inductionDuration",
+        "@type": "xsd:duration"
+      },
+      "handoverMethod": {
+        "@id": "sai:handoverMethod",
+        "@type": "@vocab",
+        "@context": {
+          "TO_PERSON_AT_GOODS_IN": "sai:HandoverMethodCode-TO_PERSON_AT_GOODS_IN",
+          "AT_RECEPTION": "sai:HandoverMethodCode-AT_RECEPTION",
+          "TO_NAMED_RECIPIENT": "sai:HandoverMethodCode-TO_NAMED_RECIPIENT",
+          "SAFE_PLACE_ON_SITE": "sai:HandoverMethodCode-SAFE_PLACE_ON_SITE",
+          "PARCEL_LOCKER": "sai:HandoverMethodCode-PARCEL_LOCKER",
+          "MAIL_ROOM": "sai:HandoverMethodCode-MAIL_ROOM",
+          "TO_FLOOR_OR_UNIT": "sai:HandoverMethodCode-TO_FLOOR_OR_UNIT",
+          "@protected": true
+        }
+      },
+      "handoverPoint": {
+        "@id": "sai:handoverPoint",
+        "@type": "@id"
+      },
+      "personsRequired": {
+        "@id": "sai:personsRequired",
+        "@type": "xsd:positiveInteger"
+      },
+      "siteUnloadingEquipment": {
+        "@id": "sai:siteUnloadingEquipment",
+        "@type": "@vocab",
+        "@context": {
+          "LOADING_RAMP": "sai:UnloadingEquipmentCode-LOADING_RAMP",
+          "DOCK_LEVELLER": "sai:UnloadingEquipmentCode-DOCK_LEVELLER",
+          "FORKLIFT": "sai:UnloadingEquipmentCode-FORKLIFT",
+          "PALLET_JACK": "sai:UnloadingEquipmentCode-PALLET_JACK",
+          "GOODS_LIFT": "sai:UnloadingEquipmentCode-GOODS_LIFT",
+          "CRANE": "sai:UnloadingEquipmentCode-CRANE",
+          "HAND_TROLLEY": "sai:UnloadingEquipmentCode-HAND_TROLLEY",
+          "NO_UNLOADING_AIDS": "sai:UnloadingEquipmentCode-NO_UNLOADING_AIDS",
+          "@protected": true
+        }
+      },
+      "requiredProofOfDelivery": {
+        "@id": "sai:requiredProofOfDelivery",
+        "@type": "@vocab",
+        "@context": {
+          "RECEIVER_NAME": "sai:ProofOfDeliveryCode-RECEIVER_NAME",
+          "SIGNATURE": "sai:ProofOfDeliveryCode-SIGNATURE",
+          "TIMESTAMP": "sai:ProofOfDeliveryCode-TIMESTAMP",
+          "PHOTO": "sai:ProofOfDeliveryCode-PHOTO",
+          "STAMPED_DELIVERY_NOTE": "sai:ProofOfDeliveryCode-STAMPED_DELIVERY_NOTE",
+          "SSCC_SCAN": "sai:ProofOfDeliveryCode-SSCC_SCAN",
+          "ID_CHECK": "sai:ProofOfDeliveryCode-ID_CHECK",
+          "ACCESS_CODE": "sai:ProofOfDeliveryCode-ACCESS_CODE",
+          "@protected": true
+        }
+      },
+      "handoverText": {
+        "@id": "sai:handoverText",
+        "@container": "@language"
+      },
+      "glnExtension": {
+        "@id": "sai:glnExtension"
       }
     }
   ]

@@ -1,6 +1,6 @@
 {
   "$schema": "manifest.schema.json",
-  "generatedAt": "2026-11-25T14:44:26.642Z",
+  "generatedAt": "2026-11-27T14:41:07.312Z",
   "domains": [
     {
       "slug": "bearing",
@@ -761,7 +761,7 @@
           "label": "JSON-LD @context",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-25T14:43:51Z",
+          "publishedAt": "2026-11-25T14:44:26Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/ontologies/gs1-site-access-context.jsonld"
         },
         {
@@ -771,7 +771,7 @@
           "label": "Site Access vocabulary (JSON-LD, staging)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-25T14:43:51Z",
+          "publishedAt": "2026-11-25T14:44:26Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/vocabularies/gs1-site-access-vocabulary.jsonld"
         },
         {
@@ -781,7 +781,7 @@
           "label": "Site Access vocabulary (Turtle, staging)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-25T14:43:51Z",
+          "publishedAt": "2026-11-25T14:44:26Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/ttl/gs1-site-access-delivery-ready-shapes.ttl"
         },
         {
@@ -791,7 +791,7 @@
           "label": "Site Access vocabulary (Turtle, staging)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-25T14:43:51Z",
+          "publishedAt": "2026-11-25T14:44:26Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/ttl/gs1-site-access-shapes.ttl"
         },
         {
@@ -801,7 +801,7 @@
           "label": "Site Access vocabulary (Turtle, staging)",
           "version": "0.0.0",
           "status": "staging",
-          "publishedAt": "2026-11-25T14:43:51Z",
+          "publishedAt": "2026-11-25T14:44:26Z",
           "source": "https://gs1-switzerland.github.io/WebOntology/stage/shared/site-access/ttl/gs1-site-access.ttl"
         },
         {

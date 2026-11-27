@@ -1,0 +1,70 @@
+@prefix gs1:    <https://ref.gs1.org/voc/> .
+@prefix sai:    <https://ref.gs1.org/sai/> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix drs:    <https://ref.gs1.org/sai/delivery-ready#> .
+
+# "Delivery-ready" profile: does the document answer the questions a delivery driver otherwise discovers at the gate?
+# Every check is a Warning; a document can be valid and still not delivery-ready.
+# Role test used below: the statement is meant for drivers when it has no addressedTo, or addressedTo includes DELIVERY_DRIVER or ANY.
+
+drs:DeliveryReadyShape a sh:NodeShape ;
+    sh:targetClass sai:SiteAccessInformation ;
+    sh:severity sh:Warning ;
+
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "DR1 Entrance: no exact entrance, gate, dock or delivery point for drivers with coordinates (and no separate navigation address). A postcode is not an entrance." ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE {
+              FILTER NOT EXISTS {
+                $this sai:describesSite/gs1:containsPlace+ ?p . ?p gs1:geo ?g ; gs1:locationRole ?r .
+                FILTER (STRAFTER(STR(?r),"RoleType-") IN ("ENTRANCE_GATE","GATE","DOCK","RECEIVING_AREA","DELIVERY_POINT","BUILDING_ENTRANCE","SECURITY_AREA"))
+                FILTER ( NOT EXISTS { ?p sai:addressedTo ?x } || EXISTS { ?p sai:addressedTo ?y . FILTER (?y IN (sai:SiteAccessRoleCode-DELIVERY_DRIVER, sai:SiteAccessRoleCode-ANY)) } )
+              }
+              FILTER NOT EXISTS { $this sai:hasLocationGuidance/sai:navigationAddress ?n }
+            }""" ] ;
+
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "DR2 Goods-in times: no delivery window for drivers that says whether an appointment is required." ;
+        sh:select """PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { FILTER NOT EXISTS {
+              $this sai:hasAccessTime ?w . ?w sai:timeWindowType sai:AccessTimeWindowTypeCode-DELIVERY_WINDOW ; sai:requiresAppointment ?a .
+              FILTER ( NOT EXISTS { ?w sai:addressedTo ?x } || EXISTS { ?w sai:addressedTo ?y . FILTER (?y IN (sai:SiteAccessRoleCode-DELIVERY_DRIVER, sai:SiteAccessRoleCode-ANY)) } ) } }""" ] ;
+
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "DR3 Direct contact: no direct-dial or mobile number for drivers that says when to use it (gate closed, site not found ...)." ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { FILTER NOT EXISTS {
+              $this sai:describesSite/gs1:containsPlace* ?p . ?p gs1:contactPoint ?c . ?c gs1:telephone ?t ; sai:useWhen ?u ; sai:telephoneType ?ty .
+              FILTER (?ty IN (sai:TelephoneTypeCode-DIRECT_DIAL, sai:TelephoneTypeCode-MOBILE))
+              FILTER ( NOT EXISTS { ?c sai:addressedTo ?x } || EXISTS { ?c sai:addressedTo ?y . FILTER (?y IN (sai:SiteAccessRoleCode-DELIVERY_DRIVER, sai:SiteAccessRoleCode-ANY)) } ) } }""" ] ;
+
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "DR4 Handover: no handover requirement for drivers (persons needed, unloading equipment on site, proof of delivery)." ;
+        sh:select """PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { FILTER NOT EXISTS {
+              $this sai:hasHandoverRequirement ?h .
+              FILTER ( NOT EXISTS { ?h sai:addressedTo ?x } || EXISTS { ?h sai:addressedTo ?y . FILTER (?y IN (sai:SiteAccessRoleCode-DELIVERY_DRIVER, sai:SiteAccessRoleCode-ANY)) } ) } }""" ] ;
+
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "DR5 Security: no registration or sign-in statement for drivers (use NoRegistration if none is needed)." ;
+        sh:select """PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { FILTER NOT EXISTS {
+              $this sai:hasRegistrationRequirement ?r . ?r sai:registrationMethod ?m .
+              FILTER ( NOT EXISTS { ?r sai:addressedTo ?x } || EXISTS { ?r sai:addressedTo ?y . FILTER (?y IN (sai:SiteAccessRoleCode-DELIVERY_DRIVER, sai:SiteAccessRoleCode-ANY)) } ) } }""" ] ;
+
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "DR6 Closures: no closed period listed (public holidays, shutdowns, term breaks). Add them, or the status shown to drivers cannot warn about them." ;
+        sh:severity sh:Info ;
+        sh:select """PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { FILTER NOT EXISTS { $this sai:hasAccessTime ?w . ?w sai:timeWindowType sai:AccessTimeWindowTypeCode-CLOSED_PERIOD } }""" ] ;
+
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "DR7 Address: the registered address has no street. A company name and postcode are not an address." ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { FILTER NOT EXISTS { $this sai:describesSite/gs1:address/gs1:streetAddress ?s } }""" ] ;
+
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "DR8 Scannable sub-locations: no gate, dock or building has a GLN extension or its own GLN, so none can be addressed by a GS1 Digital Link (QR code on the dock door)." ;
+        sh:severity sh:Info ;
+        sh:select """PREFIX gs1: <https://ref.gs1.org/voc/> PREFIX sai: <https://ref.gs1.org/sai/>
+            SELECT $this WHERE { FILTER NOT EXISTS { $this sai:describesSite/gs1:containsPlace+ ?p . { ?p sai:glnExtension ?e } UNION { ?p gs1:globalLocationNumber ?g } } }""" ] .
